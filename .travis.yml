@@ -3,4 +3,4 @@ language: java
 jdk:
   - oraclejdk8
 
-script: mvn cobertura:cobertura coveralls:cobertura
+script: mvn clean cobertura:cobertura coveralls:report
