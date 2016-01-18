@@ -116,8 +116,8 @@
         </plugins>
     </reporting>
 
-    <url>http://code.google.com/p/combinatoricslib/</url>
-    <inceptionYear>2015</inceptionYear>
+    <url>https://github.com/dpaukov/combinatoricslib3</url>
+    <inceptionYear>2016</inceptionYear>
 
     <dependencies>
         <dependency>
