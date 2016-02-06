@@ -17,7 +17,8 @@ import java.util.List;
  * @param <T>
  *            Type of the elements in the combinations
  * @version 3.0
- */ class MultiCombinationIterator<T> implements
+ */
+class MultiCombinationIterator<T> implements
 		Iterator<List<T>> {
 
 	/**

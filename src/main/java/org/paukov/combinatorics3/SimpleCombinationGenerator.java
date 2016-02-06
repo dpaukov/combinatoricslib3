@@ -62,9 +62,9 @@ class SimpleCombinationGenerator<T> implements IGenerator<List<T>> {
 	 * @param combinationsLength
 	 *            Length of the combinations
 	 */
-    SimpleCombinationGenerator(List<T> originalVector,
+    SimpleCombinationGenerator(Collection<T> originalVector,
 			int combinationsLength) {
-		this.originalVector = new ArrayList<T>(originalVector);
+		this.originalVector = new ArrayList<>(originalVector);
 		this.combinationLength = combinationsLength;
 	}
 

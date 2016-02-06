@@ -5,10 +5,7 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterators;
+import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -75,7 +72,7 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
 	 * @param combinationsLength
 	 *            Length of combination to generate
 	 */
-	 MultiCombinationGenerator(List<T> originalVector,
+	 MultiCombinationGenerator(Collection<T> originalVector,
 			int combinationsLength) {
 		this.originalVector = new ArrayList<>(originalVector);
 		if (combinationsLength < 0)

@@ -2,10 +2,10 @@ package org.paukov.combinatorics3;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
 import static org.fest.assertions.Assertions.assertThat;
 
 
@@ -73,5 +73,45 @@ public class SimpleCombinationTest {
         combinations.stream().forEach(System.out::println);
 
         assertThat(combinations.get(0)).isEmpty();
+    }
+
+    @Test
+    public void test_simple_2_combination_of_3_numbers_from_integer_array() {
+
+        List<List<Integer>> combinations =
+                Generator.combination(new Integer[]{0, 1, 2})
+                        .simple(2)
+                        .stream()
+                        .collect(Collectors.<List<Integer>>toList());
+
+        assertThat(combinations).hasSize(3);
+
+        System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
+        combinations.stream().forEach(System.out::println);
+
+        assertThat(combinations.get(0)).containsSequence(0, 1);
+        assertThat(combinations.get(1)).containsSequence(0, 2);
+        assertThat(combinations.get(2)).containsSequence(1, 2);
+
+    }
+
+    @Test
+    public void test_simple_2_combination_of_3_numbers_from_integer_list() {
+
+        List<List<Integer>> combinations =
+                Generator.combination(Arrays.asList(0, 1, 2))
+                        .simple(2)
+                        .stream()
+                        .collect(Collectors.<List<Integer>>toList());
+
+        assertThat(combinations).hasSize(3);
+
+        System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
+        combinations.stream().forEach(System.out::println);
+
+        assertThat(combinations.get(0)).containsSequence(0, 1);
+        assertThat(combinations.get(1)).containsSequence(0, 2);
+        assertThat(combinations.get(2)).containsSequence(1, 2);
+
     }
 }

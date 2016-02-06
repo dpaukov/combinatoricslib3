@@ -1,13 +1,13 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.List;
+import java.util.Collection;
 
 public class CombinationGenerator<T> {
 
-    final List<T> originalVector;
+    final Collection<T> originalVector;
 
-    public CombinationGenerator(List<T> originalVector) {
+    public CombinationGenerator(Collection<T> originalVector) {
         this.originalVector = originalVector;
     }
 
