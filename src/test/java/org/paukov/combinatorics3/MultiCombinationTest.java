@@ -67,6 +67,34 @@ public class MultiCombinationTest {
 
 
     @Test
+    public void test_multi_3_combination_of_3_symbols_from_array() {
+
+        List<List<String>> combinations =
+                Generator.combination(new String[]{"A", "B", "C"})
+                        .multi(3)
+                        .stream()
+                        .collect(Collectors.<List<String>>toList());
+
+        assertThat(combinations).hasSize(10);
+
+        System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
+        combinations.stream().forEach(System.out::println);
+
+        assertThat(combinations.get(0)).containsSequence("A", "A", "A");
+        assertThat(combinations.get(1)).containsSequence("A", "A", "B");
+        assertThat(combinations.get(2)).containsSequence("A", "A", "C");
+        assertThat(combinations.get(3)).containsSequence("A", "B", "B");
+        assertThat(combinations.get(4)).containsSequence("A", "B", "C");
+        assertThat(combinations.get(5)).containsSequence("A", "C", "C");
+        assertThat(combinations.get(6)).containsSequence("B", "B", "B");
+        assertThat(combinations.get(7)).containsSequence("B", "B", "C");
+        assertThat(combinations.get(8)).containsSequence("B", "C", "C");
+        assertThat(combinations.get(9)).containsSequence("C", "C", "C");
+
+    }
+
+
+    @Test
     public void test_multi_0_combination_of_5_colors() {
 
         List<List<String>> combinations =
