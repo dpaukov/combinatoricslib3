@@ -1,13 +1,13 @@
 [![Build Status](https://secure.travis-ci.org/dpaukov/combinatoricslib3.png)](http://travis-ci.org/dpaukov/combinatoricslib3) 
 [![Coverage Status](https://coveralls.io/repos/github/dpaukov/combinatoricslib3/badge.svg?branch=master)](https://coveralls.io/github/dpaukov/combinatoricslib3?branch=master)
 
-
+```
      ___                _     _             _             _             __ _ _       _____ 
     / __\___  _ __ ___ | |__ (_)_ __   __ _| |_ ___  _ __(_) ___ ___   / /(_) |__   |___ / 
    / /  / _ \| '_ ` _ \| '_ \| | '_ \ / _` | __/ _ \| '__| |/ __/ __| / / | | '_ \    |_ \ 
   / /__| (_) | | | | | | |_) | | | | | (_| | || (_) | |  | | (__\__ \/ /__| | |_) |  ___) |
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
-  
+```  
 
 New version of the combinatorics library
 
