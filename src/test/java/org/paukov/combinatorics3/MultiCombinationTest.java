@@ -3,6 +3,7 @@ package org.paukov.combinatorics3;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -144,5 +145,35 @@ public class MultiCombinationTest {
         combinations.stream().forEach(System.out::println);
 
         assertThat(combinations.get(0)).containsSequence("red", "red", "red");
+    }
+
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void test_multi_combination_iterator_remove_operation() {
+
+        Iterator<List<Integer>> combinations =
+                Generator.combination(Arrays.asList(0, 1, 2))
+                        .multi(2)
+                        .iterator();
+
+        assertThat(combinations).isNotNull();
+        assertThat(combinations.hasNext()).isTrue();
+
+        // this method should throw a UnsupportedOperationException
+        combinations.remove();
+    }
+
+    @Test
+    public void test_multi_combination_iterator_toString() {
+
+        Iterator<List<Integer>> combinations =
+                Generator.combination(Arrays.asList(0, 1, 2))
+                        .multi(2)
+                        .iterator();
+
+        assertThat(combinations).isNotNull();
+        assertThat(combinations.hasNext()).isTrue();
+        assertThat(combinations.next()).containsExactly(0, 0);
+        assertThat(combinations.toString()).isEqualTo("MultiCombinationIterator=[#1, [0, 0]]");
     }
 }
