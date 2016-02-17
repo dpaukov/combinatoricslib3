@@ -111,6 +111,22 @@ public class MultiCombinationTest {
         assertThat(combinations.get(0)).isEmpty();
     }
 
+    @Test
+    public void test_multi_negative_combination_of_3_colors() {
+
+        List<List<String>> combinations =
+                Generator.combination("red", "black", "white")
+                        .multi(-2)
+                        .stream()
+                        .collect(Collectors.<List<String>>toList());
+
+        assertThat(combinations).hasSize(1);
+
+        System.out.println("Multi combinations -2 of 3 colors:");
+        combinations.stream().forEach(System.out::println);
+
+        assertThat(combinations.get(0)).isEmpty();
+    }
 
 
     @Test
