@@ -3,6 +3,7 @@ package org.paukov.combinatorics3;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -113,5 +114,35 @@ public class SimpleCombinationTest {
         assertThat(combinations.get(1)).containsSequence(0, 2);
         assertThat(combinations.get(2)).containsSequence(1, 2);
 
+    }
+
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void test_simple_combination_iterator_remove_operation() {
+
+        Iterator<List<Integer>> combinations =
+                Generator.combination(Arrays.asList(0, 1, 2))
+                        .simple(2)
+                        .iterator();
+
+        assertThat(combinations).isNotNull();
+        assertThat(combinations.hasNext()).isTrue();
+
+        // this method should throw a UnsupportedOperationException
+        combinations.remove();
+    }
+
+    @Test
+    public void test_simple_combination_iterator_toString() {
+
+        Iterator<List<Integer>> combinations =
+                Generator.combination(Arrays.asList(0, 1, 2))
+                        .simple(2)
+                        .iterator();
+
+        assertThat(combinations).isNotNull();
+        assertThat(combinations.hasNext()).isTrue();
+        assertThat(combinations.next()).contains(0, 1);
+        assertThat(combinations.toString()).isEqualTo("SimpleCombinationIterator=[#1, [0, 1]]");
     }
 }
