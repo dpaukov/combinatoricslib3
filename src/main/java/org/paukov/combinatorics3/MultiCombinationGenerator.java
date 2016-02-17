@@ -87,7 +87,7 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
 	 */
 	@Override
 	public Iterator<List<T>> iterator() {
-		return new MultiCombinationIterator<T>(this);
+		return new MultiCombinationIterator<>(this);
 	}
 
 

@@ -15,4 +15,12 @@ public class Generator {
         return new CombinationGenerator<>(collection);
     }
 
+    public static <T> PermutationGenerator<T> permutation(T... args) {
+        return new PermutationGenerator<>(Arrays.asList(args));
+    }
+
+    public static <T> PermutationGenerator<T> permutation(Collection<T> collection) {
+        return new PermutationGenerator<>(collection);
+    }
+
 }
