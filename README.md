@@ -9,7 +9,7 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```  
 
-New version of the combinatorics library for java
+New version of the combinatorics library for java. The previous version of the library you can find [here](https://github.com/dpaukov/combinatoricslib)
 
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
