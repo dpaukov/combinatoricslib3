@@ -1,7 +1,11 @@
+/**
+ * Combinatorics Library 3
+ * Copyright 2016 Dmytro Paukov d.paukov@gmail.com
+ */
 package org.paukov.combinatorics3;
 
-
 import java.util.Collection;
+
 
 public class CombinationGenerator<T> {
 

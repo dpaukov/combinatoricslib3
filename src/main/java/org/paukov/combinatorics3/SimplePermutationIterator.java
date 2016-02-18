@@ -1,5 +1,5 @@
 /**
- * Combinatorics Library
+ * Combinatorics Library 3
  * Copyright 2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
@@ -13,7 +13,7 @@ import java.util.List;
  * Iterator for the permutation generator
  *
  * @author Dmytro Paukov
- * @version 2.0
+ * @version 3.0
  * @see SimplePermutationGenerator
  * @param <T>
  *            Type of elements in the permutations
