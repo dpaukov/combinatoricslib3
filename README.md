@@ -21,10 +21,11 @@ A simple k-combination of a finite set S is a subset of k distinct elements of S
 Example. Generate 3-combination of the set (red, black, white, green, blue).
 
 ```java
-   Generator.combination("red", "black", "white", "green", "blue")
+   List<List<String>> combinations = Generator.combination("red", "black", "white", "green", "blue")
        .simple(3)
        .stream()
-       .forEach(System.out::println);
+       .collect(Collectors.<List<String>>toList());
+   combinations.stream().forEach(System.out::println);
 
 ```
 And the result of 10 combinations
@@ -71,7 +72,7 @@ A permutation is an ordering of a set in the context of all possible orderings. 
 This is an example of the permutations of the 3 string items (apple, orange, cherry):
 
 ```java
-   List<List<String>> permutations = Generator.permutation("apple", "orange", "cherry")
+   Generator.permutation("apple", "orange", "cherry")
        .simple()
        .stream()
        .forEach(System.out::println);
@@ -90,7 +91,7 @@ The result of 6 permutations
 This generator can produce the permutations *even if the initial vector has duplicates*. For example, all permutations of (1, 1, 2, 2):
 
 ```java
-   List<List<Integer>> permutations = Generator.permutation(1, 1, 2, 2)
+   Generator.permutation(1, 1, 2, 2)
        .simple()
        .stream()
        .forEach(System.out::println);
