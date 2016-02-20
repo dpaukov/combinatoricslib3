@@ -276,4 +276,33 @@ public class SimplePermutationTest {
         assertThat(permutations.toString()).isEqualTo("PermutationIterator=[#1, [1, 2, 3]]");
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void test_duplicated_permutation_iterator_remove_operation() {
+
+        Iterator<List<Integer>> permutations =
+                Generator.permutation(Arrays.asList(1, 2, 2))
+                        .simple()
+                        .iterator();
+
+        assertThat(permutations).isNotNull();
+        assertThat(permutations.hasNext()).isTrue();
+
+        // this method should throw a UnsupportedOperationException
+        permutations.remove();
+    }
+
+    @Test
+    public void test_duplicated_permutations_iterator_toString() {
+
+        Iterator<List<Integer>> permutations =
+                Generator.permutation(Arrays.asList(1, 2, 2))
+                        .simple()
+                        .iterator();
+
+        assertThat(permutations).isNotNull();
+        assertThat(permutations.hasNext()).isTrue();
+        assertThat(permutations.next()).containsSequence(1, 2, 2);
+        assertThat(permutations.toString()).isEqualTo("DuplicatedPermutationIterator=[#0, [1, 2, 2]]");
+    }
+
 }
