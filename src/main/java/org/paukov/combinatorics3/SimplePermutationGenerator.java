@@ -72,18 +72,6 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
      *
      * @param vector
      *            Vector which is used for permutation generation
-     */
-    SimplePermutationGenerator(Collection<T> vector) {
-        _hasDuplicates = hasDuplicates(vector);
-        _treatAsIdentical = false;
-        _originalVector = new ArrayList<>(vector);
-    }
-
-    /**
-     * Constructor
-     *
-     * @param vector
-     *            Vector which is used for permutation generation
      * @param treatAsIdentical
      *            True if the generator should treat the vector as identical
      */
