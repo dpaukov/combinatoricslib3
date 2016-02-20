@@ -8,6 +8,7 @@ package org.paukov.combinatorics3;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -246,5 +247,33 @@ public class SimplePermutationTest {
 
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void test_simple_permutation_iterator_remove_operation() {
+
+        Iterator<List<Integer>> permutations =
+                Generator.permutation(Arrays.asList(1, 2, 3))
+                        .simple()
+                        .iterator();
+
+        assertThat(permutations).isNotNull();
+        assertThat(permutations.hasNext()).isTrue();
+
+        // this method should throw a UnsupportedOperationException
+        permutations.remove();
+    }
+
+    @Test
+    public void test_simple_permutations_iterator_toString() {
+
+        Iterator<List<Integer>> permutations =
+                Generator.permutation(Arrays.asList(1, 2, 3))
+                        .simple()
+                        .iterator();
+
+        assertThat(permutations).isNotNull();
+        assertThat(permutations.hasNext()).isTrue();
+        assertThat(permutations.next()).containsSequence(1, 2, 3);
+        assertThat(permutations.toString()).isEqualTo("PermutationIterator=[#1, [1, 2, 3]]");
+    }
 
 }
