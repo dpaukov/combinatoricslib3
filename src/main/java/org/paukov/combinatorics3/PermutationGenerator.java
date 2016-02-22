@@ -26,4 +26,9 @@ public class PermutationGenerator<T> {
     public SimplePermutationGenerator<T> simple(TreatDuplicatesAs treatAsIdentical) {
         return new SimplePermutationGenerator<>(originalVector, TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
     }
+
+    public PermutationWithRepetitionGenerator<T> withRepetitions(int permutationLength) {
+        return new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
+    }
+
 }
