@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class PermutationsWithRepetitions {
+public class PermutationsWithRepetitionsTest {
 
     @Test
     public void test_simple_permutation_with_repetition() {
