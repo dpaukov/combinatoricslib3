@@ -9,16 +9,20 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```  
 
-New version of the combinatorics library for java. The previous version of the library you can find [here](https://github.com/dpaukov/combinatoricslib)
+New version of the combinatorics library for Java 8. The previous version of the library can 
+be found [here](https://github.com/dpaukov/combinatoricslib)
 
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
 
 ###1. Simple combinations
-A simple k-combination of a finite set S is a subset of k distinct elements of S. Specifying a subset does not arrange them in a particular order. As an example, a poker hand can be described as a 5-combination of cards from a 52-card deck: the 5 cards of the hand are all distinct, and the order of the cards in the hand does not matter.
+A simple k-combination of a finite set S is a subset of k distinct elements of S. 
+Specifying a subset does not arrange them in a particular order. As an example, a poker hand can 
+be described as a 5-combination of cards from a 52-card deck: the 5 cards of the hand are all distinct, 
+and the order of the cards in the hand does not matter.
 
-Example. Generate 3-combination of the set (red, black, white, green, blue).
+Let's generate all 3-combination of the set of 5 colors (red, black, white, green, blue).
 
 ```java
    List<List<String>> combinations = Generator.combination("red", "black", "white", "green", "blue")
@@ -43,15 +47,18 @@ And the result of 10 combinations
 ```
 
 ###2. Combinations with repetitions
-A k-multicombination or k-combination with repetition of a finite set S is given by a sequence of k not necessarily distinct elements of S, where order is not taken into account.
+A k-multicombination or k-combination with repetition of a finite set S is given by a sequence of 
+k not necessarily distinct elements of S, where order is not taken into account.
 
-As an example. Suppose there are 2 types of fruits (apple and orange) at a grocery store, and you want to buy 3 pieces of fruit. You could select
+As an example. Suppose there are 2 types of fruits (apple and orange) at a grocery store, and you 
+want to buy 3 pieces of fruit. You could select
 - (apple, apple, apple)
 - (apple, apple, orange)
 - (apple, orange, orange)
 - (orange, orange, orange)
 
-Example. Generate 3-combinations with repetitions of the set (apple, orange). You can pass an array as the parameter in the function.
+Example. Generate 3-combinations with repetitions of the set (apple, orange). You can pass an array 
+as the parameter in the function.
 ```java
    Generator.combination(new String[] { "apple", "orange" })
        .multi(3)
@@ -67,7 +74,8 @@ And the result of 4 multi-combinations
 ```
 
 ###3. Simple permutations
-A permutation is an ordering of a set in the context of all possible orderings. For example, the set containing the first three digits, 123, has six permutations: 123, 132, 213, 231, 312, and 321.
+A permutation is an ordering of a set in the context of all possible orderings. For example, the set 
+containing the first three digits, 123, has six permutations: 123, 132, 213, 231, 312, and 321.
 
 This is an example of the permutations of the 3 string items (apple, orange, cherry):
 
@@ -88,7 +96,8 @@ The result of 6 permutations
    [orange, apple, cherry]
 ```
 
-This generator can produce the permutations *even if the initial vector has duplicates*. For example, all permutations of (1, 1, 2, 2):
+This generator can produce the permutations *even if an initial vector has duplicates*. For example, 
+all permutations of (1, 1, 2, 2):
 
 ```java
    Generator.permutation(1, 1, 2, 2)
@@ -97,7 +106,7 @@ This generator can produce the permutations *even if the initial vector has dupl
        .forEach(System.out::println);
 ```
 
-The result of all possible permutations
+The result of all possible permutations (with duplicates) 
 ```
    [1, 1, 2, 2]
    [1, 2, 1, 2]

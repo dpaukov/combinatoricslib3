@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.paukov</groupId>
+    <groupId>com.github.dpaukov</groupId>
     <artifactId>combinatoricslib</artifactId>
     <version>3.0-SNAPSHOT</version>
     <name>CombinatoricsLib3</name>
-    <description>Very simple java library to generate permutations, combinations and other combinatorial sequences</description>
+    <description>Simple java library to generate permutations, combinations and other combinatorial sequences</description>
     <licenses>
         <license>
             <name>LGPL v3.0</name>
