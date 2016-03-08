@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.dpaukov</groupId>
-    <artifactId>combinatoricslib</artifactId>
+    <artifactId>combinatoricslib3</artifactId>
     <version>3.0-SNAPSHOT</version>
-    <name>CombinatoricsLib3</name>
+    <name>combinatoricslib3</name>
     <description>Simple java library to generate permutations, combinations and other combinatorial sequences</description>
     <licenses>
         <license>
@@ -14,13 +14,19 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git://github.com/dpaukov/combinatoricslib3.git</connection>
+        <developerConnection>scm:git:git://github.com/dpaukov/combinatoricslib3.git</developerConnection>
+        <url>https://github.com/dpaukov/combinatoricslib3</url>
+    </scm>
+
     <ciManagement>
         <system>Travis CI</system>
         <url>https://travis-ci.org/dpaukov/combinatoricslib3</url>
     </ciManagement>
 
     <issueManagement>
-        <system>github.com</system>
+        <system>GitHub Issues</system>
         <url>https://github.com/dpaukov/combinatoricslib3</url>
     </issueManagement>
 
@@ -76,6 +82,20 @@
                 <configuration>
                     <show>public</show>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
