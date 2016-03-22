@@ -77,7 +77,7 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
      */
     SimplePermutationGenerator(Collection<T> vector,
                                boolean treatAsIdentical) {
-        _hasDuplicates = hasDuplicates(vector);
+        _hasDuplicates = PermutationGenerator.hasDuplicates(vector);
         _treatAsIdentical = treatAsIdentical;
         _originalVector = new ArrayList<>(vector);
     }
@@ -108,15 +108,5 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
     boolean isDuplicateIterator() {
         return (!_treatAsIdentical && _hasDuplicates);
     }
-
-
-    static private  <T> boolean hasDuplicates(Collection<T> collection) {
-        if (collection.size() <= 1) {
-            return false;
-        }
-        Set<T> set = new HashSet<T>(collection);
-        return set.size() < collection.size();
-    }
-
 }
 

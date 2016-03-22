@@ -5,6 +5,8 @@
 package org.paukov.combinatorics3;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PermutationGenerator<T> {
 
@@ -14,6 +16,14 @@ public class PermutationGenerator<T> {
     }
 
     final Collection<T> originalVector;
+
+    public static  <T> boolean hasDuplicates(Collection<T> collection) {
+        if (collection.size() <= 1) {
+            return false;
+        }
+        Set<T> set = new HashSet<>(collection);
+        return set.size() < collection.size();
+    }
 
     public PermutationGenerator(Collection<T> originalVector) {
         this.originalVector = originalVector;
