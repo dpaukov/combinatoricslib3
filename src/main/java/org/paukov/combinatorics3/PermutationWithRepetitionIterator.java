@@ -15,9 +15,7 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
     final int _n;
     final int _k;
 
-    /**
-     * Internal data
-     */
+    // Internal data
     private int[] _bitVector = null;
 
     public PermutationWithRepetitionIterator(
@@ -35,11 +33,6 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
         _currentPermutation = new ArrayList<>(list);
 
         _bitVector = new int[_k + 2];
-        init();
-    }
-
-
-    private void init() {
         for (int j = 0; j <= _k; j++) {
             _bitVector[j] = 0;
         }

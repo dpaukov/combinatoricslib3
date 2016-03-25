@@ -41,13 +41,7 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
         _pZ = new int[_length + 2];
         _pP = new int[_length + 2];
         _pD = new int[_length + 2];
-        init();
-    }
 
-    /**
-     * Initialize the iteration process
-     */
-    void init() {
         _currentIndex = 0;
 
         m = 0;
@@ -68,18 +62,12 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
     }
 
 
-    /**
-     * Return true if the iteration process is finished
-     */
     @Override
     public boolean hasNext() {
         return m != 1;
     }
 
 
-    /**
-     * Moves to the next permutation
-     */
     @Override
     public List<T> next() {
 
@@ -111,11 +99,7 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Returns the current permutation as a string
-     *
-     * @see java.lang.Object#toString()
-     */
+
     @Override
     public String toString() {
         return "PermutationIterator=[#" + _currentIndex + ", "

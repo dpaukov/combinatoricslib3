@@ -21,69 +21,36 @@ import java.util.List;
  class SimpleCombinationIterator<T> implements
 		Iterator<List<T>> {
 
-	/**
-	 * Generator
-	 */
+
 	final SimpleCombinationGenerator<T> generator;
+    List<T> currentSimpleCombination = null;
 
-	/**
-	 * Current simple combination
-	 */
-	List<T> currentSimpleCombination = null;
-
-	/**
-	 * Index of the current combination
-	 */
 	long currentIndex = 0;
+    final int lengthN;
+    final int lengthK;
 
-	/**
-	 * Size of the original vector/set
-	 */
-	final int lengthN;
-
-	/**
-	 * Size of the generated combination.
-	 */
-	final int lengthK;
-
-	/**
-	 * Helper array
-	 */
+	// Internal array
 	int[] bitVector = null;
 
-	/**
-	 * Criteria to stop iteration
-	 */
+	//Criteria to stop iterating
 	private int endIndex = 0;
 
-	/**
-	 * Constructor
-	 *
-	 * @param generator
-	 *            Generator of the simple combinations
-	 */
+
 	SimpleCombinationIterator(SimpleCombinationGenerator<T> generator) {
 		this.generator = generator;
 		lengthN = generator.originalVector.size();
 		lengthK = generator.combinationLength;
 		currentSimpleCombination = new ArrayList<T>();
 		bitVector = new int[lengthK + 1];
-		init();
+        for (int i = 0; i <= lengthK; i++) {
+            bitVector[i] = i;
+        }
+        if (lengthN > 0) {
+            endIndex = 1;
+        }
+        currentIndex = 0;
 	}
 
-	/**
-	 * Initialization
-	 */
-	private void init() {
-
-		for (int i = 0; i <= lengthK; i++) {
-			bitVector[i] = i;
-		}
-		if (lengthN > 0) {
-			endIndex = 1;
-		}
-		currentIndex = 0;
-	}
 
 	/**
 	 * Returns true if all combinations were iterated, otherwise false
@@ -129,16 +96,13 @@ import java.util.List;
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * Returns the current combination as a string
-	 *
-	 * @see Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "SimpleCombinationIterator=[#" + currentIndex + ", "
 				+ currentSimpleCombination + "]";
 	}
+
 
     private static <T> void setValue(List<T> list, int index, T value) {
         try {

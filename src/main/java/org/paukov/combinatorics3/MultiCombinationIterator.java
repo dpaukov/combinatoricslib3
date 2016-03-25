@@ -31,9 +31,8 @@ class MultiCombinationIterator<T> implements
 
 	private int[] bitVector = null;
 
-	/**
-	 * Criteria to stop iteration
-	 */
+
+	// Criteria to stop iterating
 	private boolean end = false;
 
 

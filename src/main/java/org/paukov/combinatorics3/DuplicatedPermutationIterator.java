@@ -13,9 +13,6 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
     List<T> _currentPermutation;
     long _currentIndex = 0;
 
-    /**
-     * Internal data
-     */
     private int _data[] = null;
     private boolean _firstIteration = true;
     private List<T> _initialOrderedPermutation;
@@ -54,28 +51,6 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
             }
         }
 
-        init();
-    }
-
-    private static void swap(int[] data, int k, int l) {
-        int temp = data[k];
-        data[k] = data[l];
-        data[l] = temp;
-    }
-
-    private boolean isFinished() {
-        int k = _data.length - 2;
-        while (_data[k] >= _data[k + 1]) {
-            k--;
-            if (k < 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    private void init() {
         _currentIndex = 0;
         _currentPermutation = new ArrayList<>();
 
@@ -141,6 +116,22 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
                 + _currentPermutation + "]";
     }
 
+    private static void swap(int[] data, int k, int l) {
+        int temp = data[k];
+        data[k] = data[l];
+        data[l] = temp;
+    }
+
+    private boolean isFinished() {
+        int k = _data.length - 2;
+        while (_data[k] >= _data[k + 1]) {
+            k--;
+            if (k < 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private static <T> int intcountElements(List<T> list, T value) {
         int count = 0;
