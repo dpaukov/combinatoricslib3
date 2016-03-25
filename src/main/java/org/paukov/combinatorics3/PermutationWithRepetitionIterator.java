@@ -46,21 +46,13 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
         _currentIndex = 0;
     }
 
-    /**
-     * Returns true if all permutations have been iterated
-     *
-     * @see Iterator#hasNext()
-     */
+
     @Override
     public boolean hasNext() {
         return (_bitVector[_k] != 1);
     }
 
-    /**
-     * Moves to the next permutation
-     *
-     * @see Iterator#next()
-     */
+
     @Override
     public List<T> next() {
         _currentIndex++;
@@ -91,11 +83,6 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
     }
 
 
-    /**
-     * Returns the current permutation as a string
-     *
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "PermutationWithRepetitionIterator=[#" + _currentIndex + ", "

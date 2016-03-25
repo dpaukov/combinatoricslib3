@@ -302,7 +302,10 @@ public class SimplePermutationTest {
         assertThat(permutations).isNotNull();
         assertThat(permutations.hasNext()).isTrue();
         assertThat(permutations.next()).containsSequence(1, 2, 2);
-        assertThat(permutations.toString()).isEqualTo("DuplicatedPermutationIterator=[#0, [1, 2, 2]]");
+        assertThat(permutations.toString()).isEqualTo("DuplicatedPermutationIterator=[#1, [1, 2, 2]]");
+        assertThat(permutations.next()).containsSequence(2, 1, 2);
+        assertThat(permutations.toString()).isEqualTo("DuplicatedPermutationIterator=[#2, [2, 1, 2]]");
+
     }
 
 }

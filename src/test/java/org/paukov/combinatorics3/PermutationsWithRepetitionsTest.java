@@ -191,4 +191,18 @@ public class PermutationsWithRepetitionsTest {
         permutations.remove();
     }
 
+    @Test
+    public void test_permutation_with_repetition_iterator_toString() {
+
+        Iterator<List<Integer>> permutations =
+                Generator.permutation(Arrays.asList(1, 2, 3))
+                        .withRepetitions(2)
+                        .iterator();
+
+        assertThat(permutations).isNotNull();
+        assertThat(permutations.hasNext()).isTrue();
+        assertThat(permutations.next()).containsSequence(1, 1);
+        assertThat(permutations.toString()).isEqualTo("PermutationWithRepetitionIterator=[#1, [1, 1]]");
+    }
+
 }

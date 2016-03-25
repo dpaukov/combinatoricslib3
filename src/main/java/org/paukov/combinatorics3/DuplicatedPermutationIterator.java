@@ -8,23 +8,21 @@ import java.util.*;
 
 class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
-    final SimplePermutationGenerator<T> _generator;
     final int _length;
 
     List<T> _currentPermutation;
     long _currentIndex = 0;
-
 
     /**
      * Internal data
      */
     private int _data[] = null;
     private boolean _firstIteration = true;
-    protected List<T> _initialOrderedPermutation;
+    private List<T> _initialOrderedPermutation;
 
 
     DuplicatedPermutationIterator(SimplePermutationGenerator<T> generator) {
-        _generator = generator;
+
         _length = generator._originalVector.size();
         _data = new int[_length];
 
@@ -32,7 +30,7 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
         List<T> initialPermutation = new ArrayList<>();
 
         // Create a set of the initial data
-        Set<T> initialSet = new LinkedHashSet<T>(originalVector);
+        Set<T> initialSet = new LinkedHashSet<>(originalVector);
 
         // Create internal data
         int dataValue = 0;
@@ -40,9 +38,8 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
         _initialOrderedPermutation = new ArrayList<>(initialSet);
 
-        for (int i = 0; i < _initialOrderedPermutation.size(); i++) {
+        for (T value : _initialOrderedPermutation) {
 
-            T value = _initialOrderedPermutation.get(i);
             dataValue++;
 
             if (!initialPermutation.contains(value)) {
@@ -89,17 +86,13 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
         }
     }
 
-    /**
-     * Return true if the iteration process is finished
-     */
+
     @Override
     public boolean hasNext() {
         return !isFinished() || _firstIteration;
     }
 
-    /**
-     * Moves to the next permutation
-     */
+
     @Override
     public List<T> next() {
 
@@ -141,23 +134,15 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Returns the current permutation as a string
-     *
-     * @see java.lang.Object#toString()
-     */
+
     @Override
     public String toString() {
-        return "DuplicatedPermutationIterator=[#" + _currentIndex + ", "
+        return "DuplicatedPermutationIterator=[#" + (_currentIndex + 1) + ", "
                 + _currentPermutation + "]";
     }
 
 
-
-    static <T> int intcountElements(List<T> list, T value) {
-        if (list.size() == 0)
-            return 0;
-
+    private static <T> int intcountElements(List<T> list, T value) {
         int count = 0;
         for (T element : list) {
             if (element.equals(value))
