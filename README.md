@@ -15,6 +15,7 @@ be found [here](https://github.com/dpaukov/combinatoricslib)
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
+4. [Permutations with repetitions](#4-permutations-with-repetitions)
 
 ###1. Simple combinations
 A simple k-combination of a finite set S is a subset of k distinct elements of S. 
@@ -114,4 +115,34 @@ The result of all possible permutations (with duplicates)
    [2, 1, 1, 2]
    [2, 1, 2, 1]
    [2, 2, 1, 1]
+```
+
+
+###4. Permutations with repetitions
+Permutation may have more elements than slots. For example, all possible permutation of '12' 
+in three slots are: 111, 211, 121, 221, 112, 212, 122, and 222.
+
+Let's generate all possible permutations with repetitions of 3 elements from the set of apple and orange.
+
+```java
+   List<List<String>> permutations = Generator
+        .permutation("apple", "orange")
+        .withRepetitions(3)
+        .stream()
+        .collect(Collectors.<List<String>>toList());
+        
+   permutations.stream().forEach(System.out::println);
+```
+
+And the result of 8 permutations
+
+```
+   [apple, apple, apple]
+   [orange, apple, apple]
+   [apple, orange, apple]
+   [orange, orange, apple]
+   [apple, apple, orange]
+   [orange, apple, orange]
+   [apple, orange, orange]
+   [orange, orange, orange]
 ```
