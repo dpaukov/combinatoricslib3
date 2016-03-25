@@ -21,7 +21,7 @@ class PermutationWithRepetitionGenerator<T> implements IGenerator<List<T>> {
 
     @Override
     public Iterator<List<T>> iterator() {
-        return new PermutationWithRepetitionIterator<T>(this);
+        return new PermutationWithRepetitionIterator<>(this);
     }
 
 

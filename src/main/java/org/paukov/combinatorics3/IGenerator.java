@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * This interface is implemented by all generic generators in the library
  * 
  * @author Dmytro Paukov
- * @version 2.0
+ * @version 3.0
  * @param <T>
  *            The type of the elements
  */

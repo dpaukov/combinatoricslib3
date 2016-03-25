@@ -63,16 +63,8 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
     final List<T> originalVector;
     final int combinationLength;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param originalVector
-	 *            Original/initial vector which is used for combination
-	 *            generation
-	 * @param combinationsLength
-	 *            Length of combination to generate
-	 */
-	 MultiCombinationGenerator(Collection<T> originalVector,
+
+    MultiCombinationGenerator(Collection<T> originalVector,
 			int combinationsLength) {
 		this.originalVector = new ArrayList<>(originalVector);
 		if (combinationsLength < 0)
