@@ -151,9 +151,9 @@ class MultiCombinationIterator<T> implements
 	}
 
     private static <T> void setValue(List<T> list, int index, T value) {
-        try {
+        if (list.size() < index) {
             list.set(index, value);
-        } catch (IndexOutOfBoundsException ex) {
+        } else {
             list.add(index, value);
         }
     }

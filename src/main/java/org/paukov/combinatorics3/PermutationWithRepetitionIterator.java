@@ -66,8 +66,7 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
         _currentIndex++;
 
         for (int j = _k - 1; j >= 0; j--) {
-            int index = _bitVector[j];
-            setValue(_currentPermutation, j, _generator._originalVector.get(index));
+            _currentPermutation.set(j, _generator._originalVector.get(_bitVector[j]));
         }
 
         int i = 0;
@@ -91,6 +90,7 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
         throw new UnsupportedOperationException();
     }
 
+
     /**
      * Returns the current permutation as a string
      *
@@ -100,13 +100,5 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
     public String toString() {
         return "PermutationWithRepetitionIterator=[#" + _currentIndex + ", "
                 + _currentPermutation + "]";
-    }
-
-    private static <T> void setValue(List<T> list, int index, T value) {
-        try {
-            list.set(index, value);
-        } catch (IndexOutOfBoundsException ex) {
-            list.add(index, value);
-        }
     }
 }

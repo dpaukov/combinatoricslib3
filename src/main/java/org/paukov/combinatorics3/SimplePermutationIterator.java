@@ -34,12 +34,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
     private int dm = 0;
     private int zpm = 0;
 
-    /**
-     * Constructor
-     *
-     * @param generator
-     *            Permutation generator
-     */
     SimplePermutationIterator(SimplePermutationGenerator<T> generator) {
         _generator = generator;
         _length = generator._originalVector.size();
@@ -91,7 +85,7 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
         for (int i = 1; i <= _length; i++) {
             int index = _pZ[i] - 1;
-            setValue(_currentPermutation,i-1, _generator._originalVector.get(index));
+            _currentPermutation.set(i-1, _generator._originalVector.get(index));
         }
         m = _length;
         while (_pZ[_pP[m] + _pD[m]] > m) {
@@ -127,13 +121,4 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
         return "PermutationIterator=[#" + _currentIndex + ", "
                 + _currentPermutation + "]";
     }
-
-    private static <T> void setValue(List<T> list, int index, T value) {
-        try {
-            list.set(index, value);
-        } catch (IndexOutOfBoundsException ex) {
-            list.add(index, value);
-        }
-    }
-
 }
