@@ -5,6 +5,7 @@
 package org.paukov.combinatorics3;
 
 import java.util.Collection;
+import java.util.List;
 
 
 public class CombinationGenerator<T> {
@@ -15,11 +16,11 @@ public class CombinationGenerator<T> {
         this.originalVector = originalVector;
     }
 
-    public SimpleCombinationGenerator<T> simple(int length) {
+    public IGenerator<List<T>> simple(int length) {
         return new SimpleCombinationGenerator<>(originalVector, length);
     }
 
-    public MultiCombinationGenerator<T> multi(int length) {
+    public IGenerator<List<T>> multi(int length) {
         return new MultiCombinationGenerator<>(originalVector, length);
     }
 }
