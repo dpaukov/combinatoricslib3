@@ -6,6 +6,7 @@ package org.paukov.combinatorics3;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PermutationGenerator<T> {
@@ -29,15 +30,15 @@ public class PermutationGenerator<T> {
         this.originalVector = originalVector;
     }
 
-    public SimplePermutationGenerator<T> simple() {
+    public IGenerator<List<T>>simple() {
         return new SimplePermutationGenerator<>(originalVector, false);
     }
 
-    public SimplePermutationGenerator<T> simple(TreatDuplicatesAs treatAsIdentical) {
+    public IGenerator<List<T>> simple(TreatDuplicatesAs treatAsIdentical) {
         return new SimplePermutationGenerator<>(originalVector, TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
     }
 
-    public PermutationWithRepetitionGenerator<T> withRepetitions(int permutationLength) {
+    public IGenerator<List<T>> withRepetitions(int permutationLength) {
         return new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
     }
 
