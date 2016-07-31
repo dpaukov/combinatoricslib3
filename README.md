@@ -22,7 +22,7 @@ be found [here](https://github.com/dpaukov/combinatoricslib)
 |----------------------------------|:-------------------:|:----------------------:|---------| 
 | [Simple combinations](#1-simple-combinations) | No | No | `Generator.combination(...).simple(n).stream()` |
 | [Combinations with repetitions](#2-combinations-with-repetitions) | No | Yes | `Generator.combination(...).multi(n).stream()` |
-| [Simple permutations](#3-simple-permutations) | Yes | No | `Generator.permutation(...).multi(n).stream()` |
+| [Simple permutations](#3-simple-permutations) | Yes | No | `Generator.permutation(...).simple().stream()` |
 | [Permutations with repetitions](#4-permutations-with-repetitions) | Yes | Yes | `Generator.permutation(...).withRepetitions(n).stream()` |
 
 
