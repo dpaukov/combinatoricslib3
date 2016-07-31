@@ -17,6 +17,15 @@ be found [here](https://github.com/dpaukov/combinatoricslib)
 3. [Simple permutations](#3-simple-permutations)
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 
+
+| Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
+|----------------------------------|:-------------------:|:----------------------:|---------| 
+| [Simple combinations](#1-simple-combinations) | No | No | `Generator.combination(...).simple(n).stream()` |
+| [Combinations with repetitions](#2-combinations-with-repetitions) | No | Yes | `Generator.combination(...).multi(n).stream()` |
+| [Simple permutations](#3-simple-permutations) | Yes | No | `Generator.permutation(...).multi(n).stream()` |
+| [Permutations with repetitions](#4-permutations-with-repetitions) | Yes | Yes | `Generator.permutation(...).withRepetitions(n).stream()` |
+
+
 ###1. Simple combinations
 A simple k-combination of a finite set S is a subset of k distinct elements of S. 
 Specifying a subset does not arrange them in a particular order. As an example, a poker hand can 
