@@ -1,5 +1,6 @@
 [![Build Status](https://secure.travis-ci.org/dpaukov/combinatoricslib3.svg)](http://travis-ci.org/dpaukov/combinatoricslib3) 
 [![Coverage Status](https://coveralls.io/repos/github/dpaukov/combinatoricslib3/badge.svg?branch=master)](https://coveralls.io/github/dpaukov/combinatoricslib3?branch=master)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.dpaukov/combinatoricslib3.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22)
 
 ```
      ___                _     _             _             _             __ _ _       _____ 
@@ -154,4 +155,17 @@ And the result of 8 permutations
    [orange, apple, orange]
    [apple, orange, orange]
    [orange, orange, orange]
+```
+
+### The latest release
+
+The latest release of the library is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22)
+Include the following section into your `pom.xml` file.
+
+```xml
+<dependency>
+    <groupId>com.github.dpaukov</groupId>
+    <artifactId>combinatoricslib3</artifactId>
+    <version>3.0.0</version>
+</dependency>
 ```
