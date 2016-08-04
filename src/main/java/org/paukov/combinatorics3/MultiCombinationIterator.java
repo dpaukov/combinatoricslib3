@@ -109,7 +109,6 @@ class MultiCombinationIterator<T> implements
 
 	@Override
 	public String toString() {
-		return "MultiCombinationIterator=[#" + currentIndex + ", "
-				+ currentCombination + "]";
+		return "MultiCombinationIterator=[#" + currentIndex + ", " + currentCombination + "]";
 	}
 }

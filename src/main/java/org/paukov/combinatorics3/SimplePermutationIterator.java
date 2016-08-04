@@ -20,14 +20,14 @@ import java.util.List;
  */
 class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
-    final SimplePermutationGenerator<T> _generator;
-    final List<T> _currentPermutation;
-    final int _length;
-    long _currentIndex = 0;
+    final SimplePermutationGenerator<T> generator;
+    final List<T> currentPermutation;
+    final int length;
+    long currentIndex = 0;
 
-    private int[] _pZ = null;
-    private int[] _pP = null;
-    private int[] _pD = null;
+    private int[] pZ = null;
+    private int[] pP = null;
+    private int[] pD = null;
     private int m = 0;
     private int w = 0;
     private int pm = 0;
@@ -35,14 +35,14 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
     private int zpm = 0;
 
     SimplePermutationIterator(SimplePermutationGenerator<T> generator) {
-        _generator = generator;
-        _length = generator._originalVector.size();
-        _currentPermutation = new ArrayList<>(generator._originalVector);
-        _pZ = new int[_length + 2];
-        _pP = new int[_length + 2];
-        _pD = new int[_length + 2];
+        this.generator = generator;
+        length = generator.originalVector.size();
+        currentPermutation = new ArrayList<>(generator.originalVector);
+        pZ = new int[length + 2];
+        pP = new int[length + 2];
+        pD = new int[length + 2];
 
-        _currentIndex = 0;
+        currentIndex = 0;
 
         m = 0;
         w = 0;
@@ -50,14 +50,14 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
         dm = 0;
         zpm = 0;
 
-        for (int i = 1; i <= _length; i++) {
-            _pP[i] = i;
-            _pZ[i] = i;
-            _pD[i] = -1;
+        for (int i = 1; i <= length; i++) {
+            pP[i] = i;
+            pZ[i] = i;
+            pD[i] = -1;
         }
-        _pD[1] = 0;
-        _pZ[_length + 1] = m = _length + 1;
-        _pZ[0] = _pZ[_length + 1];
+        pD[1] = 0;
+        pZ[length + 1] = m = length + 1;
+        pZ[0] = pZ[length + 1];
 
     }
 
@@ -71,27 +71,27 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
     @Override
     public List<T> next() {
 
-        for (int i = 1; i <= _length; i++) {
-            int index = _pZ[i] - 1;
-            _currentPermutation.set(i-1, _generator._originalVector.get(index));
+        for (int i = 1; i <= length; i++) {
+            int index = pZ[i] - 1;
+            currentPermutation.set(i-1, generator.originalVector.get(index));
         }
-        m = _length;
-        while (_pZ[_pP[m] + _pD[m]] > m) {
-            _pD[m] = -_pD[m];
+        m = length;
+        while (pZ[pP[m] + pD[m]] > m) {
+            pD[m] = -pD[m];
             m--;
         }
-        pm = _pP[m];
-        dm = pm + _pD[m];
-        w = _pZ[pm];
-        _pZ[pm] = _pZ[dm];
-        _pZ[dm] = w;
-        zpm = _pZ[pm];
-        w = _pP[zpm];
-        _pP[zpm] = pm;
-        _pP[m] = w;
-        _currentIndex++;
+        pm = pP[m];
+        dm = pm + pD[m];
+        w = pZ[pm];
+        pZ[pm] = pZ[dm];
+        pZ[dm] = w;
+        zpm = pZ[pm];
+        w = pP[zpm];
+        pP[zpm] = pm;
+        pP[m] = w;
+        currentIndex++;
 
-        return new ArrayList<>(_currentPermutation);
+        return new ArrayList<>(currentPermutation);
     }
 
     @Override
@@ -102,7 +102,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
     @Override
     public String toString() {
-        return "PermutationIterator=[#" + _currentIndex + ", "
-                + _currentPermutation + "]";
+        return "PermutationIterator=[#" + currentIndex + ", " + currentPermutation + "]";
     }
 }

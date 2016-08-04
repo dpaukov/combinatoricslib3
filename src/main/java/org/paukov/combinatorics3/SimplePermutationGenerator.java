@@ -63,9 +63,9 @@ import java.util.stream.StreamSupport;
  */
 class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
 
-    final boolean _hasDuplicates;
-    final boolean _treatAsIdentical;
-    final List<T> _originalVector;
+    final boolean hasDuplicates;
+    final boolean treatAsIdentical;
+    final List<T> originalVector;
 
     /**
      * Constructor
@@ -77,9 +77,9 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
      */
     SimplePermutationGenerator(Collection<T> vector,
                                boolean treatAsIdentical) {
-        _hasDuplicates = PermutationGenerator.hasDuplicates(vector);
-        _treatAsIdentical = treatAsIdentical;
-        _originalVector = new ArrayList<>(vector);
+        hasDuplicates = PermutationGenerator.hasDuplicates(vector);
+        this.treatAsIdentical = treatAsIdentical;
+        originalVector = new ArrayList<>(vector);
     }
 
 
@@ -106,7 +106,7 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
 
 
     boolean isDuplicateIterator() {
-        return (!_treatAsIdentical && _hasDuplicates);
+        return (!treatAsIdentical && hasDuplicates);
     }
 }
 

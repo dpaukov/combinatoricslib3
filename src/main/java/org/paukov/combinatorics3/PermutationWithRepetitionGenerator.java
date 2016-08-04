@@ -8,14 +8,14 @@ import java.util.stream.StreamSupport;
 class PermutationWithRepetitionGenerator<T> implements IGenerator<List<T>> {
 
 
-    final List<T> _originalVector;
-    final int _permutationLength;
+    final List<T> originalVector;
+    final int permutationLength;
 
 
     PermutationWithRepetitionGenerator(
             Collection<T> originalVector, int permutationLength) {
-        _originalVector = new ArrayList<>(originalVector);
-        _permutationLength = permutationLength;
+        this.originalVector = new ArrayList<>(originalVector);
+        this.permutationLength = permutationLength;
     }
 
 

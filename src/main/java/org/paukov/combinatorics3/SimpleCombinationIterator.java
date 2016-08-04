@@ -18,11 +18,9 @@ import java.util.List;
  * @param <T>
  *            Type of the elements in the combinations
  */
- class SimpleCombinationIterator<T> implements
-		Iterator<List<T>> {
+ class SimpleCombinationIterator<T> implements Iterator<List<T>> {
 
-
-	final SimpleCombinationGenerator<T> generator;
+    final SimpleCombinationGenerator<T> generator;
     List<T> currentSimpleCombination = null;
 
 	long currentIndex = 0;
@@ -87,7 +85,7 @@ import java.util.List;
 		}
 
 		// return the current combination
-		return new ArrayList<T>(currentSimpleCombination);
+		return new ArrayList<>(currentSimpleCombination);
 	}
 
 	@Override
@@ -98,7 +96,6 @@ import java.util.List;
 
 	@Override
 	public String toString() {
-		return "SimpleCombinationIterator=[#" + currentIndex + ", "
-				+ currentSimpleCombination + "]";
+		return "SimpleCombinationIterator=[#" + currentIndex + ", " + currentSimpleCombination + "]";
 	}
 }
