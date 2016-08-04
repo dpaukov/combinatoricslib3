@@ -1,0 +1,30 @@
+package org.paukov.combinatorics3;
+
+import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+
+
+class SimpleSubSetGenerator<T> implements IGenerator<List<T>> {
+
+    final List<T> originalVector;
+
+    SimpleSubSetGenerator(Collection<T> originalVector) {
+        this.originalVector = new ArrayList<>(originalVector);
+    }
+
+
+    /**
+     * Creates an iterator of the simple combinations (without repetitions)
+     */
+    @Override
+    public Iterator<List<T>> iterator() {
+        return new SimpleSubSetIterator<>(this);
+    }
+
+    @Override
+    public Stream<List<T>> stream() {
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+    }
+}

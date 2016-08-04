@@ -27,4 +27,12 @@ public class Generator {
         return new PermutationGenerator<>(collection);
     }
 
+    public static <T> SubSetGenerator<T> subset(Collection<T> collection) {
+        return new SubSetGenerator<>(collection);
+    }
+
+    public static <T> SubSetGenerator<T> subset(T... args) {
+        return new SubSetGenerator<>(Arrays.asList(args));
+    }
+
 }
