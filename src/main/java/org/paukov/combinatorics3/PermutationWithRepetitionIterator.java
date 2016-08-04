@@ -33,9 +33,6 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
         _currentPermutation = new ArrayList<>(list);
 
         _bitVector = new int[_k + 2];
-        for (int j = 0; j <= _k; j++) {
-            _bitVector[j] = 0;
-        }
         _currentIndex = 0;
     }
 
