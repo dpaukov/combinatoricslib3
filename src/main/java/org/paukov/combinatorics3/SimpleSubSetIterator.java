@@ -12,7 +12,7 @@ import java.util.List;
  * Iterator over the all subsets
  *
  * @author Dmytro Paukov
- * @version 3.0
+ * @version 3.1.0
  * @see SubSetGenerator
  *
  * @param <T>
@@ -21,23 +21,23 @@ import java.util.List;
 class SimpleSubSetIterator<T> implements Iterator<List<T>> {
 
     final SimpleSubSetGenerator<T> generator;
-    final int _length;
+    final int length;
 
-    List<T> _currentSubSet = null;
-    long _currentIndex = 0;
+    List<T> currentSubSet = null;
+    long currentIndex = 0;
 
     /**
      * internal bit vector, representing the subset
      */
-    private int[] _bitVector = null;
+    private int[] bitVector = null;
 
 
-    public SimpleSubSetIterator(SimpleSubSetGenerator<T> generator) {
+    SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
         this.generator = generator;
-        _length = generator.originalVector.size();
-        _currentSubSet = new ArrayList<>();
-        _bitVector = new int[_length + 2];
-        _currentIndex = 0;
+        this.length = generator.originalVector.size();
+        this.currentSubSet = new ArrayList<>();
+        this.bitVector = new int[length + 2];
+        this.currentIndex = 0;
     }
 
     /**
@@ -47,7 +47,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
      */
     @Override
     public boolean hasNext() {
-        return _bitVector[_length + 1] != 1;
+        return bitVector[length + 1] != 1;
     }
 
     /**
@@ -57,22 +57,22 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
      */
     @Override
     public List<T> next() {
-        _currentIndex++;
-        _currentSubSet.clear();
-        for (int index = 1; index <= _length; index++) {
-            if (_bitVector[index] == 1) {
+        currentIndex++;
+        currentSubSet.clear();
+        for (int index = 1; index <= length; index++) {
+            if (bitVector[index] == 1) {
                 T value = this.generator.originalVector.get(index - 1);
-                _currentSubSet.add(value);
+                currentSubSet.add(value);
             }
         }
         int i = 1;
-        while (_bitVector[i] == 1) {
-            _bitVector[i] = 0;
+        while (bitVector[i] == 1) {
+            bitVector[i] = 0;
             i++;
         }
-        _bitVector[i] = 1;
+        bitVector[i] = 1;
 
-        return new ArrayList<>(_currentSubSet);
+        return new ArrayList<>(currentSubSet);
     }
 
 
@@ -84,8 +84,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
 
     @Override
     public String toString() {
-        return "SubSetIterator=[#" + _currentIndex + ", " + _currentSubSet + "]";
+        return "SubSetIterator=[#" + currentIndex + ", " + currentSubSet + "]";
     }
-
 
 }
