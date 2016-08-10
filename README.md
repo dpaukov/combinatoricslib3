@@ -180,7 +180,7 @@ All subsets of (1, 2, 3) are:
 - (2, 3)
 - (1, 2, 3)
 
-And code which generates all subsets of (one, two, three)
+Here is a piece of code that generates all possible subsets of (one, two, three)
 
 ```java
    List<List<String>> subsets = Generator
