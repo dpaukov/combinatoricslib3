@@ -15,9 +15,6 @@ class SimpleSubSetGenerator<T> implements IGenerator<List<T>> {
     }
 
 
-    /**
-     * Creates an iterator of the simple combinations (without repetitions)
-     */
     @Override
     public Iterator<List<T>> iterator() {
         return new SimpleSubSetIterator<>(this);

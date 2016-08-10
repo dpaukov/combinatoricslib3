@@ -74,9 +74,6 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
 	}
 
 
-	/**
-	 * Creates iterator of combinations with repetitions
-	 */
 	@Override
 	public Iterator<List<T>> iterator() {
 		return new MultiCombinationIterator<>(this);

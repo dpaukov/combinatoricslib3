@@ -10,13 +10,16 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```  
 
-New version of the combinatorics library for Java 8. The previous version of the library can 
+## Version 3.1.0
+
+New implementation of the combinatorics library for Java 8. The previous versions of the library can 
 be found [here](https://github.com/dpaukov/combinatoricslib)
 
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
+5. [Subsets](#5-subsets)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -155,6 +158,49 @@ And the result of 8 permutations
    [orange, apple, orange]
    [apple, orange, orange]
    [orange, orange, orange]
+```
+
+###5. Subsets
+A set A is a subset of a set B if A is "contained" inside B. A and B may coincide. 
+The relationship of one set being a subset of another is called inclusion or sometimes containment.
+
+Examples:
+
+The set (1, 2) is a proper subset of (1, 2, 3).
+Any set is a subset of itself, but not a proper subset.
+The empty set, denoted by ∅, is also a subset of any given set X.
+All subsets of (1, 2, 3) are:
+
+- ()
+- (1)
+- (2)
+- (1, 2)
+- (3)
+- (1, 3)
+- (2, 3)
+- (1, 2, 3)
+
+Here is a piece of code that generates all possible subsets of (one, two, three)
+
+```java
+   List<List<String>> subsets = Generator
+        .subset("one", "two", "three")
+        .simple()
+        .stream()
+        .collect(Collectors.<List<String>>toList());
+   subsets.stream().forEach(System.out::println);
+
+```
+And the result of all possible 8 subsets
+```
+   []
+   [one]
+   [two]
+   [one, two]
+   [three]
+   [one, three]
+   [two, three]
+   [one, two, three]
 ```
 
 ### The latest release

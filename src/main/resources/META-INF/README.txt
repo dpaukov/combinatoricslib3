@@ -4,7 +4,7 @@
 
 
 CombinatoricsLib 3.1.0 (2016)
-- Added ....
+- Added simple subset generator
 
 
 -----------------------------------------------------------------
