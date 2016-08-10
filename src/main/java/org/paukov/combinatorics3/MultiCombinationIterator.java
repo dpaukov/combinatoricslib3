@@ -15,7 +15,7 @@ import java.util.List;
  * @author Dmytro Paukov
  * @see MultiCombinationGenerator
  * @param <T>
- *            Type of the elements in the combinations
+ *            Type of the elements of the combinations
  * @version 3.0
  */
 class MultiCombinationIterator<T> implements
