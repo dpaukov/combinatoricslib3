@@ -120,7 +120,7 @@ all permutations of (1, 1, 2, 2):
        .forEach(System.out::println);
 ```
 
-The result of all possible permutations (with duplicates) 
+The result does not have duplicates. All permutations are distinct by default.
 ```
    [1, 1, 2, 2]
    [1, 2, 1, 2]
@@ -129,7 +129,8 @@ The result of all possible permutations (with duplicates)
    [2, 1, 2, 1]
    [2, 2, 1, 1]
 ```
-
+Notice that we have 6 permutations here instead of 24. If you still need all permutations, 
+you should call method `simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL)`.
 
 ###4. Permutations with repetitions
 Permutation may have more elements than slots. For example, all possible permutation of '12' 
