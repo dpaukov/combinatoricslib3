@@ -71,15 +71,13 @@ want to buy 3 pieces of fruit. You could select
 - (apple, orange, orange)
 - (orange, orange, orange)
 
-Example. Generate 3-combinations with repetitions of the set (apple, orange). You can pass an array 
-as the parameter in the function.
 ```java
    Generator.combination(new String[] { "apple", "orange" })
        .multi(3)
        .stream()
        .forEach(System.out::println);
 ```
-And the result of 4 multi-combinations
+And the result will be:
 ```
    [apple, apple, apple]
    [apple, apple, orange]
@@ -100,7 +98,6 @@ This is an example of the permutations of the 3 string items (apple, orange, che
        .forEach(System.out::println);
 ```
 
-The result of 6 permutations
 ```
    [apple, orange, cherry]
    [apple, cherry, orange]
@@ -148,7 +145,7 @@ Let's generate all possible permutations with repetitions of 3 elements from the
    permutations.stream().forEach(System.out::println);
 ```
 
-And the result of 8 permutations
+And the list of all 8 permutations
 
 ```
    [apple, apple, apple]
@@ -192,7 +189,7 @@ Here is a piece of code that generates all possible subsets of (one, two, three)
    subsets.stream().forEach(System.out::println);
 
 ```
-And the result of all possible 8 subsets
+And the list of all 8 subsets
 ```
    []
    [one]
@@ -206,7 +203,7 @@ And the result of all possible 8 subsets
 
 ### The latest release
 
-The latest release of the library is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22)
+The latest release of the library is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
 Include the following section into your `pom.xml` file.
 
 ```xml
