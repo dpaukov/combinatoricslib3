@@ -105,6 +105,42 @@ public class SimpleSubSetTest {
     }
 
 
+
+    @Test
+    public void test_simple_distinct_sub_set_with_duplicates() {
+
+        List<List<String>> subset =
+                Generator.subset("A", "A", "B", "B", "C")
+                        .simple()
+                        .stream()
+                        .distinct()
+                        .collect(Collectors.<List<String>>toList());
+
+        assertThat(subset).hasSize(18);
+
+        System.out.println("Simple distinct subset with duplicates:");
+        subset.stream().forEach(System.out::println);
+
+        assertThat(subset.get(0)).isEmpty();
+        assertThat(subset.get(1)).containsOnly("A");
+        assertThat(subset.get(2)).containsOnly("A", "A");
+        assertThat(subset.get(3)).containsOnly("B");
+        assertThat(subset.get(4)).containsSequence("A", "B");
+        assertThat(subset.get(5)).containsSequence("A", "A", "B");
+        assertThat(subset.get(6)).containsSequence("B", "B");
+        assertThat(subset.get(7)).containsSequence("A", "B", "B");
+        assertThat(subset.get(8)).containsSequence("A", "A", "B", "B");
+        assertThat(subset.get(9)).containsOnly("C");
+        assertThat(subset.get(10)).containsSequence("A", "C");
+        assertThat(subset.get(11)).containsSequence("A", "A", "C");
+        assertThat(subset.get(12)).containsSequence("B", "C");
+        assertThat(subset.get(13)).containsSequence("A", "B", "C");
+        assertThat(subset.get(14)).containsSequence("A", "A", "B", "C");
+        assertThat(subset.get(15)).containsSequence("B", "B", "C");
+        assertThat(subset.get(16)).containsSequence("A", "B", "B", "C");
+        assertThat(subset.get(17)).containsSequence("A", "A","B", "B", "C");
+    }
+
     @Test(expected = UnsupportedOperationException.class)
     public void test_simple_subset_iterator_remove_operation() {
 

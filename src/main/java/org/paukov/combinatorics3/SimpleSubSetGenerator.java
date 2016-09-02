@@ -5,7 +5,6 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 
-
 class SimpleSubSetGenerator<T> implements IGenerator<List<T>> {
 
     final List<T> originalVector;
@@ -13,7 +12,6 @@ class SimpleSubSetGenerator<T> implements IGenerator<List<T>> {
     SimpleSubSetGenerator(Collection<T> originalVector) {
         this.originalVector = new ArrayList<>(originalVector);
     }
-
 
     @Override
     public Iterator<List<T>> iterator() {
