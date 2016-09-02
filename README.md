@@ -213,3 +213,7 @@ Include the following section into your `pom.xml` file.
     <version>3.0.0</version>
 </dependency>
 ```
+
+### Examples
+
+You can look at the example project to see how to use combinatoricslib3 [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
