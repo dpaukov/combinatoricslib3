@@ -152,20 +152,21 @@ want to buy 3 pieces of fruit. You could select
 </pre>
 </blockquote>
 <p>Example. Generate 3-combinations with repetitions of the set (apple, orange). You can pass an array
-as the parameter in the function.
+as a parameter of the function.
 <blockquote>
 <pre>
-Generator.combination(new String[] { "apple", "orange" })
-.multi(3)
-.stream()
+    Generator.combination(new String[] { "apple", "orange" })
+    .multi(3)
+    .stream()
+    .forEach(System.out::println);
 </pre>
 </blockquote>
 <blockquote>
 <pre>
-[apple, apple, apple]
-[apple, apple, orange]
-[apple, orange, orange]
-[orange, orange, orange]
+    [apple, apple, apple]
+    [apple, apple, orange]
+    [apple, orange, orange]
+    [orange, orange, orange]
 </pre>
 </blockquote>
 
