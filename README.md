@@ -10,7 +10,7 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```  
 
-## Version 3.1.0
+## Version 3.2.0
 
 New implementation of the combinatorics library for Java 8. The previous versions of the library can 
 be found [here](https://github.com/dpaukov/combinatoricslib)
