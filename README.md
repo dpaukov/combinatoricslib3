@@ -203,14 +203,14 @@ And the list of all 8 subsets
 
 ### The latest release
 
-The latest release of the library is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
+The latest release of the library is 3.1.0. It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
 Include the following section into your `pom.xml` file.
 
 ```xml
 <dependency>
     <groupId>com.github.dpaukov</groupId>
     <artifactId>combinatoricslib3</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
 </dependency>
 ```
 
