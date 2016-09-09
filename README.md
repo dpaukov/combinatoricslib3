@@ -203,7 +203,7 @@ And the list of all 8 subsets
 
 ### The latest release
 
-The latest release of the library is 3.1.0. It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
+The latest release of the library is [3.1.0](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.1.0). It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
 Include the following section into your `pom.xml` file.
 
 ```xml
