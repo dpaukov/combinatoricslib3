@@ -68,7 +68,8 @@ import java.util.List;
 		for (int i = 1; i <= lengthK; i++) {
 			int index = bitVector[i] - 1;
 			if (generator.originalVector.size() > 0) {
-				currentSimpleCombination.add(i - 1, generator.originalVector.get(index));
+                setValue(currentSimpleCombination, i - 1,
+                        generator.originalVector.get(index));
 			}
 		}
 
@@ -98,4 +99,12 @@ import java.util.List;
 	public String toString() {
 		return "SimpleCombinationIterator=[#" + currentIndex + ", " + currentSimpleCombination + "]";
 	}
+
+    private static <T> void setValue(List<T> list, int index, T value) {
+        try {
+            list.set(index, value);
+        } catch (IndexOutOfBoundsException ex) {
+            list.add(index, value);
+        }
+    }
 }

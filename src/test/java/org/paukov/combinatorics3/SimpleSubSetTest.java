@@ -30,11 +30,11 @@ public class SimpleSubSetTest {
         assertThat(subset.get(0)).isEmpty();
         assertThat(subset.get(1)).containsOnly("red");
         assertThat(subset.get(2)).containsOnly("black");
-        assertThat(subset.get(3)).containsSequence("red", "black");
+        assertThat(subset.get(3)).containsExactly("red", "black");
         assertThat(subset.get(4)).containsOnly("white");
-        assertThat(subset.get(5)).containsSequence("red", "white");
-        assertThat(subset.get(6)).containsSequence("black", "white");
-        assertThat(subset.get(7)).containsSequence("red", "black", "white");
+        assertThat(subset.get(5)).containsExactly("red", "white");
+        assertThat(subset.get(6)).containsExactly("black", "white");
+        assertThat(subset.get(7)).containsExactly("red", "black", "white");
 
     }
 
@@ -73,35 +73,35 @@ public class SimpleSubSetTest {
         assertThat(subset.get(0)).isEmpty();
         assertThat(subset.get(1)).containsOnly("A");
         assertThat(subset.get(2)).containsOnly("A");
-        assertThat(subset.get(3)).containsSequence("A", "A");
+        assertThat(subset.get(3)).containsExactly("A", "A");
         assertThat(subset.get(4)).containsOnly("B");
-        assertThat(subset.get(5)).containsSequence("A", "B");
-        assertThat(subset.get(6)).containsSequence("A", "B");
-        assertThat(subset.get(7)).containsSequence("A", "A", "B");
+        assertThat(subset.get(5)).containsExactly("A", "B");
+        assertThat(subset.get(6)).containsExactly("A", "B");
+        assertThat(subset.get(7)).containsExactly("A", "A", "B");
         assertThat(subset.get(8)).containsOnly("B");
-        assertThat(subset.get(9)).containsSequence("A", "B");
-        assertThat(subset.get(10)).containsSequence("A", "B");
-        assertThat(subset.get(11)).containsSequence("A", "A", "B");
-        assertThat(subset.get(12)).containsSequence("B", "B");
-        assertThat(subset.get(13)).containsSequence("A", "B", "B");
-        assertThat(subset.get(14)).containsSequence("A", "B", "B");
-        assertThat(subset.get(15)).containsSequence("A", "A", "B", "B");
+        assertThat(subset.get(9)).containsExactly("A", "B");
+        assertThat(subset.get(10)).containsExactly("A", "B");
+        assertThat(subset.get(11)).containsExactly("A", "A", "B");
+        assertThat(subset.get(12)).containsExactly("B", "B");
+        assertThat(subset.get(13)).containsExactly("A", "B", "B");
+        assertThat(subset.get(14)).containsExactly("A", "B", "B");
+        assertThat(subset.get(15)).containsExactly("A", "A", "B", "B");
         assertThat(subset.get(16)).containsOnly("C");
-        assertThat(subset.get(17)).containsSequence("A", "C");
-        assertThat(subset.get(18)).containsSequence("A", "C");
-        assertThat(subset.get(19)).containsSequence("A", "A", "C");
-        assertThat(subset.get(20)).containsSequence("B", "C");
-        assertThat(subset.get(21)).containsSequence("A", "B", "C");
-        assertThat(subset.get(22)).containsSequence("A", "B", "C");
-        assertThat(subset.get(23)).containsSequence("A", "A", "B", "C");
-        assertThat(subset.get(24)).containsSequence("B", "C");
-        assertThat(subset.get(25)).containsSequence("A", "B", "C");
-        assertThat(subset.get(26)).containsSequence("A", "B", "C");
-        assertThat(subset.get(27)).containsSequence("A", "A", "B", "C");
-        assertThat(subset.get(28)).containsSequence("B", "B", "C");
-        assertThat(subset.get(29)).containsSequence("A", "B", "B", "C");
-        assertThat(subset.get(30)).containsSequence("A", "B", "B", "C");
-        assertThat(subset.get(31)).containsSequence("A", "A","B", "B", "C");
+        assertThat(subset.get(17)).containsExactly("A", "C");
+        assertThat(subset.get(18)).containsExactly("A", "C");
+        assertThat(subset.get(19)).containsExactly("A", "A", "C");
+        assertThat(subset.get(20)).containsExactly("B", "C");
+        assertThat(subset.get(21)).containsExactly("A", "B", "C");
+        assertThat(subset.get(22)).containsExactly("A", "B", "C");
+        assertThat(subset.get(23)).containsExactly("A", "A", "B", "C");
+        assertThat(subset.get(24)).containsExactly("B", "C");
+        assertThat(subset.get(25)).containsExactly("A", "B", "C");
+        assertThat(subset.get(26)).containsExactly("A", "B", "C");
+        assertThat(subset.get(27)).containsExactly("A", "A", "B", "C");
+        assertThat(subset.get(28)).containsExactly("B", "B", "C");
+        assertThat(subset.get(29)).containsExactly("A", "B", "B", "C");
+        assertThat(subset.get(30)).containsExactly("A", "B", "B", "C");
+        assertThat(subset.get(31)).containsExactly("A", "A","B", "B", "C");
     }
 
 
@@ -123,22 +123,22 @@ public class SimpleSubSetTest {
 
         assertThat(subset.get(0)).isEmpty();
         assertThat(subset.get(1)).containsOnly("A");
-        assertThat(subset.get(2)).containsOnly("A", "A");
+        assertThat(subset.get(2)).containsExactly("A", "A");
         assertThat(subset.get(3)).containsOnly("B");
-        assertThat(subset.get(4)).containsSequence("A", "B");
-        assertThat(subset.get(5)).containsSequence("A", "A", "B");
-        assertThat(subset.get(6)).containsSequence("B", "B");
-        assertThat(subset.get(7)).containsSequence("A", "B", "B");
-        assertThat(subset.get(8)).containsSequence("A", "A", "B", "B");
+        assertThat(subset.get(4)).containsExactly("A", "B");
+        assertThat(subset.get(5)).containsExactly("A", "A", "B");
+        assertThat(subset.get(6)).containsExactly("B", "B");
+        assertThat(subset.get(7)).containsExactly("A", "B", "B");
+        assertThat(subset.get(8)).containsExactly("A", "A", "B", "B");
         assertThat(subset.get(9)).containsOnly("C");
-        assertThat(subset.get(10)).containsSequence("A", "C");
-        assertThat(subset.get(11)).containsSequence("A", "A", "C");
-        assertThat(subset.get(12)).containsSequence("B", "C");
-        assertThat(subset.get(13)).containsSequence("A", "B", "C");
-        assertThat(subset.get(14)).containsSequence("A", "A", "B", "C");
-        assertThat(subset.get(15)).containsSequence("B", "B", "C");
-        assertThat(subset.get(16)).containsSequence("A", "B", "B", "C");
-        assertThat(subset.get(17)).containsSequence("A", "A","B", "B", "C");
+        assertThat(subset.get(10)).containsExactly("A", "C");
+        assertThat(subset.get(11)).containsExactly("A", "A", "C");
+        assertThat(subset.get(12)).containsExactly("B", "C");
+        assertThat(subset.get(13)).containsExactly("A", "B", "C");
+        assertThat(subset.get(14)).containsExactly("A", "A", "B", "C");
+        assertThat(subset.get(15)).containsExactly("B", "B", "C");
+        assertThat(subset.get(16)).containsExactly("A", "B", "B", "C");
+        assertThat(subset.get(17)).containsExactly("A", "A","B", "B", "C");
     }
 
     @Test(expected = UnsupportedOperationException.class)

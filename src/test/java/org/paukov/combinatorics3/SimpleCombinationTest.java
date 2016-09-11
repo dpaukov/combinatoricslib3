@@ -57,9 +57,9 @@ public class SimpleCombinationTest {
         System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence(0, 1);
-        assertThat(combinations.get(1)).containsSequence(0, 2);
-        assertThat(combinations.get(2)).containsSequence(1, 2);
+        assertThat(combinations.get(0)).containsExactly(0, 1);
+        assertThat(combinations.get(1)).containsExactly(0, 2);
+        assertThat(combinations.get(2)).containsExactly(1, 2);
 
     }
 
@@ -94,9 +94,9 @@ public class SimpleCombinationTest {
         System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence(0, 1);
-        assertThat(combinations.get(1)).containsSequence(0, 2);
-        assertThat(combinations.get(2)).containsSequence(1, 2);
+        assertThat(combinations.get(0)).containsExactly(0, 1);
+        assertThat(combinations.get(1)).containsExactly(0, 2);
+        assertThat(combinations.get(2)).containsExactly(1, 2);
 
     }
 
@@ -114,9 +114,9 @@ public class SimpleCombinationTest {
         System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence(0, 1);
-        assertThat(combinations.get(1)).containsSequence(0, 2);
-        assertThat(combinations.get(2)).containsSequence(1, 2);
+        assertThat(combinations.get(0)).containsExactly(0, 1);
+        assertThat(combinations.get(1)).containsExactly(0, 2);
+        assertThat(combinations.get(2)).containsExactly(1, 2);
 
     }
 

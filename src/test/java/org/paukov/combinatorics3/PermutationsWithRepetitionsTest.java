@@ -29,15 +29,15 @@ public class PermutationsWithRepetitionsTest {
         System.out.println("Simple permutations with repetitions of (1, 2, 3):");
         permutations.stream().forEach(System.out::println);
 
-        assertThat(permutations.get(0)).containsSequence(1, 1);
-        assertThat(permutations.get(1)).containsSequence(2, 1);
-        assertThat(permutations.get(2)).containsSequence(3, 1);
-        assertThat(permutations.get(3)).containsSequence(1, 2);
-        assertThat(permutations.get(4)).containsSequence(2, 2);
-        assertThat(permutations.get(5)).containsSequence(3, 2);
-        assertThat(permutations.get(6)).containsSequence(1, 3);
-        assertThat(permutations.get(7)).containsSequence(2, 3);
-        assertThat(permutations.get(8)).containsSequence(3, 3);
+        assertThat(permutations.get(0)).containsExactly(1, 1);
+        assertThat(permutations.get(1)).containsExactly(2, 1);
+        assertThat(permutations.get(2)).containsExactly(3, 1);
+        assertThat(permutations.get(3)).containsExactly(1, 2);
+        assertThat(permutations.get(4)).containsExactly(2, 2);
+        assertThat(permutations.get(5)).containsExactly(3, 2);
+        assertThat(permutations.get(6)).containsExactly(1, 3);
+        assertThat(permutations.get(7)).containsExactly(2, 3);
+        assertThat(permutations.get(8)).containsExactly(3, 3);
 
     }
 
@@ -112,7 +112,7 @@ public class PermutationsWithRepetitionsTest {
         System.out.println("Two permutations with repetitions of ('a'):");
         permutations.stream().forEach(System.out::println);
 
-        assertThat(permutations.get(0)).containsSequence("a", "a");
+        assertThat(permutations.get(0)).containsExactly("a", "a");
     }
 
     @Test
@@ -166,14 +166,14 @@ public class PermutationsWithRepetitionsTest {
         System.out.println("Three tuples of (0, 1):");
         permutations.stream().forEach(System.out::println);
 
-        assertThat(permutations.get(0)).containsSequence(0, 0, 0);
-        assertThat(permutations.get(1)).containsSequence(1, 0, 0);
-        assertThat(permutations.get(2)).containsSequence(0, 1, 0);
-        assertThat(permutations.get(3)).containsSequence(1, 1, 0);
-        assertThat(permutations.get(4)).containsSequence(0, 0, 1);
-        assertThat(permutations.get(5)).containsSequence(1, 0, 1);
-        assertThat(permutations.get(6)).containsSequence(0, 1, 1);
-        assertThat(permutations.get(7)).containsSequence(1, 1, 1);
+        assertThat(permutations.get(0)).containsExactly(0, 0, 0);
+        assertThat(permutations.get(1)).containsExactly(1, 0, 0);
+        assertThat(permutations.get(2)).containsExactly(0, 1, 0);
+        assertThat(permutations.get(3)).containsExactly(1, 1, 0);
+        assertThat(permutations.get(4)).containsExactly(0, 0, 1);
+        assertThat(permutations.get(5)).containsExactly(1, 0, 1);
+        assertThat(permutations.get(6)).containsExactly(0, 1, 1);
+        assertThat(permutations.get(7)).containsExactly(1, 1, 1);
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -201,7 +201,7 @@ public class PermutationsWithRepetitionsTest {
 
         assertThat(permutations).isNotNull();
         assertThat(permutations.hasNext()).isTrue();
-        assertThat(permutations.next()).containsSequence(1, 1);
+        assertThat(permutations.next()).containsExactly(1, 1);
         assertThat(permutations.toString()).isEqualTo("PermutationWithRepetitionIterator=[#1, [1, 1]]");
     }
 
