@@ -63,7 +63,8 @@ class MultiCombinationIterator<T> implements
 		for (int i = 0; i < generator.combinationLength; i++) {
 			int index = bitVector[i];
 			if (generator.originalVector.size() > 0) {
-                currentCombination.add(i, generator.originalVector.get(index));
+                setValue(currentCombination, i, generator.originalVector
+                        .get(index));
 			}
 		}
 
@@ -111,4 +112,12 @@ class MultiCombinationIterator<T> implements
 	public String toString() {
 		return "MultiCombinationIterator=[#" + currentIndex + ", " + currentCombination + "]";
 	}
+
+    private static <T> void setValue(List<T> list, int index, T value) {
+        if (index < list.size()) {
+            list.set(index, value);
+        } else {
+            list.add(index, value);
+        }
+    }
 }

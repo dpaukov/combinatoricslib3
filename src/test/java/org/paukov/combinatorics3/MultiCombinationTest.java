@@ -29,19 +29,39 @@ public class MultiCombinationTest {
         System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence("A", "A", "A");
-        assertThat(combinations.get(1)).containsSequence("A", "A", "B");
-        assertThat(combinations.get(2)).containsSequence("A", "A", "C");
-        assertThat(combinations.get(3)).containsSequence("A", "B", "B");
-        assertThat(combinations.get(4)).containsSequence("A", "B", "C");
-        assertThat(combinations.get(5)).containsSequence("A", "C", "C");
-        assertThat(combinations.get(6)).containsSequence("B", "B", "B");
-        assertThat(combinations.get(7)).containsSequence("B", "B", "C");
-        assertThat(combinations.get(8)).containsSequence("B", "C", "C");
-        assertThat(combinations.get(9)).containsSequence("C", "C", "C");
+        assertThat(combinations.get(0)).containsExactly("A", "A", "A");
+        assertThat(combinations.get(1)).containsExactly("A", "A", "B");
+        assertThat(combinations.get(2)).containsExactly("A", "A", "C");
+        assertThat(combinations.get(3)).containsExactly("A", "B", "B");
+        assertThat(combinations.get(4)).containsExactly("A", "B", "C");
+        assertThat(combinations.get(5)).containsExactly("A", "C", "C");
+        assertThat(combinations.get(6)).containsExactly("B", "B", "B");
+        assertThat(combinations.get(7)).containsExactly("B", "B", "C");
+        assertThat(combinations.get(8)).containsExactly("B", "C", "C");
+        assertThat(combinations.get(9)).containsExactly("C", "C", "C");
 
     }
 
+    @Test
+    public void test_multi_3_combination_of_2_symbols() {
+
+        List<List<String>> combinations =
+                Generator.combination("A", "B")
+                        .multi(3)
+                        .stream()
+                        .collect(Collectors.<List<String>>toList());
+
+        assertThat(combinations).hasSize(4);
+
+        System.out.println("Multi combinations 3 of 2 symbols (A,B):");
+        combinations.stream().forEach(System.out::println);
+
+        assertThat(combinations.get(0)).containsExactly("A", "A", "A");
+        assertThat(combinations.get(1)).containsExactly("A", "A", "B");
+        assertThat(combinations.get(2)).containsExactly("A", "B", "B");
+        assertThat(combinations.get(3)).containsExactly("B", "B", "B");
+
+    }
 
     @Test
     public void test_multi_3_combination_of_3_symbols_from_list() {
@@ -57,16 +77,16 @@ public class MultiCombinationTest {
         System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence("A", "A", "A");
-        assertThat(combinations.get(1)).containsSequence("A", "A", "B");
-        assertThat(combinations.get(2)).containsSequence("A", "A", "C");
-        assertThat(combinations.get(3)).containsSequence("A", "B", "B");
-        assertThat(combinations.get(4)).containsSequence("A", "B", "C");
-        assertThat(combinations.get(5)).containsSequence("A", "C", "C");
-        assertThat(combinations.get(6)).containsSequence("B", "B", "B");
-        assertThat(combinations.get(7)).containsSequence("B", "B", "C");
-        assertThat(combinations.get(8)).containsSequence("B", "C", "C");
-        assertThat(combinations.get(9)).containsSequence("C", "C", "C");
+        assertThat(combinations.get(0)).containsExactly("A", "A", "A");
+        assertThat(combinations.get(1)).containsExactly("A", "A", "B");
+        assertThat(combinations.get(2)).containsExactly("A", "A", "C");
+        assertThat(combinations.get(3)).containsExactly("A", "B", "B");
+        assertThat(combinations.get(4)).containsExactly("A", "B", "C");
+        assertThat(combinations.get(5)).containsExactly("A", "C", "C");
+        assertThat(combinations.get(6)).containsExactly("B", "B", "B");
+        assertThat(combinations.get(7)).containsExactly("B", "B", "C");
+        assertThat(combinations.get(8)).containsExactly("B", "C", "C");
+        assertThat(combinations.get(9)).containsExactly("C", "C", "C");
 
     }
 
@@ -85,16 +105,16 @@ public class MultiCombinationTest {
         System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence("A", "A", "A");
-        assertThat(combinations.get(1)).containsSequence("A", "A", "B");
-        assertThat(combinations.get(2)).containsSequence("A", "A", "C");
-        assertThat(combinations.get(3)).containsSequence("A", "B", "B");
-        assertThat(combinations.get(4)).containsSequence("A", "B", "C");
-        assertThat(combinations.get(5)).containsSequence("A", "C", "C");
-        assertThat(combinations.get(6)).containsSequence("B", "B", "B");
-        assertThat(combinations.get(7)).containsSequence("B", "B", "C");
-        assertThat(combinations.get(8)).containsSequence("B", "C", "C");
-        assertThat(combinations.get(9)).containsSequence("C", "C", "C");
+        assertThat(combinations.get(0)).containsExactly("A", "A", "A");
+        assertThat(combinations.get(1)).containsExactly("A", "A", "B");
+        assertThat(combinations.get(2)).containsExactly("A", "A", "C");
+        assertThat(combinations.get(3)).containsExactly("A", "B", "B");
+        assertThat(combinations.get(4)).containsExactly("A", "B", "C");
+        assertThat(combinations.get(5)).containsExactly("A", "C", "C");
+        assertThat(combinations.get(6)).containsExactly("B", "B", "B");
+        assertThat(combinations.get(7)).containsExactly("B", "B", "C");
+        assertThat(combinations.get(8)).containsExactly("B", "C", "C");
+        assertThat(combinations.get(9)).containsExactly("C", "C", "C");
 
     }
 
@@ -148,7 +168,7 @@ public class MultiCombinationTest {
         System.out.println("Multi combinations 3 of 1 color 'red':");
         combinations.stream().forEach(System.out::println);
 
-        assertThat(combinations.get(0)).containsSequence("red", "red", "red");
+        assertThat(combinations.get(0)).containsExactly("red", "red", "red");
     }
 
 
