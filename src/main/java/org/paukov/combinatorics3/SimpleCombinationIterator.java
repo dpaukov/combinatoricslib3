@@ -101,9 +101,9 @@ import java.util.List;
 	}
 
     private static <T> void setValue(List<T> list, int index, T value) {
-        try {
+        if (index < list.size()) {
             list.set(index, value);
-        } catch (IndexOutOfBoundsException ex) {
+        } else {
             list.add(index, value);
         }
     }
