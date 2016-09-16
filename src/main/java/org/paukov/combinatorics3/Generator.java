@@ -7,6 +7,7 @@ package org.paukov.combinatorics3;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 
 public class Generator {
@@ -35,4 +36,7 @@ public class Generator {
         return new SubSetGenerator<>(Arrays.asList(args));
     }
 
+    public static IGenerator<List<Integer>> partition(Integer value) {
+        return new IntegerPartitionGenerator(value);
+    }
 }
