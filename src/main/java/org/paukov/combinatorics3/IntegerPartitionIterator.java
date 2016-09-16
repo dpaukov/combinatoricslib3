@@ -9,101 +9,94 @@ import java.util.List;
  */
 class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
+    class InternalVector {
 
-    final Integer initialValue;
+        final int[] internalVector;
+
+        InternalVector(int size, int value0, int value1, int value2) {
+            internalVector = new int[size + 2];
+            internalVector[0] = value0;
+            internalVector[1] = value1;
+            internalVector[2] = value2;
+        }
+
+        int get(int index){
+            return internalVector[index + 1];
+        }
+
+        void set(int index, int value) {
+            internalVector[index + 1] = value;
+        }
+    }
+
+    final int partitionValue;
+    final InternalVector mVector;
+    final InternalVector zVector;
+
     List<Integer> currentPartition = null;
-
     long currentIndex = 0;
+    private int stopIndex = 1; //it should be 0 to stop the iteration
 
-    /**
-     * Helper vectors
-     */
-    private int[] mVector = null;
-    private int[] zVector = null;
-
-    /**
-     * Stop criteria
-     */
-    private int kIndex = 1;
 
     public IntegerPartitionIterator(IntegerPartitionGenerator generator) {
 
-        initialValue = generator.value;
-        mVector = new int[initialValue + 2];
-        zVector = new int[initialValue+ 2];
+        partitionValue = generator.value;
 
-        if (initialValue > 0) {
+        if (partitionValue > 0) {
             currentIndex = 0;
-            kIndex = 1;
-
-            setInternalVectorValue(-1, zVector, 0);
-            setInternalVectorValue(-1, mVector, 0);
-
-            setInternalVectorValue(0, zVector, initialValue + 1);
-            setInternalVectorValue(0, mVector, 0);
-
-            setInternalVectorValue(1, zVector, 1);
-            setInternalVectorValue(1, mVector, initialValue);
+            stopIndex = 1;
+            mVector = new InternalVector(partitionValue, 0, 0, partitionValue);
+            zVector = new InternalVector(partitionValue, 0, partitionValue + 1, 1);
         } else {
-            kIndex = 0;
+            stopIndex = 0;
+            mVector = new InternalVector(0, 0, 0, 0);
+            zVector = new InternalVector(0, 0, 0, 0);
         }
     }
 
 
     @Override
     public boolean hasNext() {
-        return kIndex != 0;
+        return stopIndex != 0;
     }
 
 
     @Override
     public List<Integer> next() {
         currentIndex++;
-        currentPartition = createCurrentPartition(kIndex, mVector, zVector);
-        int sum = getInternalVectorValue(kIndex, mVector)
-                * getInternalVectorValue(kIndex, zVector);
-        if (getInternalVectorValue(kIndex, mVector) == 1) {
-            kIndex--;
-            sum += getInternalVectorValue(kIndex, mVector)
-                    * getInternalVectorValue(kIndex, zVector);
-        }
-        if (getInternalVectorValue(kIndex - 1, zVector) == getInternalVectorValue(
-                kIndex, zVector) + 1) {
-            kIndex--;
-            setInternalVectorValue(kIndex, mVector,
-                    getInternalVectorValue(kIndex, mVector) + 1);
-        } else {
-            setInternalVectorValue(kIndex, zVector,
-                    getInternalVectorValue(kIndex, zVector) + 1);
-            setInternalVectorValue(kIndex, mVector, 1);
-        }
-        if (sum > getInternalVectorValue(kIndex, zVector)) {
-            setInternalVectorValue(kIndex + 1, zVector, 1);
-            setInternalVectorValue(kIndex + 1, mVector, sum
-                    - getInternalVectorValue(kIndex, zVector));
-            kIndex++;
+        currentPartition = createCurrentPartition(stopIndex, mVector, zVector);
+
+        int sum = mVector.get(stopIndex) * zVector.get(stopIndex);
+
+        if (mVector.get(stopIndex) == 1) {
+            stopIndex--;
+            sum += mVector.get(stopIndex) * zVector.get(stopIndex);
         }
 
-        // return the current partition
+        if (zVector.get(stopIndex - 1) == zVector.get(stopIndex) + 1) {
+            stopIndex--;
+            mVector.set(stopIndex, mVector.get(stopIndex) + 1);
+        } else {
+            zVector.set(stopIndex, zVector.get(stopIndex) + 1);
+            mVector.set(stopIndex, 1);
+        }
+        if (sum > zVector.get(stopIndex)) {
+            zVector.set(stopIndex + 1, 1);
+            mVector.set(stopIndex + 1, sum - zVector.get(stopIndex) );
+            stopIndex++;
+        }
+
         return currentPartition;
     }
 
-    private static List<Integer> createCurrentPartition(int k, int[] mVector, int[] zVector) {
+    private static List<Integer> createCurrentPartition(int k, InternalVector mVector, InternalVector zVector) {
         List<Integer> list = new ArrayList<>();
         for (int index = 1; index <= k; index++) {
-            for (int j = 0; j < getInternalVectorValue(index, mVector); j++) {
-                list.add(getInternalVectorValue(index, zVector));
+            for (int j = 0; j < mVector.get(index); j++) {
+                list.add(zVector.get(index));
             }
         }
         return list;
-    }
-
-    private static int getInternalVectorValue(int index, int[] vector) {
-        return vector[index + 1];
-    }
-
-    private static void setInternalVectorValue(int index, int[] vector, int value) {
-        vector[index + 1] = value;
     }
 
     @Override
@@ -113,7 +106,6 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
     @Override
     public String toString() {
-        return "PartitionIterator=[#" + currentIndex + ", "
-                + currentPartition + "]";
+        return "PartitionIterator=[#" + currentIndex + ", " + currentPartition + "]";
     }
 }
