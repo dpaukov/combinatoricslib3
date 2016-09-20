@@ -8,7 +8,7 @@
    / /  / _ \| '_ ` _ \| '_ \| | '_ \ / _` | __/ _ \| '__| |/ __/ __| / / | | '_ \    |_ \ 
   / /__| (_) | | | | | | |_) | | | | | (_| | || (_) | |  | | (__\__ \/ /__| | |_) |  ___) |
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
-``
+```
 
 New implementation of the combinatorics library for Java 8. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
 
