@@ -10,12 +10,12 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```
 
-New implementation of the combinatorics library for Java 8. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
+This is a new implementation of the combinatorics library for Java 8. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
 
 ## The latest released version
 The latest release of the library is [v3.1.1](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.1.1). 
 It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
-Include the following section into your `pom.xml` file.
+Add the following section into your `pom.xml` file.
 
 ```xml
 <dependency>
@@ -26,7 +26,7 @@ Include the following section into your `pom.xml` file.
 ```
 
 ## Examples
-You can check out the example project to see how to use the library [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
+You can check out an example project to see how to use the library [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
 
 ## Development version 3.2.0
 1. [Simple combinations](#1-simple-combinations)
