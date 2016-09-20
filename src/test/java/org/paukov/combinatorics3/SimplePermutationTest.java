@@ -273,7 +273,7 @@ public class SimplePermutationTest {
         assertThat(permutations).isNotNull();
         assertThat(permutations.hasNext()).isTrue();
         assertThat(permutations.next()).containsExactly(1, 2, 3);
-        assertThat(permutations.toString()).isEqualTo("PermutationIterator=[#1, [1, 2, 3]]");
+        assertThat(permutations.toString()).isEqualTo("SimplePermutationIterator=[#1, [1, 2, 3]]");
     }
 
     @Test(expected = UnsupportedOperationException.class)

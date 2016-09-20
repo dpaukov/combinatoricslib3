@@ -171,6 +171,6 @@ public class SimpleSubSetTest {
         assertThat(subset).isNotNull();
         assertThat(subset.hasNext()).isTrue();
         assertThat(subset.next()).isEmpty();
-        assertThat(subset.toString()).isEqualTo("SubSetIterator=[#1, []]");
+        assertThat(subset.toString()).isEqualTo("SimpleSubSetIterator=[#1, []]");
     }
 }

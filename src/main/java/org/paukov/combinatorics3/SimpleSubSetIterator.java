@@ -84,7 +84,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
 
     @Override
     public String toString() {
-        return "SubSetIterator=[#" + currentIndex + ", " + currentSubSet + "]";
+        return "SimpleSubSetIterator=[#" + currentIndex + ", " + currentSubSet + "]";
     }
 
 }

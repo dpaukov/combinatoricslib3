@@ -102,6 +102,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
     @Override
     public String toString() {
-        return "PermutationIterator=[#" + currentIndex + ", " + currentPermutation + "]";
+        return "SimplePermutationIterator=[#" + currentIndex + ", " + currentPermutation + "]";
     }
 }
