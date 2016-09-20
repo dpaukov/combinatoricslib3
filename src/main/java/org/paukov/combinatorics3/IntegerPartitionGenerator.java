@@ -1,12 +1,13 @@
+/**
+ * Combinatorics Library 3
+ * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ */
 package org.paukov.combinatorics3;
 
 import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-/**
- * Created by dima on 9/16/16.
- */
 class IntegerPartitionGenerator implements IGenerator<List<Integer>> {
 
     final Integer value;

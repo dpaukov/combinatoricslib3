@@ -1,12 +1,13 @@
+/**
+ * Combinatorics Library 3
+ * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ */
 package org.paukov.combinatorics3;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by dpaukov on 9/16/16.
- */
 class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
     class InternalVector {
@@ -106,6 +107,6 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
     @Override
     public String toString() {
-        return "PartitionIterator=[#" + currentIndex + ", " + currentPartition + "]";
+        return "IntegerPartitionIterator=[#" + currentIndex + ", " + currentPartition + "]";
     }
 }

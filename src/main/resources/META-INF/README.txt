@@ -3,7 +3,7 @@
                    by Dmytro Paukov
 
 CombinatoricsLib 3.2.0 (Oct 2016)
--
+- Added integer partition generator
 
 -----------------------------------------------------------------
 CombinatoricsLib 3.1.1 (Sep 2016)

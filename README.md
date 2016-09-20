@@ -8,18 +8,33 @@
    / /  / _ \| '_ ` _ \| '_ \| | '_ \ / _` | __/ _ \| '__| |/ __/ __| / / | | '_ \    |_ \ 
   / /__| (_) | | | | | | |_) | | | | | (_| | || (_) | |  | | (__\__ \/ /__| | |_) |  ___) |
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
-```  
+``
 
-## Version 3.2.0
+New implementation of the combinatorics library for Java 8. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
 
-New implementation of the combinatorics library for Java 8. The previous versions of the library can 
-be found [here](https://github.com/dpaukov/combinatoricslib)
+## The latest released version
+The latest release of the library is [v3.1.1](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.1.1). 
+It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
+Include the following section into your `pom.xml` file.
 
+```xml
+<dependency>
+    <groupId>com.github.dpaukov</groupId>
+    <artifactId>combinatoricslib3</artifactId>
+    <version>3.1.1</version>
+</dependency>
+```
+
+## Examples
+You can check out the example project to see how to use the library [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
+
+## Development version 3.2.0
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
+6. [Integer partitions](#6-integer-partitions)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -39,12 +54,10 @@ and the order of the cards in the hand does not matter.
 Let's generate all 3-combination of the set of 5 colors (red, black, white, green, blue).
 
 ```java
-   List<List<String>> combinations = Generator.combination("red", "black", "white", "green", "blue")
+   Generator.combination("red", "black", "white", "green", "blue")
        .simple(3)
        .stream()
-       .collect(Collectors.<List<String>>toList());
-   combinations.stream().forEach(System.out::println);
-
+       .forEach(System.out::println);
 ```
 And the result of 10 combinations
 ```
@@ -130,8 +143,8 @@ Notice that we have 6 permutations here instead of 24. If you still need all per
 you should call method `simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL)`.
 
 ###4. Permutations with repetitions
-Permutation may have more elements than slots. For example, all possible permutation of '12' 
-in three slots are: 111, 211, 121, 221, 112, 212, 122, and 222.
+Permutation may have more elements than slots. For example, all possible permutation of `12` 
+in three slots are: `111`, `211`, `121`, `221`, `112`, `212`, `122`, and `222`.
 
 Let's generate all possible permutations with repetitions of 3 elements from the set of apple and orange.
 
@@ -159,15 +172,15 @@ And the list of all 8 permutations
 ```
 
 ###5. Subsets
-A set A is a subset of a set B if A is "contained" inside B. A and B may coincide. 
+A set `A` is a subset of a set `B` if `A` is "contained" inside `B`. `A` and `B` may coincide. 
 The relationship of one set being a subset of another is called inclusion or sometimes containment.
 
 Examples:
 
-The set (1, 2) is a proper subset of (1, 2, 3).
+The set `(1, 2)` is a proper subset of `(1, 2, 3)`.
 Any set is a subset of itself, but not a proper subset.
-The empty set, denoted by ∅, is also a subset of any given set X.
-All subsets of (1, 2, 3) are:
+The empty set, denoted by ∅, is also a subset of any given set `X`.
+All subsets of `(1, 2, 3)` are:
 
 - ()
 - (1)
@@ -187,7 +200,6 @@ Here is a piece of code that generates all possible subsets of (one, two, three)
         .stream()
         .collect(Collectors.<List<String>>toList());
    subsets.stream().forEach(System.out::println);
-
 ```
 And the list of all 8 subsets
 ```
@@ -201,19 +213,34 @@ And the list of all 8 subsets
    [one, two, three]
 ```
 
-### The latest release
+###6. Integer Partitions
+In number theory, a partition of a positive integer `n` is a way of writing `n` as a sum of positive integers. 
+Two sums that differ only in the order of their summands are considered to be the same partition; 
+if order matters then the sum becomes a composition. A summand in a partition is also called a part.
 
-The latest release of the library is [3.1.1](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.1.1). It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
-Include the following section into your `pom.xml` file.
+The partitions of 5 are listed below:
 
-```xml
-<dependency>
-    <groupId>com.github.dpaukov</groupId>
-    <artifactId>combinatoricslib3</artifactId>
-    <version>3.1.1</version>
-</dependency>
+- 1 + 1 + 1 + 1 + 1
+- 2 + 1 + 1 + 1
+- 2 + 2 + 1
+- 3 + 1 + 1
+- 3 + 2
+- 4 + 1
+- 5
+
+Let's generate all possible partitions of 5:
+```java
+   Generator.partition(5)
+   .stream()
+   .forEach(System.out::println);
 ```
-
-### Examples
-
-You can look at the example project to see how to use combinatoricslib3 [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
+And the result of all 7 integer possible partitions
+```
+   [1, 1, 1, 1, 1]
+   [2, 1, 1, 1]
+   [2, 2, 1]
+   [3, 1, 1]
+   [3, 2]
+   [4, 1]
+   [5]
+```
