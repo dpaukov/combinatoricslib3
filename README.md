@@ -45,7 +45,7 @@ You can check out an example project to see how to use the library [combinatoric
 | [Permutations with repetitions](#4-permutations-with-repetitions) | Yes | Yes | `Generator.permutation(...).withRepetitions(n).stream()` |
 
 
-###1. Simple combinations
+### 1. Simple combinations
 A simple k-combination of a finite set S is a subset of k distinct elements of S. 
 Specifying a subset does not arrange them in a particular order. As an example, a poker hand can 
 be described as a 5-combination of cards from a 52-card deck: the 5 cards of the hand are all distinct, 
@@ -73,7 +73,7 @@ And the result of 10 combinations
    [white, green, blue]
 ```
 
-###2. Combinations with repetitions
+### 2. Combinations with repetitions
 A k-multicombination or k-combination with repetition of a finite set S is given by a sequence of 
 k not necessarily distinct elements of S, where order is not taken into account.
 
@@ -98,7 +98,7 @@ And the result will be:
    [orange, orange, orange]
 ```
 
-###3. Simple permutations
+### 3. Simple permutations
 A permutation is an ordering of a set in the context of all possible orderings. For example, the set 
 containing the first three digits, 123, has six permutations: 123, 132, 213, 231, 312, and 321.
 
@@ -142,7 +142,7 @@ The result does not have duplicates. All permutations are distinct by default.
 Notice that we have 6 permutations here instead of 24. If you still need all permutations, 
 you should call method `simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL)`.
 
-###4. Permutations with repetitions
+### 4. Permutations with repetitions
 Permutation may have more elements than slots. For example, all possible permutation of `12` 
 in three slots are: `111`, `211`, `121`, `221`, `112`, `212`, `122`, and `222`.
 
@@ -171,7 +171,7 @@ And the list of all 8 permutations
    [orange, orange, orange]
 ```
 
-###5. Subsets
+### 5. Subsets
 A set `A` is a subset of a set `B` if `A` is "contained" inside `B`. `A` and `B` may coincide. 
 The relationship of one set being a subset of another is called inclusion or sometimes containment.
 
@@ -213,7 +213,7 @@ And the list of all 8 subsets
    [one, two, three]
 ```
 
-###6. Integer Partitions
+### 6. Integer Partitions
 In number theory, a partition of a positive integer `n` is a way of writing `n` as a sum of positive integers. 
 Two sums that differ only in the order of their summands are considered to be the same partition; 
 if order matters then the sum becomes a composition. A summand in a partition is also called a part.
