@@ -2,6 +2,10 @@
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
 
+CombinatoricsLib 3.2.1 (Jun 2017)
+
+
+-----------------------------------------------------------------
 CombinatoricsLib 3.2.0 (Apr 2017)
 - Added integer partition generator
 

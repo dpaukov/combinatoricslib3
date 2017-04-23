@@ -28,7 +28,7 @@ Add the following section into your `pom.xml` file.
 ## Examples
 You can check out an example project to see how to use the library [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
 
-## Version 3.2.0
+## Development Version 3.2.1
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
