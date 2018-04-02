@@ -149,13 +149,10 @@ in three slots are: `111`, `211`, `121`, `221`, `112`, `212`, `122`, and `222`.
 Let's generate all possible permutations with repetitions of 3 elements from the set of apple and orange.
 
 ```java
-   List<List<String>> permutations = Generator
-        .permutation("apple", "orange")
+   Generator.permutation("apple", "orange")
         .withRepetitions(3)
         .stream()
-        .collect(Collectors.<List<String>>toList());
-        
-   permutations.stream().forEach(System.out::println);
+        .forEach(System.out::println);
 ```
 
 And the list of all 8 permutations
@@ -194,12 +191,10 @@ All subsets of `(1, 2, 3)` are:
 Here is a piece of code that generates all possible subsets of (one, two, three)
 
 ```java
-   List<List<String>> subsets = Generator
-        .subset("one", "two", "three")
+   Generator.subset("one", "two", "three")
         .simple()
         .stream()
-        .collect(Collectors.<List<String>>toList());
-   subsets.stream().forEach(System.out::println);
+        .forEach(System.out::println);
 ```
 And the list of all 8 subsets
 ```
