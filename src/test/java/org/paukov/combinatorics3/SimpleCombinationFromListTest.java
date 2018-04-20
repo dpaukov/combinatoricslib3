@@ -13,7 +13,7 @@ import org.junit.Test;
 public class SimpleCombinationFromListTest {
 
     @Test
-    public void test_simple_list_combination_number() {
+    public void test_simple_combination_from_list_number() {
 
         List<List<Integer>> combinations =
                 Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
@@ -37,7 +37,7 @@ public class SimpleCombinationFromListTest {
     }
     
     @Test
-    public void test_simple_list_combination_string() {
+    public void test_simple_combination_from_list_string() {
 
         List<List<String>> combinations =
                 Generator.combinationFromList(Arrays.asList("banana", "apple"), 
@@ -66,7 +66,7 @@ public class SimpleCombinationFromListTest {
     }
     
     @Test
-    public void test_simple_list_combination_iterator_toString() {
+    public void test_simple_combination_from_list_iterator_toString() {
         Iterator<List<Integer>> combinations = 
             Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
 
@@ -77,7 +77,7 @@ public class SimpleCombinationFromListTest {
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void test_simple_list_combination_iterator_remove_operation() {
+    public void test_simple_combination_from_list_iterator_remove_operation() {
         Iterator<List<Integer>> combinations = 
             Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
 
@@ -86,5 +86,15 @@ public class SimpleCombinationFromListTest {
 
         // this method should throw a UnsupportedOperationException
         combinations.remove();
+    }
+    
+    @Test(expected = NullPointerException.class)
+    public void test_simple_combination_from_list_validate_params_1() {
+        Generator.combinationFromList(null);
+    }
+    
+    @Test(expected = RuntimeException.class)
+    public void test_simple_combination_from_list_validate_params_2() {
+        Generator.combinationFromList(Arrays.asList());
     }
 }
