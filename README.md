@@ -250,7 +250,7 @@ As an example. Suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and 
 
 ```java
    List<List<Integer>> combinations =
-       Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
+       Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
                     .stream()
                     .forEach(System.out::println);
 ```

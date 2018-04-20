@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 @SuppressWarnings("unchecked")
-public class SimpleListCombinationTest {
+public class SimpleCombinationFromListTest {
 
     @Test
     public void test_simple_list_combination_number() {
 
         List<List<Integer>> combinations =
-                Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
+                Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
                     .stream()
                     .collect(Collectors.<List<Integer>>toList());
 
@@ -40,7 +40,7 @@ public class SimpleListCombinationTest {
     public void test_simple_list_combination_string() {
 
         List<List<String>> combinations =
-                Generator.listCombination(Arrays.asList("banana", "apple"), 
+                Generator.combinationFromList(Arrays.asList("banana", "apple"), 
                         Arrays.asList("melon", "orange", "lemon"), Arrays.asList("peach", "blueberry"))
                     .stream()
                     .collect(Collectors.<List<String>>toList());
@@ -68,18 +68,18 @@ public class SimpleListCombinationTest {
     @Test
     public void test_simple_list_combination_iterator_toString() {
         Iterator<List<Integer>> combinations = 
-            Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
+            Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
 
         assertThat(combinations).isNotNull();
         assertThat(combinations.hasNext()).isTrue();
         assertThat(combinations.next()).containsExactly(1, 4);
-        assertThat(combinations.toString()).isEqualTo("SimpleListCombinationIterator=[#1, [1, 4]]");
+        assertThat(combinations.toString()).isEqualTo("SimpleCombinationOfListsIterator=[#1, [1, 4]]");
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void test_simple_list_combination_iterator_remove_operation() {
         Iterator<List<Integer>> combinations = 
-            Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
+            Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)).iterator();
 
         assertThat(combinations).isNotNull();
         assertThat(combinations.hasNext()).isTrue();

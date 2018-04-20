@@ -9,17 +9,17 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator for the list combination generator
+ * Iterator for the combination of lists generator
  * 
  * @author Julius Iglesia
  * @version 3.0
- * @see SimpleListCombinationIterator
+ * @see SimpleCombinationFromListGenerator
  * @param <T>
  *            Type of the elements in the combinations
  */
- class SimpleListCombinationIterator<T> implements Iterator<List<T>> {
+ class SimpleCombinationFromListIterator<T> implements Iterator<List<T>> {
     
-    private final SimpleListCombinationGenerator<T> generator;
+    private final SimpleCombinationFromListGenerator<T> generator;
     
     private List<List<T>> vector;
     
@@ -35,7 +35,7 @@ import java.util.List;
     
     private int index = 0;
     
-    public SimpleListCombinationIterator(SimpleListCombinationGenerator<T> generator) {
+    public SimpleCombinationFromListIterator(SimpleCombinationFromListGenerator<T> generator) {
         this.generator = generator;
         this.vector = this.generator.originalVector;
         this.vectorSize = this.generator.originalVector.size();
@@ -91,7 +91,7 @@ import java.util.List;
     
     @Override
     public String toString() {
-        return "SimpleListCombinationIterator=[#" + this.index + ", " + this.current + "]";
+        return "SimpleCombinationOfListsIterator=[#" + this.index + ", " + this.current + "]";
     }
     
     private List<T> generateCombination() {

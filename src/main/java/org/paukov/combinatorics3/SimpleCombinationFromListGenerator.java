@@ -20,13 +20,13 @@ import java.util.stream.StreamSupport;
  * A simple k-combination of a finite sets S(1), S(2)...S(k) is a set of k elements
  * taken one each from sets S(1), S(2)..S(k).
  * <p>
- * Example. Generate 3-combination of the sets (1, 2, 3), (4, 5, 6), (7, 8, 9).
+ * Example. Generate 3-combination from the lists (1, 2, 3), (4, 5, 6), (7, 8, 9).
  * <p>
  * <blockquote>
  * 
  * <pre>
  * 
- * Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(7, 8, 9))
+ * Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(7, 8, 9))
  *                  .stream()
  *                  .collect(Collectors.&lt;List&lt;Integer&gt;&gt;toList())
  * 
@@ -37,11 +37,11 @@ import java.util.stream.StreamSupport;
  * 
  * @author Julius Iglesia
  * @version 3.0
- * @see SimpleListCombinationGenerator
+ * @see SimpleCombinationFromListIterator
  * @param <T>
  *            Type of elements in the combination
  */
-class SimpleListCombinationGenerator<T> implements IGenerator<List<T>> {
+class SimpleCombinationFromListGenerator<T> implements IGenerator<List<T>> {
 
     final List<List<T>> originalVector;
 
@@ -51,7 +51,7 @@ class SimpleListCombinationGenerator<T> implements IGenerator<List<T>> {
      * @param vector
      *            Vector which is used for generating the combination
      */
-    public SimpleListCombinationGenerator(Collection<List<T>> vector) {
+    public SimpleCombinationFromListGenerator(Collection<List<T>> vector) {
         this.validateParameters(vector);
         this.originalVector = new ArrayList<>(vector);
     }
@@ -61,7 +61,7 @@ class SimpleListCombinationGenerator<T> implements IGenerator<List<T>> {
      */
     @Override
     public Iterator<List<T>> iterator() {
-        return new SimpleListCombinationIterator<T>(this);
+        return new SimpleCombinationFromListIterator<T>(this);
     }
 
     @Override
