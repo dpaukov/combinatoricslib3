@@ -35,7 +35,7 @@ You can check out an example project to see how to use the library [combinatoric
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
 6. [Integer partitions](#6-integer-partitions)
-7. [List combinations](#7-list-combinations)
+7. [Combinations from lists](#7-combinations-from-lists)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -242,7 +242,7 @@ And the result of all 7 integer possible partitions
 ```
 
 
-### 7. List Combinations
+### 7. Combinations from Lists
 
 A simple k-combination of a finite sets S(1), S(2)...S(k) is a set of k elements taken one each from sets S(1), S(2)..S(k).
 
