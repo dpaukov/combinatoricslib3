@@ -35,6 +35,7 @@ You can check out an example project to see how to use the library [combinatoric
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
 6. [Integer partitions](#6-integer-partitions)
+7. [List combinations](#7-list-combinations)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -238,4 +239,31 @@ And the result of all 7 integer possible partitions
    [3, 2]
    [4, 1]
    [5]
+```
+
+
+### 7. List Combinations
+
+A simple k-combination of a finite sets S(1), S(2)...S(k) is a set of k elements taken one each from sets S(1), S(2)..S(k).
+
+As an example. Suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to create combination from the sets of number.
+
+```java
+   List<List<Integer>> combinations =
+       Generator.listCombination(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
+                    .stream()
+                    .forEach(System.out::println);
+```
+And the result will be:
+
+```
+   [1, 4]
+   [1, 5]
+   [1, 6]
+   [2, 4]
+   [2, 5]
+   [2, 6]
+   [3, 4]
+   [3, 5]
+   [3, 6]
 ```
