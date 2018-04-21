@@ -35,7 +35,7 @@ You can check out an example project to see how to use the library [combinatoric
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
 6. [Integer partitions](#6-integer-partitions)
-7. [Combinations from lists](#7-combinations-from-lists)
+7. [Cartesian Product](#7-cartesian-product)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -242,15 +242,17 @@ And the result of all 7 integer possible partitions
 ```
 
 
-### 7. Combinations from Lists
+### 7. Cartesian Product
 
-A simple k-combination of a finite sets S(1), S(2)...S(k) is a set of k elements taken one each from sets S(1), S(2)..S(k).
+In set theory, a Cartesian Product A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B. 
 
-As an example. Suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to create combination from the sets of number.
+As an example, suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to get the Cartesian product of the two sets.
+
+Source: [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product)
 
 ```java
-   List<List<Integer>> combinations =
-       Generator.combinationFromList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
+   List<List<Integer>> cartesianProduct =
+       Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
                     .stream()
                     .forEach(System.out::println);
 ```

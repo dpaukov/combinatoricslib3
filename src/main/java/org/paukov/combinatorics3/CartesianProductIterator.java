@@ -9,17 +9,17 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator for the combination of lists generator
+ * Iterator for the cartesian product generator
  * 
  * @author Julius Iglesia
  * @version 3.0
- * @see SimpleCombinationFromListGenerator
+ * @see CartesianProductGenerator
  * @param <T>
- *            Type of the elements in the combinations
+ *            Type of the elements in the cartesian product
  */
- class SimpleCombinationFromListIterator<T> implements Iterator<List<T>> {
+ class CartesianProductIterator<T> implements Iterator<List<T>> {
     
-    private final SimpleCombinationFromListGenerator<T> generator;
+    private final CartesianProductGenerator<T> generator;
     
     private List<List<T>> vector;
     
@@ -35,7 +35,7 @@ import java.util.List;
     
     private int index = 0;
     
-    public SimpleCombinationFromListIterator(SimpleCombinationFromListGenerator<T> generator) {
+    public CartesianProductIterator(CartesianProductGenerator<T> generator) {
         this.generator = generator;
         this.vector = this.generator.originalVector;
         this.vectorSize = this.generator.originalVector.size();
@@ -43,7 +43,7 @@ import java.util.List;
         // start from the last index
         this.nextIndex = this.vectorSize - 1;
         
-        // for tracking the indices of the combination
+        // for tracking the indices of the product
         this.indices = new int[this.vectorSize];
         
         // for the tracking the lengths of the lists
@@ -54,7 +54,7 @@ import java.util.List;
     }
 
     /**
-     * Returns true if all combinations were iterated, otherwise false
+     * Returns true if all cartesian products were iterated, otherwise false
      */
     @Override
     public boolean hasNext() {
@@ -62,16 +62,16 @@ import java.util.List;
     }
 
     /**
-     * Moves to the next combination
+     * Moves to the next Cartesian product
      */
     @Override
     public List<T> next() {
         if (this.index == 0) {
-            return this.generateCombination();
+            return this.generateCartesianProduct();
         }
         
         if(this.nextIndex < 0) {
-            throw new RuntimeException("No more combination.");
+            throw new RuntimeException("No more cartesian product.");
         }
         
         // Move to the next element
@@ -81,7 +81,7 @@ import java.util.List;
             this.indices[i] = 0;
         }
         
-        return this.generateCombination();
+        return this.generateCartesianProduct();
     }
 
     @Override
@@ -91,18 +91,25 @@ import java.util.List;
     
     @Override
     public String toString() {
-        return "SimpleCombinationOfListsIterator=[#" + this.index + ", " + this.current + "]";
+        return "CartesianProductIterator=[#" + this.index + ", " + this.current + "]";
     }
     
-    private List<T> generateCombination() {
+    private List<T> generateCartesianProduct() {
         final List<T> list = new ArrayList<>();
         for (int i = 0; i < this.vectorSize; i++){
+            // If empty list,immediately return an empty result
+            // (1, 2, 3) x () = ()
+            if(this.vector.get(i).size() <= 0) {
+               list.clear();
+               break;
+            }
+            
             list.add(this.vector.get(i).get(this.indices[i]));
         }
         
-        // After generating the current, check if has still next combination,
+        // After generating the current, check if has still next cartesian product,
         // this will be used by #hasNext function
-        this.checkIfHasNextCombination();
+        this.checkIfHasNextCartesianProduct();
         
         this.current = new ArrayList<>(list);
         this.index++;
@@ -110,8 +117,8 @@ import java.util.List;
         return list;
     }
     
-    private void checkIfHasNextCombination() {
-        // Check if has still combination by finding an array that has more elements left
+    private void checkIfHasNextCartesianProduct() {
+        // Check if has still cartesian product by finding an array that has more elements left
         this.nextIndex = this.vectorSize - 1;
         while (this.nextIndex >= 0 && 
                this.indices[this.nextIndex] + 1 >= this.vector.get(this.nextIndex).size()) {

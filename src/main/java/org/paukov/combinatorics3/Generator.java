@@ -40,7 +40,7 @@ public class Generator {
         return new IntegerPartitionGenerator(value);
     }
     
-    public static <T> IGenerator<List<T>> combinationFromList(List<T>... args) {
-        return new SimpleCombinationFromListGenerator<>(Arrays.asList(args));
+    public static <T> IGenerator<List<T>> cartesianProduct(List<T>... args) {
+        return new CartesianProductGenerator<>(Arrays.asList(args));
     }
 }
