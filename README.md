@@ -86,7 +86,7 @@ want to buy 3 pieces of fruit. You could select
 - (orange, orange, orange)
 
 ```java
-   Generator.combination(new String[] { "apple", "orange" })
+   Generator.combination("apple", "orange")
        .multi(3)
        .stream()
        .forEach(System.out::println);

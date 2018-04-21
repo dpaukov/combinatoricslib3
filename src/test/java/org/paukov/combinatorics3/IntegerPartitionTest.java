@@ -6,6 +6,7 @@ package org.paukov.combinatorics3;
 
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,5 +74,26 @@ public class IntegerPartitionTest {
 
         System.out.println("Integer partitions of -1:");
         partition.stream().forEach(System.out::println);
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void test_integer_partition_iterator_remove_operation() {
+        Iterator<List<Integer>> partition = Generator.partition(5).iterator();
+
+        assertThat(partition).isNotNull();
+        assertThat(partition.hasNext()).isTrue();
+
+        // this method should throw a UnsupportedOperationException
+        partition.remove();
+    }
+
+    @Test
+    public void test_integer_partition_iterator_toString() {
+        Iterator<List<Integer>> partition = Generator.partition(5).iterator();
+
+        assertThat(partition).isNotNull();
+        assertThat(partition.hasNext()).isTrue();
+        assertThat(partition.next()).containsExactly(1, 1, 1, 1, 1);
+        assertThat(partition.toString()).isEqualTo("IntegerPartitionIterator=[#1, [1, 1, 1, 1, 1]]");
     }
 }
