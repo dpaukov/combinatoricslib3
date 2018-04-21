@@ -39,4 +39,8 @@ public class Generator {
     public static IGenerator<List<Integer>> partition(Integer value) {
         return new IntegerPartitionGenerator(value);
     }
+    
+    public static <T> IGenerator<List<T>> cartesianProduct(List<T>... args) {
+        return new CartesianProductGenerator<>(Arrays.asList(args));
+    }
 }

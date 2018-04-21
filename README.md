@@ -35,6 +35,7 @@ You can check out an example project to see how to use the library [combinatoric
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
 6. [Integer partitions](#6-integer-partitions)
+7. [Cartesian Product](#7-cartesian-product)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -238,4 +239,33 @@ And the result of all 7 integer possible partitions
    [3, 2]
    [4, 1]
    [5]
+```
+
+
+### 7. Cartesian Product
+
+In set theory, a Cartesian Product A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B. 
+
+As an example, suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to get the Cartesian product of the two sets.
+
+Source: [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product)
+
+```java
+   List<List<Integer>> cartesianProduct =
+       Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
+                    .stream()
+                    .forEach(System.out::println);
+```
+And the result will be:
+
+```
+   [1, 4]
+   [1, 5]
+   [1, 6]
+   [2, 4]
+   [2, 5]
+   [2, 6]
+   [3, 4]
+   [3, 5]
+   [3, 6]
 ```
