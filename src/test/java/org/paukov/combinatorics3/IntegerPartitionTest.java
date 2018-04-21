@@ -15,7 +15,6 @@ public class IntegerPartitionTest {
 
     @Test
     public void test_integer_partition_of_5() {
-
         List<List<Integer>> partition =
                 Generator.partition(5)
                         .stream()
@@ -33,7 +32,46 @@ public class IntegerPartitionTest {
         assertThat(partition.get(4)).containsExactly(3, 2);
         assertThat(partition.get(5)).containsExactly(4, 1);
         assertThat(partition.get(6)).containsOnly(5);
+    }
 
+    @Test
+    public void test_integer_partition_of_1() {
+        List<List<Integer>> partition =
+                Generator.partition(1)
+                        .stream()
+                        .collect(Collectors.toList());
 
+        assertThat(partition).hasSize(1);
+
+        System.out.println("Integer partitions of 1:");
+        partition.stream().forEach(System.out::println);
+
+        assertThat(partition.get(0)).containsOnly(1);
+    }
+
+    @Test
+    public void test_integer_partition_of_0() {
+        List<List<Integer>> partition =
+                Generator.partition(0)
+                        .stream()
+                        .collect(Collectors.toList());
+
+        assertThat(partition).isEmpty();
+
+        System.out.println("Integer partitions of 0:");
+        partition.stream().forEach(System.out::println);
+    }
+
+    @Test
+    public void test_integer_partition_of_negative() {
+        List<List<Integer>> partition =
+                Generator.partition(-1)
+                        .stream()
+                        .collect(Collectors.toList());
+
+        assertThat(partition).isEmpty();
+
+        System.out.println("Integer partitions of -1:");
+        partition.stream().forEach(System.out::println);
     }
 }

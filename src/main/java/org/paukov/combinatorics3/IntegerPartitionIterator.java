@@ -39,7 +39,7 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
     private int stopIndex = 1; //it should be 0 to stop the iteration
 
 
-    public IntegerPartitionIterator(IntegerPartitionGenerator generator) {
+    IntegerPartitionIterator(IntegerPartitionGenerator generator) {
 
         partitionValue = generator.value;
 
@@ -50,8 +50,8 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
             zVector = new InternalVector(partitionValue, 0, partitionValue + 1, 1);
         } else {
             stopIndex = 0;
-            mVector = new InternalVector(0, 0, 0, 0);
-            zVector = new InternalVector(0, 0, 0, 0);
+            mVector = new InternalVector(1, 0, 0, 0);
+            zVector = new InternalVector(1, 0, 0, 0);
         }
     }
 
