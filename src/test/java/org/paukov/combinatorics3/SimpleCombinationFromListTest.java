@@ -92,4 +92,16 @@ public class SimpleCombinationFromListTest {
     public void test_simple_combination_from_list_no_empty() {
         Generator.combinationFromList(Arrays.asList());
     }
+    
+    @Test(expected = RuntimeException.class)
+    public void test_simple_combination_from_list_no_more_combination() {
+        Iterator<List<Integer>> combinations = 
+            Generator.combinationFromList(Arrays.asList(1), Arrays.asList(4)).iterator();
+
+        assertThat(combinations).isNotNull();
+        assertThat(combinations.hasNext()).isTrue();
+        assertThat(combinations.next()).containsExactly(1, 4);
+        // No more combination
+        combinations.next();
+    }
 }

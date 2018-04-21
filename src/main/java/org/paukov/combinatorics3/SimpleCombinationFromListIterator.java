@@ -71,7 +71,7 @@ import java.util.List;
         }
         
         if(this.nextIndex < 0) {
-              throw new RuntimeException("No more combination.");
+            throw new RuntimeException("No more combination.");
         }
         
         // Move to the next element
