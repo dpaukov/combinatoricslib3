@@ -3,13 +3,13 @@ package org.paukov.combinatorics3;
 import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-@SuppressWarnings("unchecked")
 public class CartesianProductTest {
 
     @Test
@@ -18,7 +18,7 @@ public class CartesianProductTest {
         List<List<Integer>> cartesianProduct =
                 Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
                     .stream()
-                    .collect(Collectors.<List<Integer>>toList());
+                    .collect(Collectors.toList());
 
         assertThat(cartesianProduct).hasSize(9);
 
@@ -79,8 +79,8 @@ public class CartesianProductTest {
     @Test
     public void test_cartesian_product_empty() {
         List<List<Object>> cartesianProduct = 
-            Generator.cartesianProduct(Arrays.asList()).stream()
-            .collect(Collectors.<List<Object>>toList());
+            Generator.cartesianProduct(Collections.emptyList()).stream()
+            .collect(Collectors.toList());
         
         assertThat(cartesianProduct).hasSize(0);
     }

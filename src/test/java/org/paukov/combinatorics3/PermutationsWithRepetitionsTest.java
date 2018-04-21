@@ -22,7 +22,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation(1, 2, 3)
                         .withRepetitions(2)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(9);
 
@@ -48,7 +48,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation(Arrays.asList(1, 2, 3))
                         .withRepetitions(1)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(3);
 
@@ -69,7 +69,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation(new Integer[] { 1, 2, 3 })
                         .withRepetitions(0)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(1);
 
@@ -87,7 +87,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation("a")
                         .withRepetitions(1)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(1);
 
@@ -105,7 +105,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation("a")
                         .withRepetitions(2)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(1);
 
@@ -122,7 +122,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation("a")
                         .withRepetitions(0)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(1);
 
@@ -142,7 +142,7 @@ public class PermutationsWithRepetitionsTest {
                         .withRepetitions(3)
                         .stream()
                         .filter(strings -> !PermutationGenerator.hasDuplicates(strings))
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(24);
 
@@ -159,7 +159,7 @@ public class PermutationsWithRepetitionsTest {
                 Generator.permutation(0, 1)
                         .withRepetitions(3)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(permutations).hasSize(8);
 

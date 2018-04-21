@@ -23,7 +23,7 @@ public class SimpleCombinationTest {
                 Generator.combination("red", "black", "white", "green", "blue")
                 .simple(3)
                 .stream()
-                .collect(Collectors.<List<String>>toList());
+                .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(10);
 
@@ -50,7 +50,7 @@ public class SimpleCombinationTest {
                 Generator.combination(0, 1, 2)
                         .simple(2)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(3);
 
@@ -70,7 +70,7 @@ public class SimpleCombinationTest {
                 Generator.combination("red", "black", "white", "green", "blue")
                         .simple(0)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(1);
 
@@ -87,7 +87,7 @@ public class SimpleCombinationTest {
                 Generator.combination(new Integer[]{0, 1, 2})
                         .simple(2)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(3);
 
@@ -107,7 +107,7 @@ public class SimpleCombinationTest {
                 Generator.combination(Arrays.asList(0, 1, 2))
                         .simple(2)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(3);
 

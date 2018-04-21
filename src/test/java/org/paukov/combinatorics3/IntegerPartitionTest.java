@@ -19,7 +19,7 @@ public class IntegerPartitionTest {
         List<List<Integer>> partition =
                 Generator.partition(5)
                         .stream()
-                        .collect(Collectors.<List<Integer>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(partition).hasSize(7);
 

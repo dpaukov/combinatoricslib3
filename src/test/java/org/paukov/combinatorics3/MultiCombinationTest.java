@@ -22,7 +22,7 @@ public class MultiCombinationTest {
                 Generator.combination("A", "B", "C")
                         .multi(3)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(10);
 
@@ -49,7 +49,7 @@ public class MultiCombinationTest {
                 Generator.combination("A", "B")
                         .multi(3)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(4);
 
@@ -70,7 +70,7 @@ public class MultiCombinationTest {
                 Generator.combination(Arrays.asList("A", "B", "C"))
                         .multi(3)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(10);
 
@@ -98,7 +98,7 @@ public class MultiCombinationTest {
                 Generator.combination(new String[]{"A", "B", "C"})
                         .multi(3)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(10);
 
@@ -126,7 +126,7 @@ public class MultiCombinationTest {
                 Generator.combination("red", "black", "white", "green", "blue")
                         .multi(0)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(1);
 
@@ -143,7 +143,7 @@ public class MultiCombinationTest {
                 Generator.combination("red", "black", "white")
                         .multi(-2)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(1);
 
@@ -161,7 +161,7 @@ public class MultiCombinationTest {
                 Generator.combination("red")
                         .multi(3)
                         .stream()
-                        .collect(Collectors.<List<String>>toList());
+                        .collect(Collectors.toList());
 
         assertThat(combinations).hasSize(1);
 
