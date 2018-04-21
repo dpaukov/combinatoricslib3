@@ -28,16 +28,14 @@ import java.util.List;
     private int nextIndex;
     
     private final int[] indices;
-    
-    private final int[] listSizes;
-    
+
     private List<T> current;
     
     private int index = 0;
     
     private boolean hasEmptyList = false;
 
-    public CartesianProductIterator(CartesianProductGenerator<T> generator) {
+    CartesianProductIterator(CartesianProductGenerator<T> generator) {
         this.generator = generator;
         this.vector = this.generator.originalVector;
         this.vectorSize = this.generator.originalVector.size();
@@ -49,9 +47,7 @@ import java.util.List;
         this.indices = new int[this.vectorSize];
         
         // for the tracking the lengths of the lists
-        this.listSizes = new int[this.vectorSize];
         for (int i = 0; i < this.vectorSize; i++) {
-            this.listSizes[i] = this.vector.size();
             this.hasEmptyList = this.hasEmptyList || this.vector.get(i).size() == 0;
         }
     }

@@ -51,7 +51,7 @@ class CartesianProductGenerator<T> implements IGenerator<List<T>> {
      * @param vector
      *            Vector which is used for generating the Cartesian product
      */
-    public CartesianProductGenerator(Collection<List<T>> vector) {
+    CartesianProductGenerator(Collection<List<T>> vector) {
         this.originalVector = new ArrayList<>(vector);
     }
 
