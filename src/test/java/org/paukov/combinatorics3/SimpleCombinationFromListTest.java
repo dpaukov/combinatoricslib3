@@ -87,14 +87,9 @@ public class SimpleCombinationFromListTest {
         // this method should throw a UnsupportedOperationException
         combinations.remove();
     }
-    
-    @Test(expected = NullPointerException.class)
-    public void test_simple_combination_from_list_validate_params_1() {
-        Generator.combinationFromList(null);
-    }
-    
+
     @Test(expected = RuntimeException.class)
-    public void test_simple_combination_from_list_validate_params_2() {
+    public void test_simple_combination_from_list_no_empty() {
         Generator.combinationFromList(Arrays.asList());
     }
 }

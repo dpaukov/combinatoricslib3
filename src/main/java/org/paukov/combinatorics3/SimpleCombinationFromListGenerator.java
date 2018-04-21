@@ -70,14 +70,10 @@ class SimpleCombinationFromListGenerator<T> implements IGenerator<List<T>> {
     }
     
     private void validateParameters(Collection<List<T>> vector) {
-        if(vector == null) {
-            throw new NullPointerException("Collection of list must not be undefined.");
-        }
-        
-        vector.forEach(v -> {
-            if (v.size() <= 0 || v == null) {
+        for(List<T> v: vector) {
+            if (v.size() <= 0) {
                 throw new RuntimeException("A list must not be not empty.");
             }
-        });
+        }
     }
 }
