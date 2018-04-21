@@ -81,9 +81,8 @@ public class CartesianProductTest {
         List<List<Object>> cartesianProduct = 
             Generator.cartesianProduct(Arrays.asList()).stream()
             .collect(Collectors.<List<Object>>toList());
-
-        assertThat(cartesianProduct).hasSize(1);
-        assertThat(cartesianProduct.get(0)).isEmpty();
+        
+        assertThat(cartesianProduct).hasSize(0);
     }
     
     @Test(expected = UnsupportedOperationException.class)

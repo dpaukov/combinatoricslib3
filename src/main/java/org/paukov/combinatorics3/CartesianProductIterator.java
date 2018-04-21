@@ -35,6 +35,8 @@ import java.util.List;
     
     private int index = 0;
     
+    private boolean hasEmptyList = false;
+
     public CartesianProductIterator(CartesianProductGenerator<T> generator) {
         this.generator = generator;
         this.vector = this.generator.originalVector;
@@ -50,6 +52,7 @@ import java.util.List;
         this.listSizes = new int[this.vectorSize];
         for (int i = 0; i < this.vectorSize; i++) {
             this.listSizes[i] = this.vector.size();
+            this.hasEmptyList = this.hasEmptyList || this.vector.get(i).size() == 0;
         }
     }
 
@@ -58,7 +61,7 @@ import java.util.List;
      */
     @Override
     public boolean hasNext() {
-        return this.nextIndex >= 0;
+        return !this.hasEmptyList && this.nextIndex >= 0;
     }
 
     /**
@@ -97,13 +100,6 @@ import java.util.List;
     private List<T> generateCartesianProduct() {
         final List<T> list = new ArrayList<>();
         for (int i = 0; i < this.vectorSize; i++){
-            // If empty list,immediately return an empty result
-            // (1, 2, 3) x () = ()
-            if(this.vector.get(i).size() <= 0) {
-               list.clear();
-               break;
-            }
-            
             list.add(this.vector.get(i).get(this.indices[i]));
         }
         
