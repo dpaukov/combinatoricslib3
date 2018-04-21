@@ -36,7 +36,7 @@ class MultiCombinationIterator<T> implements
 	private boolean end = false;
 
 
-	public MultiCombinationIterator(MultiCombinationGenerator<T> generator) {
+    MultiCombinationIterator(MultiCombinationGenerator<T> generator) {
 		this.generator = generator;
 		lengthN = generator.originalVector.size();
 		currentCombination = new ArrayList<>();

@@ -22,7 +22,7 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
     // Internal data
     private int[] bitVector = null;
 
-    public PermutationWithRepetitionIterator(
+    PermutationWithRepetitionIterator(
             PermutationWithRepetitionGenerator<T> generator) {
         this.generator = generator;
         originalVectorSize = generator.originalVector.size();
