@@ -28,14 +28,14 @@ Add the following section into your `pom.xml` file.
 ## Examples
 You can check out an example project to see how to use the library [combinatoricslib3-example](https://github.com/dpaukov/combinatoricslib3-example)
 
-## Development Version 3.2.1
+## Development Version 3.3.0
 1. [Simple combinations](#1-simple-combinations)
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
 5. [Subsets](#5-subsets)
 6. [Integer partitions](#6-integer-partitions)
-7. [Cartesian Product](#7-cartesian-product)
+7. [Cartesian product](#7-cartesian-product)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -227,10 +227,10 @@ The partitions of 5 are listed below:
 Let's generate all possible partitions of 5:
 ```java
    Generator.partition(5)
-   .stream()
-   .forEach(System.out::println);
+       .stream()
+       .forEach(System.out::println);
 ```
-And the result of all 7 integer possible partitions
+And the result of all 7 integer possible partitions:
 ```
    [1, 1, 1, 1, 1]
    [2, 1, 1, 1]
@@ -243,18 +243,16 @@ And the result of all 7 integer possible partitions
 
 
 ### 7. Cartesian Product
-
-In set theory, a Cartesian Product A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B. 
+In set theory, a Cartesian Product A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B.
 
 As an example, suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to get the Cartesian product of the two sets.
 
 Source: [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product)
 
 ```java
-   List<List<Integer>> cartesianProduct =
        Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6))
-                    .stream()
-                    .forEach(System.out::println);
+           .stream()
+           .forEach(System.out::println);
 ```
 And the result will be:
 

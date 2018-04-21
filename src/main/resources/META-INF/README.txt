@@ -2,12 +2,13 @@
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
 
-CombinatoricsLib 3.2.1 (Jun 2017)
-
+CombinatoricsLib 3.3.0 (May 2018)
+- Added cartesian product generator
+  https://github.com/dpaukov/combinatoricslib3/issues/4
 
 -----------------------------------------------------------------
 CombinatoricsLib 3.2.0 (Apr 2017)
-- Added integer partition generator
+- Added integer partition generator.
 
 -----------------------------------------------------------------
 CombinatoricsLib 3.1.1 (Sep 2016)
