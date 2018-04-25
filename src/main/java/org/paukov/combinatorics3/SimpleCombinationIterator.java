@@ -20,15 +20,15 @@ import java.util.List;
  */
  class SimpleCombinationIterator<T> implements Iterator<List<T>> {
 
-    final SimpleCombinationGenerator<T> generator;
-    List<T> currentSimpleCombination = null;
+    private final SimpleCombinationGenerator<T> generator;
+    private List<T> currentSimpleCombination = null;
 
-	long currentIndex = 0;
-    final int lengthN;
-    final int lengthK;
+	private long currentIndex = 0;
+    private final int lengthN;
+    private final int lengthK;
 
 	// Internal array
-	int[] bitVector = null;
+	private int[] bitVector = null;
 
 	//Criteria to stop iterating
 	private int endIndex = 0;

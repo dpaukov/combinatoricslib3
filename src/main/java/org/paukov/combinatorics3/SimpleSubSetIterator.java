@@ -20,11 +20,11 @@ import java.util.List;
  */
 class SimpleSubSetIterator<T> implements Iterator<List<T>> {
 
-    final SimpleSubSetGenerator<T> generator;
-    final int length;
+    private final SimpleSubSetGenerator<T> generator;
+    private final int length;
 
-    List<T> currentSubSet = null;
-    long currentIndex = 0;
+    private List<T> currentSubSet = null;
+    private long currentIndex = 0;
 
     /**
      * internal bit vector, representing the subset

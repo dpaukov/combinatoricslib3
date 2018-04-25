@@ -21,13 +21,13 @@ import java.util.List;
 class MultiCombinationIterator<T> implements
 		Iterator<List<T>> {
 
-    final MultiCombinationGenerator<T> generator;
-    List<T> currentCombination = null;
+    private final MultiCombinationGenerator<T> generator;
+    private List<T> currentCombination = null;
 
 
-    long currentIndex = 0;
-    final int lengthN;
-    final int lengthK;
+    private long currentIndex = 0;
+    private final int lengthN;
+    private final int lengthK;
 
 	private int[] bitVector = null;
 
@@ -52,7 +52,7 @@ class MultiCombinationIterator<T> implements
 
 	@Override
 	public boolean hasNext() {
-		return (end != true);
+		return (!end);
 	}
 
 

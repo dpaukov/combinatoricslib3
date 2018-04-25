@@ -13,11 +13,11 @@ class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
 
     final PermutationWithRepetitionGenerator<T> generator;
 
-    List<T> currentPermutation = null;
-    long currentIndex = 0;
+    private List<T> currentPermutation = null;
+    private long currentIndex = 0;
 
-    final int originalVectorSize;
-    final int permutationLength;
+    private final int originalVectorSize;
+    private final int permutationLength;
 
     // Internal data
     private int[] bitVector = null;

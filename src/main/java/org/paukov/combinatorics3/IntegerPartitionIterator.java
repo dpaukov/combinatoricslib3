@@ -10,7 +10,7 @@ import java.util.List;
 
 class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
-    class InternalVector {
+    private class InternalVector {
 
         final int[] internalVector;
 
@@ -30,18 +30,17 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
         }
     }
 
-    final int partitionValue;
-    final InternalVector mVector;
-    final InternalVector zVector;
+    private final InternalVector mVector;
+    private final InternalVector zVector;
 
-    List<Integer> currentPartition = null;
-    long currentIndex = 0;
+    private List<Integer> currentPartition = null;
+    private long currentIndex = 0;
     private int stopIndex = 1; //it should be 0 to stop the iteration
 
 
     IntegerPartitionIterator(IntegerPartitionGenerator generator) {
 
-        partitionValue = generator.value;
+        int partitionValue = generator.value;
 
         if (partitionValue > 0) {
             currentIndex = 0;

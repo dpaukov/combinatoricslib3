@@ -12,7 +12,7 @@ public class CombinationGenerator<T> {
 
     final Collection<T> originalVector;
 
-    public CombinationGenerator(Collection<T> originalVector) {
+    CombinationGenerator(Collection<T> originalVector) {
         this.originalVector = originalVector;
     }
 

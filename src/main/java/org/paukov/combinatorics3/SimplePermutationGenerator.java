@@ -77,18 +77,12 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
      */
     SimplePermutationGenerator(Collection<T> vector,
                                boolean treatAsIdentical) {
-        hasDuplicates = PermutationGenerator.hasDuplicates(vector);
+        this.hasDuplicates = PermutationGenerator.hasDuplicates(vector);
         this.treatAsIdentical = treatAsIdentical;
-        originalVector = new ArrayList<>(vector);
+        this.originalVector = new ArrayList<>(vector);
     }
 
 
-
-    /**
-     * Creates an iterator
-     *
-     * @see org.paukov.combinatorics3.Generator#iterator()
-     */
     @Override
     public Iterator<List<T>> iterator() {
         if (isDuplicateIterator())
@@ -105,7 +99,7 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
     }
 
 
-    boolean isDuplicateIterator() {
+    private boolean isDuplicateIterator() {
         return (!treatAsIdentical && hasDuplicates);
     }
 }

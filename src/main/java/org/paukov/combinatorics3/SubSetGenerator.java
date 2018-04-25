@@ -11,7 +11,7 @@ public class SubSetGenerator<T> {
 
     final Collection<T> originalVector;
 
-    public SubSetGenerator(Collection<T> originalVector) {
+    SubSetGenerator(Collection<T> originalVector) {
         this.originalVector = originalVector;
     }
 

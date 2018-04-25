@@ -26,7 +26,7 @@ public class PermutationGenerator<T> {
         return set.size() < collection.size();
     }
 
-    public PermutationGenerator(Collection<T> originalVector) {
+    PermutationGenerator(Collection<T> originalVector) {
         this.originalVector = originalVector;
     }
 

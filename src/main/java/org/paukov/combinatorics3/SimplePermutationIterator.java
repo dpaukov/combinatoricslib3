@@ -20,10 +20,10 @@ import java.util.List;
  */
 class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
-    final SimplePermutationGenerator<T> generator;
-    final List<T> currentPermutation;
-    final int length;
-    long currentIndex = 0;
+    private final SimplePermutationGenerator<T> generator;
+    private final List<T> currentPermutation;
+    private final int length;
+    private long currentIndex = 0;
 
     private int[] pZ = null;
     private int[] pP = null;

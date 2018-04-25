@@ -6,12 +6,14 @@ package org.paukov.combinatorics3;
 
 import java.util.*;
 
+import static java.lang.Math.toIntExact;
+
 class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
-    final int length;
+    private final int length;
 
-    List<T> currentPermutation;
-    long currentIndex = 0;
+    private List<T> currentPermutation;
+    private long currentIndex = 0;
 
     private int data[] = null;
     private boolean firstIteration = true;
@@ -87,8 +89,8 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
             l--;
         }
         swap(data, k, l);
-        int newlength = data.length - (k + 1);
-        for (int i = 0; i < newlength / 2; i++) {
+        int newLength = data.length - (k + 1);
+        for (int i = 0; i < newLength / 2; i++) {
             swap(data, k + 1 + i, data.length - i - 1);
         }
 
@@ -133,11 +135,6 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
     }
 
     private static <T> int intcountElements(List<T> list, T value) {
-        int count = 0;
-        for (T element : list) {
-            if (element.equals(value))
-                count++;
-        }
-        return count;
+        return toIntExact(list.stream().filter((item) -> item.equals(value)).count());
     }
 }

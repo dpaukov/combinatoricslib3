@@ -130,13 +130,11 @@ public class PermutationsWithRepetitionsTest {
         permutations.stream().forEach(System.out::println);
 
         assertThat(permutations.get(0)).isEmpty();
-
     }
 
 
     @Test
-    public void test_fiter_permutation_of_with_repetition() {
-
+    public void test_filter_permutation_of_with_repetition() {
         List<List<String>> permutations =
                 Generator.permutation("a", "b", "c", "d")
                         .withRepetitions(3)
@@ -148,7 +146,6 @@ public class PermutationsWithRepetitionsTest {
 
         System.out.println("Three permutations with repetitions of ('a', 'b', 'c', 'd') without duplicates:");
         permutations.stream().forEach(System.out::println);
-
     }
 
 
