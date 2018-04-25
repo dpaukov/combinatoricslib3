@@ -27,8 +27,8 @@ import java.util.stream.StreamSupport;
  * <pre>
  * 
  * Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(7, 8, 9))
- *                  .stream()
- *                  .collect(Collectors.&lt;List&lt;Integer&gt;&gt;toList())
+ *       .stream()
+ *       .collect(Collectors.&lt;List&lt;Integer&gt;&gt;toList())
  * 
  * </pre>
  * 

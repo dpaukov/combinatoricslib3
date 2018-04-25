@@ -3,25 +3,25 @@
 </head>
 <body>
 
-Combinatoricslib 3 is library for generating combinatorial objects of any types for java 8.
-
+Combinatoricslib 3.3.0 is a combinatorial objects stream generator for Java 8.
 <h2>Features</h2>
 <ol>
-	<li>Library can generate the following combinatorial objects:
-		<ul>
-			<li>All possible simple combinations of a vector</li>
-			<li>All possible multi-combinations (with repetitions) of a vector</li>
-			<li>All possible permutations with and without repetitions of a vector</li>
-			<li>All possible sub-sets of a set</li>
-		</ul>
-	</li>
+    <li>Library can generate the following combinatorial objects:
+        <ul>
+            <li>All possible simple combinations of a vector</li>
+            <li>All possible multi-combinations (with repetitions) of a vector</li>
+            <li>All possible permutations with and without repetitions of a vector</li>
+            <li>All possible sub-sets of a set</li>
+            <li>Cartesian product of multiple lists</li>
+        </ul>
+    </li>
 </ol>
 
 <h3> 1. Simple permutations </h3>
 <p>A permutation is an ordering of a set in the context of all possible orderings. For example, the set
-containing the first three digits, 123, has six permutations: 123, 132, 213, 231, 312, and 321.
+    containing the first three digits, 123, has six permutations: 123, 132, 213, 231, 312, and 321.
 <p>
-This is an example of the permutations of the 3 string items (apple, orange, cherry):
+    This is an example of the permutations of the 3 string items (apple, orange, cherry):
 <p>
 <blockquote>
 <pre>
@@ -139,10 +139,10 @@ List&lt;List&lt;String&gt;&gt; permutations = Generator
 
 <h3> 4. Multi-combinations</h3>
 <p>A k-multicombination or k-combination with repetition of a finite set S is given by a sequence of
-k not necessarily distinct elements of S, where order is not taken into account.
+    k not necessarily distinct elements of S, where order is not taken into account.
 <p>
-As an example. Suppose there are 2 types of fruits (apple and orange) at a grocery store, and you
-want to buy 3 pieces of fruit. You could select
+    As an example. Suppose there are 2 types of fruits (apple and orange) at a grocery store, and you
+    want to buy 3 pieces of fruit. You could select
 <blockquote>
 <pre>
 - (apple, apple, apple)
@@ -152,7 +152,7 @@ want to buy 3 pieces of fruit. You could select
 </pre>
 </blockquote>
 <p>Example. Generate 3-combinations with repetitions of the set (apple, orange). You can pass an array
-as a parameter of the function.
+    as a parameter of the function.
 <blockquote>
 <pre>
     Generator.combination(new String[] { "apple", "orange" })
@@ -211,6 +211,73 @@ as a parameter of the function.
     [three]
     [one, three]
     [two, three]
+</pre>
+</blockquote>
+
+<h3> 6. Integer Partitions</h3>
+<p>In number theory, a partition of a positive integer n is a way of writing n as a sum of positive
+    integers. Two sums that differ only in the order of their summands are considered to be the same partition;
+    if order matters then the sum becomes a composition. A summand in a partition is also called a part.
+
+<p>The partitions of 5 are listed below:
+<blockquote>
+<pre>
+1 + 1 + 1 + 1 + 1
+2 + 1 + 1 + 1
+2 + 2 + 1
+3 + 1 + 1
+3 + 2
+4 + 1
+5
+</pre>
+</blockquote>
+<p>Let's generate all possible partitions of 5:
+<blockquote>
+<pre>
+   Generator.partition(5)
+     .stream()
+     .forEach(System.out::println);
+</pre>
+</blockquote>
+<p>And the result of all 7 integer possible partitions:
+<blockquote>
+<pre>
+[1, 1, 1, 1, 1]
+[2, 1, 1, 1]
+[2, 2, 1]
+[3, 1, 1]
+[3, 2]
+[4, 1]
+[5]
+</pre>
+</blockquote>
+
+<h3> 7. Cartesian product</h3>
+<p>This generator generates Cartesian product from specified multiple lists.
+<p>Set of lists is specified in the constructor of generator to generate k-element Cartesian product,
+    where k is the size of the set of lists.
+<p>A simple k-element Cartesian product of a finite sets S(1), S(2)...S(k) is a set
+    of all ordered pairs (x(1), x(2)...x(k), where x(1) ∈ S(1), x(2) ∈ S(2) ... x(k) ∈ S(k)
+<p>Example. Generate 3-element Cartesian product from (1, 2, 3), (4, 5, 6), (7, 8, 9).
+<blockquote>
+<pre>
+   Generator.cartesianProduct(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(7, 8, 9))
+      .stream()
+      .collect(Collectors.&lt;List&lt;Integer&gt;&gt;toList());
+</pre>
+</blockquote>
+<p>And the result:
+<blockquote>
+<pre>
+   [1, 4]
+   [1, 5]
+   [1, 6]
+   [2, 4]
+   [2, 5]
+   [2, 6]
+   [3, 4]
+   [3, 5]
+   [3, 6]
 </pre>
 </blockquote>
 
