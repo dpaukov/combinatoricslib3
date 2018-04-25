@@ -12,7 +12,7 @@
 
 This is a new implementation of the combinatorics library for Java 8. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
 
-## The latest released version
+## 3.3.0 - the latest released version
 The latest release of the library is [v3.3.0](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.3.0).
 It is available through The Maven Central Repository [here](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dpaukov%22%20AND%20a%3A%22combinatoricslib3%22).
 Add the following section into your `pom.xml` file.
