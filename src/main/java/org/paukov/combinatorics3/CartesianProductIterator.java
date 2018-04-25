@@ -18,8 +18,6 @@ import java.util.List;
  */
 class CartesianProductIterator<T> implements Iterator<List<T>> {
 
-    private final CartesianProductGenerator<T> generator;
-
     private List<List<T>> vector;
 
     private final int vectorSize;
@@ -35,7 +33,6 @@ class CartesianProductIterator<T> implements Iterator<List<T>> {
     private boolean hasEmptyList = false;
 
     CartesianProductIterator(CartesianProductGenerator<T> generator) {
-        this.generator = generator;
         vector = generator.originalVector;
         vectorSize = generator.originalVector.size();
 
