@@ -9,76 +9,73 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-class PermutationWithRepetitionIterator <T> implements Iterator<List<T>> {
+class PermutationWithRepetitionIterator<T> implements Iterator<List<T>> {
 
-    final PermutationWithRepetitionGenerator<T> generator;
+  final PermutationWithRepetitionGenerator<T> generator;
+  private final int originalVectorSize;
+  private final int permutationLength;
+  private List<T> currentPermutation = null;
+  private long currentIndex = 0;
+  // Internal data
+  private int[] bitVector = null;
 
-    private List<T> currentPermutation = null;
-    private long currentIndex = 0;
+  PermutationWithRepetitionIterator(
+      PermutationWithRepetitionGenerator<T> generator) {
+    this.generator = generator;
+    originalVectorSize = generator.originalVector.size();
+    permutationLength = generator.permutationLength;
 
-    private final int originalVectorSize;
-    private final int permutationLength;
-
-    // Internal data
-    private int[] bitVector = null;
-
-    PermutationWithRepetitionIterator(
-            PermutationWithRepetitionGenerator<T> generator) {
-        this.generator = generator;
-        originalVectorSize = generator.originalVector.size();
-        permutationLength = generator.permutationLength;
-
-        List<T> list = new ArrayList<>(permutationLength);
-        T defaultValue = generator.originalVector.get(0);
-        for (int i = 0; i < permutationLength; i++) {
-            list.add(defaultValue);
-        }
-
-        currentPermutation = new ArrayList<>(list);
-
-        bitVector = new int[permutationLength + 2];
-        currentIndex = 0;
+    List<T> list = new ArrayList<>(permutationLength);
+    T defaultValue = generator.originalVector.get(0);
+    for (int i = 0; i < permutationLength; i++) {
+      list.add(defaultValue);
     }
 
+    currentPermutation = new ArrayList<>(list);
 
-    @Override
-    public boolean hasNext() {
-        return (bitVector[permutationLength] != 1);
+    bitVector = new int[permutationLength + 2];
+    currentIndex = 0;
+  }
+
+
+  @Override
+  public boolean hasNext() {
+    return (bitVector[permutationLength] != 1);
+  }
+
+
+  @Override
+  public List<T> next() {
+    currentIndex++;
+
+    for (int j = permutationLength - 1; j >= 0; j--) {
+      currentPermutation.set(j, generator.originalVector.get(bitVector[j]));
     }
 
-
-    @Override
-    public List<T> next() {
-        currentIndex++;
-
-        for (int j = permutationLength - 1; j >= 0; j--) {
-            currentPermutation.set(j, generator.originalVector.get(bitVector[j]));
-        }
-
-        int i = 0;
-        while (bitVector[i] == originalVectorSize - 1) {
-            if (i < permutationLength + 1)
-                bitVector[i] = 0;
-            else {
-                bitVector[permutationLength] = 1;
-                return new ArrayList<>(currentPermutation);
-            }
-            i++;
-        }
-
-        bitVector[i]++;
+    int i = 0;
+    while (bitVector[i] == originalVectorSize - 1) {
+      if (i < permutationLength + 1) {
+        bitVector[i] = 0;
+      } else {
+        bitVector[permutationLength] = 1;
         return new ArrayList<>(currentPermutation);
-
+      }
+      i++;
     }
 
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
+    bitVector[i]++;
+    return new ArrayList<>(currentPermutation);
+
+  }
+
+  @Override
+  public void remove() {
+    throw new UnsupportedOperationException();
+  }
 
 
-    @Override
-    public String toString() {
-        return "PermutationWithRepetitionIterator=[#" + currentIndex + ", " + currentPermutation + "]";
-    }
+  @Override
+  public String toString() {
+    return "PermutationWithRepetitionIterator=[#" + currentIndex + ", " + currentPermutation + "]";
+  }
 }

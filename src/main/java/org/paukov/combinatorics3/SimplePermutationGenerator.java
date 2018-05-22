@@ -5,7 +5,13 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.*;
+import static org.paukov.combinatorics3.PermutationGenerator.hasDuplicates;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -56,51 +62,49 @@ import java.util.stream.StreamSupport;
  * </blockquote>
  * <p>
  *
+ * @param <T> Type of the elements in the permutations
  * @author Dmytro Paukov
  * @version 2.0
- * @param <T>
- *            Type of the elements in the permutations
  */
 class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
 
-    final boolean hasDuplicates;
-    final boolean treatAsIdentical;
-    final List<T> originalVector;
+  final boolean hasDuplicates;
+  final boolean treatAsIdentical;
+  final List<T> originalVector;
 
-    /**
-     * Constructor
-     *
-     * @param vector
-     *            Vector which is used for permutation generation
-     * @param treatAsIdentical
-     *            True if the generator should treat the vector as identical
-     */
-    SimplePermutationGenerator(Collection<T> vector,
-                               boolean treatAsIdentical) {
-        this.hasDuplicates = PermutationGenerator.hasDuplicates(vector);
-        this.treatAsIdentical = treatAsIdentical;
-        this.originalVector = new ArrayList<>(vector);
+  /**
+   * Constructor
+   *
+   * @param vector Vector which is used for permutation generation
+   * @param treatAsIdentical True if the generator should treat the vector as identical
+   */
+  SimplePermutationGenerator(Collection<T> vector,
+      boolean treatAsIdentical) {
+    this.hasDuplicates = hasDuplicates(vector);
+    this.treatAsIdentical = treatAsIdentical;
+    this.originalVector = new ArrayList<>(vector);
+  }
+
+
+  @Override
+  public Iterator<List<T>> iterator() {
+    if (isDuplicateIterator()) {
+      return new DuplicatedPermutationIterator<>(this);
+    } else {
+      return new SimplePermutationIterator<>(this);
     }
 
-
-    @Override
-    public Iterator<List<T>> iterator() {
-        if (isDuplicateIterator())
-            return new DuplicatedPermutationIterator<>(this);
-        else
-            return new SimplePermutationIterator<>(this);
-
-    }
+  }
 
 
-    @Override
-    public Stream<List<T>> stream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-    }
+  @Override
+  public Stream<List<T>> stream() {
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  }
 
 
-    private boolean isDuplicateIterator() {
-        return (!treatAsIdentical && hasDuplicates);
-    }
+  private boolean isDuplicateIterator() {
+    return (!treatAsIdentical && hasDuplicates);
+  }
 }
 

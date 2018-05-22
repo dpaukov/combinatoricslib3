@@ -10,17 +10,17 @@ import java.util.List;
 
 public class CombinationGenerator<T> {
 
-    final Collection<T> originalVector;
+  final Collection<T> originalVector;
 
-    CombinationGenerator(Collection<T> originalVector) {
-        this.originalVector = originalVector;
-    }
+  CombinationGenerator(Collection<T> originalVector) {
+    this.originalVector = originalVector;
+  }
 
-    public IGenerator<List<T>> simple(int length) {
-        return new SimpleCombinationGenerator<>(originalVector, length);
-    }
+  public IGenerator<List<T>> simple(int length) {
+    return new SimpleCombinationGenerator<>(originalVector, length);
+  }
 
-    public IGenerator<List<T>> multi(int length) {
-        return new MultiCombinationGenerator<>(originalVector, length);
-    }
+  public IGenerator<List<T>> multi(int length) {
+    return new MultiCombinationGenerator<>(originalVector, length);
+  }
 }

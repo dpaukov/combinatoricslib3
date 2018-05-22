@@ -5,31 +5,35 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 class PermutationWithRepetitionGenerator<T> implements IGenerator<List<T>> {
 
-    final List<T> originalVector;
-    final int permutationLength;
+  final List<T> originalVector;
+  final int permutationLength;
 
-    PermutationWithRepetitionGenerator(
-            Collection<T> originalVector, int permutationLength) {
-        this.originalVector = new ArrayList<>(originalVector);
-        this.permutationLength = permutationLength;
-    }
-
-
-    @Override
-    public Iterator<List<T>> iterator() {
-        return new PermutationWithRepetitionIterator<>(this);
-    }
+  PermutationWithRepetitionGenerator(
+      Collection<T> originalVector, int permutationLength) {
+    this.originalVector = new ArrayList<>(originalVector);
+    this.permutationLength = permutationLength;
+  }
 
 
-    @Override
-    public Stream<List<T>> stream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-    }
+  @Override
+  public Iterator<List<T>> iterator() {
+    return new PermutationWithRepetitionIterator<>(this);
+  }
+
+
+  @Override
+  public Stream<List<T>> stream() {
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  }
 
 }

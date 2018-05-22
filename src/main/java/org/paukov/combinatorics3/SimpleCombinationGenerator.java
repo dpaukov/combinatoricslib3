@@ -4,7 +4,11 @@
  */
 package org.paukov.combinatorics3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -22,66 +26,62 @@ import java.util.stream.StreamSupport;
  * Example. Generate 3-combination of the set (red, black, white, green, blue).
  * <p>
  * <blockquote>
- * 
+ *
  * <pre>
- * 
+ *
  * // Create the initial vector
  * ICombinatoricsVector&lt;String&gt; initialVector = Factory.createVector(new String[] {
  * 		&quot;red&quot;, &quot;black&quot;, &quot;white&quot;, &quot;green&quot;, &quot;blue&quot; });
- * 
+ *
  * // Create a simple combination generator to generate 3-combinations of the
  * // initial vector
  * Generator&lt;String&gt; gen = Factory.createSimpleCombinationGenerator(initialVector,
  * 		3);
- * 
+ *
  * // Print all possible combinations
  * for (ICombinatoricsVector&lt;String&gt; combination : gen) {
  * 	System.out.println(combination);
  * }
  * </pre>
- * 
+ *
  * </blockquote>
  * <p>
- * 
+ *
+ * @param <T> Type of elements in the combination
  * @author Dmytro Paukov
  * @version 3.0
  * @see SimpleCombinationIterator
- * @param <T>
- *            Type of elements in the combination
  */
 class SimpleCombinationGenerator<T> implements IGenerator<List<T>> {
 
-	final List<T> originalVector;
-	final int combinationLength;
+  final List<T> originalVector;
+  final int combinationLength;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param originalVector
-	 *            Original vector which is used for generating the combination
-	 * @param combinationsLength
-	 *            Length of the combinations
-	 */
-    SimpleCombinationGenerator(Collection<T> originalVector,
-			int combinationsLength) {
-		this.originalVector = new ArrayList<>(originalVector);
-		this.combinationLength = combinationsLength;
-	}
+  /**
+   * Constructor
+   *
+   * @param originalVector Original vector which is used for generating the combination
+   * @param combinationsLength Length of the combinations
+   */
+  SimpleCombinationGenerator(Collection<T> originalVector,
+      int combinationsLength) {
+    this.originalVector = new ArrayList<>(originalVector);
+    this.combinationLength = combinationsLength;
+  }
 
 
+  /**
+   * Creates an iterator of the simple combinations (without repetitions)
+   */
+  @Override
+  public Iterator<List<T>> iterator() {
+    return new SimpleCombinationIterator<>(this);
+  }
 
-    /**
-	 * Creates an iterator of the simple combinations (without repetitions)
-	 */
-	@Override
-	public Iterator<List<T>> iterator() {
-		return new SimpleCombinationIterator<T>(this);
-	}
-
-    @Override
-    public Stream<List<T>> stream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-    }
+  @Override
+  public Stream<List<T>> stream() {
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  }
 
 
 }

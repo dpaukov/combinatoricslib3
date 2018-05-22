@@ -5,7 +5,11 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -31,57 +35,57 @@ import java.util.stream.StreamSupport;
  * <p>
  * <p>
  * <blockquote>
- * 
+ *
  * <pre>
- * 
+ *
  * // Create the initial vector of (apple, orange)
  * ICombinatoricsVector&lt;String&gt; initialVector = Factory.createVector(new String[] {
  * 		&quot;apple&quot;, &quot;orange&quot; });
- * 
+ *
  * // Create a multi-combination generator to generate 3-combinations of
  * // the initial vector
  * Generator&lt;String&gt; gen = Factory.createMultiCombinationGenerator(initialVector,
  * 		3);
- * 
+ *
  * // Print all possible combinations
  * for (ICombinatoricsVector&lt;String&gt; combination : gen) {
  * 	System.out.println(combination);
  * }
  * </pre>
- * 
+ *
  * </blockquote>
  * <p>
- * 
+ *
+ * @param <T> Type of elements in the combination
  * @author Dmytro Paukov
  * @version 3.0
  * @see MultiCombinationIterator
- * @param <T>
- *            Type of elements in the combination
  */
 class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
 
-    final List<T> originalVector;
-    final int combinationLength;
+  final List<T> originalVector;
+  final int combinationLength;
 
 
-    MultiCombinationGenerator(Collection<T> originalVector,
-			int combinationsLength) {
-		this.originalVector = new ArrayList<>(originalVector);
-		if (combinationsLength < 0)
-			combinationLength = 0;
-		else
-			combinationLength = combinationsLength;
-	}
-
-
-	@Override
-	public Iterator<List<T>> iterator() {
-		return new MultiCombinationIterator<>(this);
-	}
-
-
-    @Override
-    public Stream<List<T>> stream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  MultiCombinationGenerator(Collection<T> originalVector,
+      int combinationsLength) {
+    this.originalVector = new ArrayList<>(originalVector);
+    if (combinationsLength < 0) {
+      combinationLength = 0;
+    } else {
+      combinationLength = combinationsLength;
     }
+  }
+
+
+  @Override
+  public Iterator<List<T>> iterator() {
+    return new MultiCombinationIterator<>(this);
+  }
+
+
+  @Override
+  public Stream<List<T>> stream() {
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  }
 }

@@ -9,13 +9,13 @@ import java.util.List;
 
 public class SubSetGenerator<T> {
 
-    final Collection<T> originalVector;
+  final Collection<T> originalVector;
 
-    SubSetGenerator(Collection<T> originalVector) {
-        this.originalVector = originalVector;
-    }
+  SubSetGenerator(Collection<T> originalVector) {
+    this.originalVector = originalVector;
+  }
 
-    public IGenerator<List<T>> simple() {
-        return new SimpleSubSetGenerator<>(originalVector);
-    }
+  public IGenerator<List<T>> simple() {
+    return new SimpleSubSetGenerator<>(originalVector);
+  }
 }

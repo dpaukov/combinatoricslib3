@@ -11,35 +11,36 @@ import java.util.Set;
 
 public class PermutationGenerator<T> {
 
-    public enum TreatDuplicatesAs {
-        DIFFERENT,
-        IDENTICAL
-    }
+  final Collection<T> originalVector;
 
-    final Collection<T> originalVector;
+  PermutationGenerator(Collection<T> originalVector) {
+    this.originalVector = originalVector;
+  }
 
-    public static  <T> boolean hasDuplicates(Collection<T> collection) {
-        if (collection.size() <= 1) {
-            return false;
-        }
-        Set<T> set = new HashSet<>(collection);
-        return set.size() < collection.size();
+  public static <T> boolean hasDuplicates(Collection<T> collection) {
+    if (collection.size() <= 1) {
+      return false;
     }
+    Set<T> set = new HashSet<>(collection);
+    return set.size() < collection.size();
+  }
 
-    PermutationGenerator(Collection<T> originalVector) {
-        this.originalVector = originalVector;
-    }
+  public IGenerator<List<T>> simple() {
+    return new SimplePermutationGenerator<>(originalVector, false);
+  }
 
-    public IGenerator<List<T>>simple() {
-        return new SimplePermutationGenerator<>(originalVector, false);
-    }
+  public IGenerator<List<T>> simple(TreatDuplicatesAs treatAsIdentical) {
+    return new SimplePermutationGenerator<>(originalVector,
+        TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
+  }
 
-    public IGenerator<List<T>> simple(TreatDuplicatesAs treatAsIdentical) {
-        return new SimplePermutationGenerator<>(originalVector, TreatDuplicatesAs.IDENTICAL.equals(treatAsIdentical));
-    }
+  public IGenerator<List<T>> withRepetitions(int permutationLength) {
+    return new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
+  }
 
-    public IGenerator<List<T>> withRepetitions(int permutationLength) {
-        return new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
-    }
+  public enum TreatDuplicatesAs {
+    DIFFERENT,
+    IDENTICAL
+  }
 
 }
