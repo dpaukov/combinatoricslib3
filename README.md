@@ -33,9 +33,10 @@ You can check out an example project to see how to use the library [combinatoric
 2. [Combinations with repetitions](#2-combinations-with-repetitions)
 3. [Simple permutations](#3-simple-permutations)
 4. [Permutations with repetitions](#4-permutations-with-repetitions)
-5. [Subsets](#5-subsets)
-6. [Integer partitions](#6-integer-partitions)
-7. [Cartesian product](#7-cartesian-product)
+5. [k-Permutations](#5-k-permutations)
+6. [Subsets](#6-subsets)
+7. [Integer partitions](#7-integer-partitions)
+8. [Cartesian product](#8-cartesian-product)
 
 
 | Description                      | Is Order Important? | Is Repetition Allowed? | Stream  |
@@ -169,7 +170,51 @@ And the list of all 8 permutations
    [orange, orange, orange]
 ```
 
-### 5. Subsets
+### 5. k-Permutations
+You can generate k-permutations with and without repetitions using the combination and permutation
+generators together. For example, 2-permutations without repetitions of the list (1, 2, 3):
+
+```java
+    Generator.combination(1, 2, 3)
+       .simple(2)
+       .stream()
+       .forEach(combination -> Generator.permutation(combination)
+          .simple()
+          .forEach(System.out::println));
+```
+This will print six 2-permutations of (1, 2, 3):
+```
+   [1, 2]
+   [2, 1]
+   [1, 3]
+   [3, 1]
+   [2, 3]
+   [3, 2]
+```        
+
+Similarly, you can get 2-Permutations with repetitions of the list (1, 2, 3):  
+```java 
+    Generator.combination(1, 2, 3)
+       .multi(2)
+       .stream()
+       .forEach(combination -> Generator.permutation(combination)
+           .simple()
+           .forEach(System.out::println));
+```
+This will print all nine 2-permutations of (1, 2, 3):
+```
+   [1, 1]
+   [1, 2]
+   [2, 1]
+   [1, 3]
+   [3, 1]
+   [2, 2]
+   [2, 3]
+   [3, 2]
+   [3, 3]
+```        
+
+### 6. Subsets
 A set `A` is a subset of a set `B` if `A` is "contained" inside `B`. `A` and `B` may coincide. 
 The relationship of one set being a subset of another is called inclusion or sometimes containment.
 
@@ -209,7 +254,7 @@ And the list of all 8 subsets
    [one, two, three]
 ```
 
-### 6. Integer Partitions
+### 7. Integer Partitions
 In number theory, a partition of a positive integer `n` is a way of writing `n` as a sum of positive integers. 
 Two sums that differ only in the order of their summands are considered to be the same partition; 
 if order matters then the sum becomes a composition. A summand in a partition is also called a part.
@@ -242,7 +287,7 @@ And the result of all 7 integer possible partitions:
 ```
 
 
-### 7. Cartesian Product
+### 8. Cartesian Product
 In set theory, a Cartesian Product A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B.
 
 As an example, suppose there are 2 sets of number, (1, 2, 3) and (4, 5, 6), and you want to get the Cartesian product of the two sets.
