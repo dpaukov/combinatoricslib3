@@ -17,9 +17,9 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
   private final int length;
 
   private List<T> currentPermutation;
-  private long currentIndex = 0;
+  private long currentIndex;
 
-  private int data[] = null;
+  private int data[];
   private boolean firstIteration = true;
   private List<T> initialOrderedPermutation;
 
@@ -74,7 +74,7 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
   }
 
   private static <T> int intcountElements(List<T> list, T value) {
-    return toIntExact(list.stream().filter((item) -> item.equals(value)).count());
+    return toIntExact(list.stream().filter(item -> item.equals(value)).count());
   }
 
   @Override
