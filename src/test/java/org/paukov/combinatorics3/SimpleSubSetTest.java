@@ -8,13 +8,14 @@ package org.paukov.combinatorics3;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
-public class SimpleSubSetTest {
+public final class SimpleSubSetTest {
 
   @Test
   public void test_simple_3_sub_set() {
@@ -138,7 +139,7 @@ public class SimpleSubSetTest {
     assertThat(subset.get(17)).containsExactly("A", "A", "B", "B", "C");
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_simple_subset_iterator_remove_operation() {
     Iterator<List<Integer>> subset =
         Generator.subset(asList(1, 2, 3))
@@ -149,7 +150,7 @@ public class SimpleSubSetTest {
     assertThat(subset.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    subset.remove();
+    assertThrows(UnsupportedOperationException.class, subset::remove);
   }
 
   @Test

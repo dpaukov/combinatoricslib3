@@ -7,13 +7,14 @@ package org.paukov.combinatorics3;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
-public class SimpleCombinationTest {
+public final class SimpleCombinationTest {
 
   @Test
   public void test_simple_3_combination_of_5_colors() {
@@ -114,7 +115,7 @@ public class SimpleCombinationTest {
   }
 
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_simple_combination_iterator_remove_operation() {
     Iterator<List<Integer>> combinations =
         Generator.combination(asList(0, 1, 2))
@@ -125,7 +126,7 @@ public class SimpleCombinationTest {
     assertThat(combinations.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    combinations.remove();
+    assertThrows(UnsupportedOperationException.class, combinations::remove);
   }
 
   @Test

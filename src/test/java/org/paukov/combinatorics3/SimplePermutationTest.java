@@ -7,14 +7,15 @@ package org.paukov.combinatorics3;
 
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
-public class SimplePermutationTest {
+public final class SimplePermutationTest {
 
   @Test
   public void test_simple_permutation() {
@@ -228,7 +229,7 @@ public class SimplePermutationTest {
     assertThat(permutations.get(11)).containsExactly(3, 2, 2, 1);
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_simple_permutation_iterator_remove_operation() {
     Iterator<List<Integer>> permutations =
         Generator.permutation(Arrays.asList(1, 2, 3))
@@ -239,7 +240,7 @@ public class SimplePermutationTest {
     assertThat(permutations.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    permutations.remove();
+    assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
 
   @Test
@@ -255,7 +256,7 @@ public class SimplePermutationTest {
     assertThat(permutations.toString()).isEqualTo("SimplePermutationIterator=[#1, [1, 2, 3]]");
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_duplicated_permutation_iterator_remove_operation() {
     Iterator<List<Integer>> permutations =
         Generator.permutation(Arrays.asList(1, 2, 2))
@@ -266,7 +267,7 @@ public class SimplePermutationTest {
     assertThat(permutations.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    permutations.remove();
+    assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
 
   @Test

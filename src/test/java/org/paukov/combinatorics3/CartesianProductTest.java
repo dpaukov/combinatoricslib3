@@ -5,14 +5,15 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.paukov.combinatorics3.Generator.cartesianProduct;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CartesianProductTest {
+public final class CartesianProductTest {
 
   @Test
   public void test_cartesian_product_number() {
@@ -89,7 +90,7 @@ public class CartesianProductTest {
     assertThat(cartesianProduct).hasSize(0);
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_cartesian_product_iterator_remove_operation() {
     Iterator<List<Integer>> cartesianProduct = cartesianProduct(asList(1, 2, 3), asList(4, 5, 6))
         .iterator();
@@ -98,10 +99,10 @@ public class CartesianProductTest {
     assertThat(cartesianProduct.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    cartesianProduct.remove();
+    assertThrows(UnsupportedOperationException.class, cartesianProduct::remove);
   }
 
-  @Test(expected = RuntimeException.class)
+  @Test
   public void test_cartesian_product_no_more_cartesian_product() {
     Iterator<List<Integer>> cartesianProduct = cartesianProduct(singletonList(1), singletonList(4))
         .iterator();
@@ -109,7 +110,8 @@ public class CartesianProductTest {
     assertThat(cartesianProduct).isNotNull();
     assertThat(cartesianProduct.hasNext()).isTrue();
     assertThat(cartesianProduct.next()).containsExactly(1, 4);
+
     // No more cartesian product
-    cartesianProduct.next();
+    assertThrows(RuntimeException.class, cartesianProduct::next);
   }
 }

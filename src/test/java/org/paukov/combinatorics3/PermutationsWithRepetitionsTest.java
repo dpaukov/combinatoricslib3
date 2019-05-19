@@ -7,12 +7,13 @@ package org.paukov.combinatorics3;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class PermutationsWithRepetitionsTest {
+public final class PermutationsWithRepetitionsTest {
 
   @Test
   public void test_simple_permutation_with_repetition() {
@@ -158,7 +159,7 @@ public class PermutationsWithRepetitionsTest {
     assertThat(permutations.get(7)).containsExactly(1, 1, 1);
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_permutation_iterator_remove_operation() {
     Iterator<List<Integer>> permutations = Generator.permutation(asList(1, 2, 3))
         .withRepetitions(2)
@@ -168,7 +169,7 @@ public class PermutationsWithRepetitionsTest {
     assertThat(permutations.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    permutations.remove();
+    assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
 
   @Test

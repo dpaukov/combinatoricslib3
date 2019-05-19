@@ -6,12 +6,14 @@ package org.paukov.combinatorics3;
 
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class IntegerPartitionTest {
+
+public final class IntegerPartitionTest {
 
   @Test
   public void test_integer_partition_of_5() {
@@ -71,7 +73,7 @@ public class IntegerPartitionTest {
     partition.stream().forEach(System.out::println);
   }
 
-  @Test(expected = UnsupportedOperationException.class)
+  @Test
   public void test_integer_partition_iterator_remove_operation() {
     Iterator<List<Integer>> partition = Generator.partition(5).iterator();
 
@@ -79,7 +81,7 @@ public class IntegerPartitionTest {
     assertThat(partition.hasNext()).isTrue();
 
     // this method should throw a UnsupportedOperationException
-    partition.remove();
+    assertThrows(UnsupportedOperationException.class, partition::remove);
   }
 
   @Test
