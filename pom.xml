@@ -111,6 +111,13 @@
         <configuration>
           <repoToken>YfVoyX43DazWQjKsxUUDiG0pKVygzA09h</repoToken>
         </configuration>
+        <dependencies>
+           <dependency>
+              <groupId>javax.xml.bind</groupId>
+              <artifactId>jaxb-api</artifactId>
+              <version>2.2.3</version>
+           </dependency>
+        </dependencies>
       </plugin>
 
     </plugins>
