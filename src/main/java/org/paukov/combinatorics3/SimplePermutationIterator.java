@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -22,16 +22,17 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
   private final SimplePermutationGenerator<T> generator;
   private final List<T> currentPermutation;
   private final int length;
-  private long currentIndex = 0;
+  private long currentIndex;
 
-  private int[] pZ = null;
-  private int[] pP = null;
-  private int[] pD = null;
-  private int m = 0;
-  private int w = 0;
-  private int pm = 0;
-  private int dm = 0;
-  private int zpm = 0;
+  private final int[] pZ;
+  private final int[] pP;
+  private final int[] pD;
+
+  private int m;
+  private int w;
+  private int pm;
+  private int dm;
+  private int zpm;
 
   SimplePermutationIterator(SimplePermutationGenerator<T> generator) {
     this.generator = generator;
@@ -57,7 +58,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
     pD[1] = 0;
     pZ[length + 1] = m = length + 1;
     pZ[0] = pZ[length + 1];
-
   }
 
 
@@ -69,7 +69,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
   @Override
   public List<T> next() {
-
     for (int i = 1; i <= length; i++) {
       int index = pZ[i] - 1;
       currentPermutation.set(i - 1, generator.originalVector.get(index));

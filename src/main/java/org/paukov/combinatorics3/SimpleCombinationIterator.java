@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -22,10 +22,11 @@ class SimpleCombinationIterator<T> implements Iterator<List<T>> {
   private final SimpleCombinationGenerator<T> generator;
   private final int lengthN;
   private final int lengthK;
-  private List<T> currentSimpleCombination = null;
-  private long currentIndex = 0;
+  private final List<T> currentSimpleCombination;
+  private long currentIndex;
+
   // Internal array
-  private int[] bitVector = null;
+  private final int[] bitVector;
 
   //Criteria to stop iterating
   private int endIndex = 0;
@@ -35,7 +36,7 @@ class SimpleCombinationIterator<T> implements Iterator<List<T>> {
     this.generator = generator;
     lengthN = generator.originalVector.size();
     lengthK = generator.combinationLength;
-    currentSimpleCombination = new ArrayList<T>();
+    currentSimpleCombination = new ArrayList<>();
     bitVector = new int[lengthK + 1];
     for (int i = 0; i <= lengthK; i++) {
       bitVector[i] = i;

@@ -1,6 +1,6 @@
-/**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+/*
+  Combinatorics Library 3
+  Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 

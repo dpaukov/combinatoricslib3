@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -55,7 +55,7 @@ class CartesianProductGenerator<T> implements IGenerator<List<T>> {
    */
   @Override
   public Iterator<List<T>> iterator() {
-    return new CartesianProductIterator<T>(this);
+    return new CartesianProductIterator<>(this);
   }
 
   @Override

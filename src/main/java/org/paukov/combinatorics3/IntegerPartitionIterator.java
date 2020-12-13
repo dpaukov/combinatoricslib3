@@ -1,6 +1,6 @@
-/**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+/*
+  Combinatorics Library 3
+  Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -15,13 +15,13 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
   private List<Integer> currentPartition = null;
   private long currentIndex = 0;
   private int stopIndex = 1; //it should be 0 to stop the iteration
-  IntegerPartitionIterator(IntegerPartitionGenerator generator) {
 
+
+  IntegerPartitionIterator(IntegerPartitionGenerator generator) {
     int partitionValue = generator.value;
 
     if (partitionValue > 0) {
       currentIndex = 0;
-      stopIndex = 1;
       mVector = new InternalVector(partitionValue, 0, 0, partitionValue);
       zVector = new InternalVector(partitionValue, 0, partitionValue + 1, 1);
     } else {
@@ -86,7 +86,7 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
     return "IntegerPartitionIterator=[#" + currentIndex + ", " + currentPartition + "]";
   }
 
-  private class InternalVector {
+  private static class InternalVector {
 
     final int[] internalVector;
 

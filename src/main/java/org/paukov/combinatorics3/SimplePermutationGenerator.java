@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -93,7 +93,6 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
     } else {
       return new SimplePermutationIterator<>(this);
     }
-
   }
 
 

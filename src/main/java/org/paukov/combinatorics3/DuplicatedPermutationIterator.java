@@ -1,6 +1,6 @@
-/**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+/*
+  Combinatorics Library 3
+  Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -15,14 +15,13 @@ import java.util.Set;
 class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
   private final int length;
+  private final int[] data;
 
   private List<T> currentPermutation;
   private long currentIndex;
 
-  private int data[];
   private boolean firstIteration = true;
-  private List<T> initialOrderedPermutation;
-
+  private final List<T> initialOrderedPermutation;
 
   DuplicatedPermutationIterator(SimplePermutationGenerator<T> generator) {
 
@@ -48,7 +47,7 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
       if (!initialPermutation.contains(value)) {
         // Determine how many duplicates of the value in the original
         // vector
-        int count = intcountElements(originalVector, value);
+        int count = intCountElements(originalVector, value);
 
         for (int countIndex = 0; countIndex < count; countIndex++) {
           data[dataIndex++] = dataValue;
@@ -73,7 +72,7 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
     data[l] = temp;
   }
 
-  private static <T> int intcountElements(List<T> list, T value) {
+  private static <T> int intCountElements(List<T> list, T value) {
     return toIntExact(list.stream().filter(item -> item.equals(value)).count());
   }
 

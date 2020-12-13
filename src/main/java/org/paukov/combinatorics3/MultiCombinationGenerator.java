@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -70,11 +70,7 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
   MultiCombinationGenerator(Collection<T> originalVector,
       int combinationsLength) {
     this.originalVector = new ArrayList<>(originalVector);
-    if (combinationsLength < 0) {
-      combinationLength = 0;
-    } else {
-      combinationLength = combinationsLength;
-    }
+    this.combinationLength = Math.max(combinationsLength, 0);
   }
 
 

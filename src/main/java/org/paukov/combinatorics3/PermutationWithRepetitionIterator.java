@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -14,10 +14,10 @@ class PermutationWithRepetitionIterator<T> implements Iterator<List<T>> {
   final PermutationWithRepetitionGenerator<T> generator;
   private final int originalVectorSize;
   private final int permutationLength;
-  private List<T> currentPermutation = null;
-  private long currentIndex = 0;
+  private final List<T> currentPermutation;
+  private long currentIndex;
   // Internal data
-  private int[] bitVector = null;
+  private final int[] bitVector;
 
   PermutationWithRepetitionIterator(
       PermutationWithRepetitionGenerator<T> generator) {

@@ -1,4 +1,4 @@
-/**
+/*
  * Combinatorics Library 3
  * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
@@ -21,13 +21,13 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   private final SimpleSubSetGenerator<T> generator;
   private final int length;
 
-  private List<T> currentSubSet = null;
-  private long currentIndex = 0;
+  private final List<T> currentSubSet;
+  private long currentIndex;
 
   /**
    * internal bit vector, representing the subset
    */
-  private int[] bitVector = null;
+  private final int[] bitVector;
 
 
   SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
@@ -84,5 +84,4 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   public String toString() {
     return "SimpleSubSetIterator=[#" + currentIndex + ", " + currentSubSet + "]";
   }
-
 }

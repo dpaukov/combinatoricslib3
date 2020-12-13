@@ -1,6 +1,6 @@
-/**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+/*
+  Combinatorics Library 3
+  Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -69,7 +69,6 @@ class SimpleCombinationGenerator<T> implements IGenerator<List<T>> {
     this.combinationLength = combinationsLength;
   }
 
-
   /**
    * Creates an iterator of the simple combinations (without repetitions)
    */
@@ -82,6 +81,4 @@ class SimpleCombinationGenerator<T> implements IGenerator<List<T>> {
   public Stream<List<T>> stream() {
     return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
   }
-
-
 }
