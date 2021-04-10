@@ -42,6 +42,10 @@ public class Generator {
 
   @SafeVarargs
   public static <T> IGenerator<List<T>> cartesianProduct(List<T>... args) {
-    return new CartesianProductGenerator<>(Arrays.asList(args));
+    return cartesianProduct(Arrays.asList(args));
+  }
+
+  public static <T> IGenerator<List<T>> cartesianProduct(Collection<List<T>> collection) {
+    return new CartesianProductGenerator<>(collection);
   }
 }
