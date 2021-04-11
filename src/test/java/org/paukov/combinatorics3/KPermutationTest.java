@@ -1,25 +1,27 @@
+/**
+ * Combinatorics Library 3
+ * Copyright 2009-2021 Dmytro Paukov d.paukov@gmail.com
+ */
 package org.paukov.combinatorics3;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.paukov.combinatorics3.PermutationGenerator.KTreatDuplicatesAs.*;
+import java.util.Iterator;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.paukov.combinatorics3.PermutationGenerator.TreatDuplicatesAs;
 
 public final class KPermutationTest {
 
   @Test
-  public void test_k2_permutation() {
+  public void test_k_2_of_3_permutation() {
     List<List<Integer>> permutations = Generator.permutation(1, 2, 3)
-            .k(2)
-            .stream()
-            .collect(toList());
+        .k(2)
+        .stream()
+        .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
@@ -35,49 +37,43 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_one_k1_permutation() {
+  public void test_k_1_of_1_permutation() {
     List<List<Integer>> permutations =
-            Generator.permutation(1)
-                    .k(1)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(1)
+            .k(1)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(1);
 
-    System.out.println("one k1-permutations of (1):");
+    System.out.println("k1-permutations of (1):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsOnly(1);
   }
 
   @Test
-  public void test_empty_k0_permutation() {
+  public void test_k_0_of_0_permutation() {
     List<List<Integer>> permutations =
-            Generator.permutation(new Integer[]{})
-                    .k(0)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(new Integer[]{})
+            .k(0)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).isEmpty();
   }
 
   @Test
-  public void test_identical_k2_permutation() {
-    assertThrows(IllegalArgumentException.class, () -> Generator.permutation("a", "a", "b").k(2));
-  }
-
-
-  @Test
-  public void test_identical_k2_permutation_allow_duplicated_input() {
+  public void test_k_2_of_3_with_duplicates_permutation() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "b")
-                    .k(2, PermutationGenerator.KTreatDuplicatesAs.ALLOW_DUPLICATED_INPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "b")
+            .k(2, TreatDuplicatesAs.IDENTICAL)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(3);
 
-    System.out.println("Identical k2-permutations of (a, a, b) allow duplicated input:");
+    System.out.println("k2-permutations of (a, a, b):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a", "a");
@@ -86,16 +82,16 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_identical_k2_permutation_allow_duplicated_output() {
+  public void test_k_2_of_3_permutation_ignore_duplicates() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "b")
-                    .k(2, PermutationGenerator.KTreatDuplicatesAs.ALLOW_DUPLICATED_OUTPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "b")
+            .k(2)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
-    System.out.println("Identical k2-permutations of (a, a, b) allow duplicated output:");
+    System.out.println("k2-permutations of (a, a, b) ignore duplicates:");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a", "a");
@@ -107,16 +103,16 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_identical_k1_permutation_allow_duplicated_input() {
+  public void test_k_1_of_3_with_duplicates_permutation() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "b")
-                    .k(1, PermutationGenerator.KTreatDuplicatesAs.ALLOW_DUPLICATED_INPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "b")
+            .k(1, TreatDuplicatesAs.IDENTICAL)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(2);
 
-    System.out.println("Identical k1-permutations of (a, a, b) allow duplicated input:");
+    System.out.println("k1-permutations of (a, a, b):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a");
@@ -124,16 +120,16 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_identical_k1_permutation_allow_duplicated_output() {
+  public void test_k_1_of_3_permutation_ignore_duplicates() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "b")
-                    .k(1, PermutationGenerator.KTreatDuplicatesAs.ALLOW_DUPLICATED_OUTPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "b")
+            .k(1)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(3);
 
-    System.out.println("Identical k1-permutations of (a, a, b) allow duplicated output:");
+    System.out.println("k1-permutations of (a, a, b) ignore duplicates:");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a");
@@ -142,32 +138,32 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_all_identical_k2_permutation_allow_duplicated_input() {
+  public void test_all_identical_k_2_of_3_permutation() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "a")
-                    .k(2, ALLOW_DUPLICATED_INPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "a")
+            .k(2, TreatDuplicatesAs.IDENTICAL)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(1);
 
-    System.out.println("Identical k2-permutations of (a, a, a) allow duplicated input:");
+    System.out.println("k2-permutations of (a, a, a):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a", "a");
   }
 
   @Test
-  public void test_all_identical_k2_permutation_allow_duplicated_output() {
+  public void test_all_identical_k_2_of_3_permutation_ignore_duplicates() {
     List<List<String>> permutations =
-            Generator.permutation("a", "a", "a")
-                    .k(2, ALLOW_DUPLICATED_OUTPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation("a", "a", "a")
+            .k(2)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
-    System.out.println("Identical k2-permutations of (a, a, a) allow duplicated output:");
+    System.out.println("k2-permutations of (a, a, a) ignore duplicates:");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly("a", "a");
@@ -180,12 +176,12 @@ public final class KPermutationTest {
 
 
   @Test
-  public void test_abc_k3_permutation() {
+  public void test_k_3_of_3_abc_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(Arrays.asList("a", "b", "c"))
-                    .k(3)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList("a", "b", "c"))
+            .k(3)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
@@ -201,12 +197,12 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_abc_k2_permutation() {
+  public void test_k_2_of_3_abc_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(Arrays.asList("a", "b", "c"))
-                    .k(2)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList("a", "b", "c"))
+            .k(2)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
@@ -222,12 +218,12 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_abc_k1_permutation() {
+  public void test_k_1_of_3_abc_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(Arrays.asList("a", "b", "c"))
-                    .k(1)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList("a", "b", "c"))
+            .k(1)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(3);
 
@@ -241,24 +237,24 @@ public final class KPermutationTest {
 
 
   @Test
-  public void test_abc_k0_permutation() {
+  public void test_k_0_of_3_abc_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(Arrays.asList("a", "b", "c"))
-                    .k(0)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList("a", "b", "c"))
+            .k(0)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(0);
   }
 
 
   @Test
-  public void test_abc_k4_permutation() {
+  public void test_k_4_of_3_abc_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(Arrays.asList("a", "b", "c"))
-                    .k(4)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList("a", "b", "c"))
+            .k(4)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(0);
   }
@@ -267,10 +263,10 @@ public final class KPermutationTest {
   @Test
   public void test_any_expression_k2_permutation() {
     List<List<String>> permutations =
-            Generator.permutation(new String[]{"x", "x^2", "x+1"})
-                    .k(2)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(new String[]{"x", "x^2", "x+1"})
+            .k(2)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(6);
 
@@ -286,16 +282,16 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_simple_with_equal_elements_k3_permutation_allow_duplicated_input() {
+  public void test_k_3_of_4_permutation_with_duplicates() {
     List<List<Integer>> permutations =
-            Generator.permutation(Arrays.asList(1, 2, 2, 3))
-                    .k(3, ALLOW_DUPLICATED_INPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList(1, 2, 2, 3))
+            .k(3, TreatDuplicatesAs.IDENTICAL)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(12);
 
-    System.out.println("Simple with equal elements k3-permutations of (1, 2, 2, 3) allow duplicated input:");
+    System.out.println("k3-permutations of (1, 2, 2, 3):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly(1, 2, 2);
@@ -313,16 +309,16 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_simple_with_equal_elements_k3_permutation_allow_duplicated_output() {
+  public void test_k_3_of_4_permutation_ignore_duplicates() {
     List<List<Integer>> permutations =
-            Generator.permutation(Arrays.asList(1, 2, 2, 3))
-                    .k(3, ALLOW_DUPLICATED_OUTPUT)
-                    .stream()
-                    .collect(toList());
+        Generator.permutation(asList(1, 2, 2, 3))
+            .k(3)
+            .stream()
+            .collect(toList());
 
     assertThat(permutations).hasSize(24);
 
-    System.out.println("Simple with equal elements k3-permutations of (1, 2, 2, 3) allow duplicated output:");
+    System.out.println("k3-permutations of (1, 2, 2, 3):");
     permutations.forEach(System.out::println);
 
     assertThat(permutations.get(0)).containsExactly(1, 2, 2);
@@ -352,17 +348,14 @@ public final class KPermutationTest {
   }
 
   @Test
-  public void test_simple_permutation_iterator_remove_operation() {
+  public void test_k_permutation_iterator_remove_operation() {
     Iterator<List<Integer>> permutations =
-        Generator.permutation(Arrays.asList(1, 2, 3))
+        Generator.permutation(asList(1, 2, 3))
             .k(2)
             .iterator();
 
     assertThat(permutations).isNotNull();
     assertThat(permutations.hasNext()).isTrue();
-
-    // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
-
 }
