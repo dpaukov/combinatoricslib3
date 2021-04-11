@@ -2,8 +2,13 @@
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
 
-CombinatoricsLib 3.4.0 (2018)
+CombinatoricsLib 3.4.0 (2021)
 
+
+-----------------------------------------------------------------
+CombinatoricsLib 3.3.1 (Apr 2021)
+- Add a cartesian product with collection input parameter
+  https://github.com/dpaukov/combinatoricslib3/issues/13
 
 -----------------------------------------------------------------
 CombinatoricsLib 3.3.0 (May 2018)
