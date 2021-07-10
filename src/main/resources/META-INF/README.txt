@@ -2,6 +2,9 @@
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
 
+CombinatoricsLib 3.4.0 (2021)
+
+-----------------------------------------------------------------
 CombinatoricsLib 3.3.2 (July 2021)
 - Make k-permutation API more easy to use
   https://github.com/dpaukov/combinatoricslib3/issues/8
