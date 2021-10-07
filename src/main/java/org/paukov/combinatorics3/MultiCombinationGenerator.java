@@ -4,7 +4,6 @@
  */
 package org.paukov.combinatorics3;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -66,19 +65,16 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
   final List<T> originalVector;
   final int combinationLength;
 
-
   MultiCombinationGenerator(Collection<T> originalVector,
       int combinationsLength) {
     this.originalVector = new ArrayList<>(originalVector);
     this.combinationLength = Math.max(combinationsLength, 0);
   }
 
-
   @Override
   public Iterator<List<T>> iterator() {
     return new MultiCombinationIterator<>(this);
   }
-
 
   @Override
   public Stream<List<T>> stream() {
