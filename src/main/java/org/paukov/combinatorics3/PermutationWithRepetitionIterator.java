@@ -12,67 +12,60 @@ import java.util.List;
 class PermutationWithRepetitionIterator<T> implements Iterator<List<T>> {
 
   final PermutationWithRepetitionGenerator<T> generator;
-  private final int originalVectorSize;
-  private final int permutationLength;
   private final List<T> currentPermutation;
-  private long currentIndex;
-  // Internal data
   private final int[] bitVector;
+  private long currentIndex;
 
   PermutationWithRepetitionIterator(
       PermutationWithRepetitionGenerator<T> generator) {
     this.generator = generator;
-    originalVectorSize = generator.originalVector.size();
-    permutationLength = generator.permutationLength;
 
-    List<T> list = new ArrayList<>(permutationLength);
+    List<T> list = new ArrayList<>(this.generator.permutationLength);
     T defaultValue = generator.originalVector.get(0);
-    for (int i = 0; i < permutationLength; i++) {
+    for (int i = 0; i < this.generator.permutationLength; i++) {
       list.add(defaultValue);
     }
 
-    currentPermutation = new ArrayList<>(list);
+    this.currentPermutation = new ArrayList<>(list);
 
-    bitVector = new int[permutationLength + 2];
-    currentIndex = 0;
+    this.bitVector = new int[this.generator.permutationLength + 2];
+    this.currentIndex = 0;
   }
 
 
   @Override
   public boolean hasNext() {
-    return (bitVector[permutationLength] != 1);
+    return bitVector[this.generator.permutationLength] != 1;
   }
 
 
   @Override
   public List<T> next() {
-    currentIndex++;
+    this.currentIndex++;
 
-    for (int j = permutationLength - 1; j >= 0; j--) {
-      currentPermutation.set(j, generator.originalVector.get(bitVector[j]));
+    for (int j = this.generator.permutationLength - 1; j >= 0; j--) {
+      this.currentPermutation.set(j, this.generator.originalVector.get(this.bitVector[j]));
     }
 
     int i = 0;
-    while (bitVector[i] == originalVectorSize - 1) {
-      if (i < permutationLength + 1) {
-        bitVector[i] = 0;
+    while (this.bitVector[i] == this.generator.originalVector.size() - 1) {
+      if (i < this.generator.permutationLength + 1) {
+        this.bitVector[i] = 0;
       } else {
-        bitVector[permutationLength] = 1;
-        return new ArrayList<>(currentPermutation);
+        this.bitVector[this.generator.permutationLength] = 1;
+        return new ArrayList<>(this.currentPermutation);
       }
       i++;
     }
 
-    bitVector[i]++;
-    return new ArrayList<>(currentPermutation);
-
+    this.bitVector[i]++;
+    return new ArrayList<>(this.currentPermutation);
   }
 
   @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }
-
 
   @Override
   public String toString() {

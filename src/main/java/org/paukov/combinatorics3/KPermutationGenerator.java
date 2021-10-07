@@ -91,7 +91,6 @@ class KPermutationGenerator<T> implements IGenerator<List<T>> {
         .flatMap(combination -> Generator.permutation(combination)
             .simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL).stream())
         .iterator();
-
   }
 
   @Override

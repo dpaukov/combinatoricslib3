@@ -85,7 +85,6 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
     this.originalVector = new ArrayList<>(vector);
   }
 
-
   @Override
   public Iterator<List<T>> iterator() {
     if (isDuplicateIterator()) {
@@ -95,12 +94,10 @@ class SimplePermutationGenerator<T> implements IGenerator<List<T>> {
     }
   }
 
-
   @Override
   public Stream<List<T>> stream() {
     return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
   }
-
 
   private boolean isDuplicateIterator() {
     return (!treatAsIdentical && hasDuplicates);

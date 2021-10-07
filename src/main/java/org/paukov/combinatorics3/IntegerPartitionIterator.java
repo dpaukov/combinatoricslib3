@@ -10,36 +10,21 @@ import java.util.List;
 
 class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
-  private final InternalVector mVector;
-  private final InternalVector zVector;
+  private final InternalVector vector1;
+  private final InternalVector vector2;
   private List<Integer> currentPartition = null;
   private long currentIndex = 0;
-  private int stopIndex = 1; //it should be 0 to stop the iteration
-
+  private int stopIndex = 1; //it should be 0 to stop the iteration.
 
   IntegerPartitionIterator(IntegerPartitionGenerator generator) {
-    int partitionValue = generator.value;
-
-    if (partitionValue > 0) {
-      currentIndex = 0;
-      mVector = new InternalVector(partitionValue, 0, 0, partitionValue);
-      zVector = new InternalVector(partitionValue, 0, partitionValue + 1, 1);
+    if (generator.value > 0) {
+      vector1 = new InternalVector(generator.value, 0, 0, generator.value);
+      vector2 = new InternalVector(generator.value, 0, generator.value + 1, 1);
     } else {
       stopIndex = 0;
-      mVector = new InternalVector(1, 0, 0, 0);
-      zVector = new InternalVector(1, 0, 0, 0);
+      vector1 = new InternalVector(1, 0, 0, 0);
+      vector2 = new InternalVector(1, 0, 0, 0);
     }
-  }
-
-  private static List<Integer> createCurrentPartition(int k, InternalVector mVector,
-      InternalVector zVector) {
-    List<Integer> list = new ArrayList<>();
-    for (int index = 1; index <= k; index++) {
-      for (int j = 0; j < mVector.get(index); j++) {
-        list.add(zVector.get(index));
-      }
-    }
-    return list;
   }
 
   @Override
@@ -50,30 +35,41 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
   @Override
   public List<Integer> next() {
-    currentIndex++;
-    currentPartition = createCurrentPartition(stopIndex, mVector, zVector);
+    this.currentIndex++;
+    this.currentPartition = createPartition(stopIndex, vector1, vector2);
 
-    int sum = mVector.get(stopIndex) * zVector.get(stopIndex);
-
-    if (mVector.get(stopIndex) == 1) {
+    int sum = vector1.get(stopIndex) * vector2.get(stopIndex);
+    if (vector1.get(stopIndex) == 1) {
       stopIndex--;
-      sum += mVector.get(stopIndex) * zVector.get(stopIndex);
+      sum += vector1.get(stopIndex) * vector2.get(stopIndex);
     }
 
-    if (zVector.get(stopIndex - 1) == zVector.get(stopIndex) + 1) {
+    if (vector2.get(stopIndex - 1) == vector2.get(stopIndex) + 1) {
       stopIndex--;
-      mVector.set(stopIndex, mVector.get(stopIndex) + 1);
+      vector1.set(stopIndex, vector1.get(stopIndex) + 1);
     } else {
-      zVector.set(stopIndex, zVector.get(stopIndex) + 1);
-      mVector.set(stopIndex, 1);
+      vector2.set(stopIndex, vector2.get(stopIndex) + 1);
+      vector1.set(stopIndex, 1);
     }
-    if (sum > zVector.get(stopIndex)) {
-      zVector.set(stopIndex + 1, 1);
-      mVector.set(stopIndex + 1, sum - zVector.get(stopIndex));
+
+    if (sum > vector2.get(stopIndex)) {
+      vector2.set(stopIndex + 1, 1);
+      vector1.set(stopIndex + 1, sum - vector2.get(stopIndex));
       stopIndex++;
     }
 
     return currentPartition;
+  }
+
+  private static List<Integer> createPartition(int index, InternalVector vector1,
+      InternalVector vector) {
+    List<Integer> partition = new ArrayList<>();
+    for (int i = 1; i <= index; i++) {
+      for (int j = 0; j < vector1.get(i); j++) {
+        partition.add(vector.get(i));
+      }
+    }
+    return partition;
   }
 
   @Override
@@ -88,21 +84,21 @@ class IntegerPartitionIterator implements Iterator<List<Integer>> {
 
   private static class InternalVector {
 
-    final int[] internalVector;
+    final int[] array;
 
     InternalVector(int size, int value0, int value1, int value2) {
-      internalVector = new int[size + 2];
-      internalVector[0] = value0;
-      internalVector[1] = value1;
-      internalVector[2] = value2;
+      array = new int[size + 2];
+      array[0] = value0;
+      array[1] = value1;
+      array[2] = value2;
     }
 
     int get(int index) {
-      return internalVector[index + 1];
+      return array[index + 1];
     }
 
     void set(int index, int value) {
-      internalVector[index + 1] = value;
+      array[index + 1] = value;
     }
   }
 }

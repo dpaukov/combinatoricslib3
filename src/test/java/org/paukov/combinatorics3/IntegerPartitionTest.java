@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -22,10 +21,6 @@ public final class IntegerPartitionTest {
         .collect(toList());
 
     assertThat(partition).hasSize(7);
-
-    System.out.println("Integer partitions of 5:");
-    partition.stream().forEach(System.out::println);
-
     assertThat(partition.get(0)).containsExactly(1, 1, 1, 1, 1);
     assertThat(partition.get(1)).containsExactly(2, 1, 1, 1);
     assertThat(partition.get(2)).containsExactly(2, 2, 1);
@@ -42,10 +37,6 @@ public final class IntegerPartitionTest {
         .collect(toList());
 
     assertThat(partition).hasSize(1);
-
-    System.out.println("Integer partitions of 1:");
-    partition.stream().forEach(System.out::println);
-
     assertThat(partition.get(0)).containsOnly(1);
   }
 
@@ -56,9 +47,6 @@ public final class IntegerPartitionTest {
         .collect(toList());
 
     assertThat(partition).isEmpty();
-
-    System.out.println("Integer partitions of 0:");
-    partition.stream().forEach(System.out::println);
   }
 
   @Test
@@ -68,9 +56,6 @@ public final class IntegerPartitionTest {
         .collect(toList());
 
     assertThat(partition).isEmpty();
-
-    System.out.println("Integer partitions of -1:");
-    partition.stream().forEach(System.out::println);
   }
 
   @Test
@@ -79,7 +64,6 @@ public final class IntegerPartitionTest {
 
     assertThat(partition).isNotNull();
     assertThat(partition.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, partition::remove);
   }

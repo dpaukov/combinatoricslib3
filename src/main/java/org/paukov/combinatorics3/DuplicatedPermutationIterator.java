@@ -16,53 +16,40 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
   private final int length;
   private final int[] data;
-
+  private final List<T> initialOrderedPermutation;
   private List<T> currentPermutation;
   private long currentIndex;
-
-  private boolean firstIteration = true;
-  private final List<T> initialOrderedPermutation;
+  private boolean isFirstIteration = true;
 
   DuplicatedPermutationIterator(SimplePermutationGenerator<T> generator) {
-
-    length = generator.originalVector.size();
-    data = new int[length];
+    this.length = generator.originalVector.size();
+    this.data = new int[length];
 
     List<T> originalVector = generator.originalVector;
-    List<T> initialPermutation = new ArrayList<>();
 
     // Create a set of the initial data
     Set<T> initialSet = new LinkedHashSet<>(originalVector);
+    this.initialOrderedPermutation = new ArrayList<>(initialSet);
+    List<T> initialPermutation = new ArrayList<>();
 
-    // Create internal data
     int dataValue = 0;
     int dataIndex = 0;
-
-    initialOrderedPermutation = new ArrayList<>(initialSet);
-
     for (T value : initialOrderedPermutation) {
-
       dataValue++;
-
       if (!initialPermutation.contains(value)) {
-        // Determine how many duplicates of the value in the original
-        // vector
+        // Determine how many duplicates of the value in the original vector.
         int count = intCountElements(originalVector, value);
-
         for (int countIndex = 0; countIndex < count; countIndex++) {
-          data[dataIndex++] = dataValue;
+          this.data[dataIndex++] = dataValue;
           initialPermutation.add(value);
         }
       }
     }
 
-    currentIndex = 0;
-    currentPermutation = new ArrayList<>();
-
+    this.currentIndex = 0;
+    this.currentPermutation = new ArrayList<>();
     for (int i = 0; i < length; i++) {
-      int index = data[i] - 1;
-      currentPermutation.add(initialOrderedPermutation
-          .get(index));
+      this.currentPermutation.add(initialOrderedPermutation.get(data[i] - 1));
     }
   }
 
@@ -78,19 +65,17 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
   @Override
   public boolean hasNext() {
-    return !isFinished() || firstIteration;
+    return !isFinished() || isFirstIteration;
   }
 
   @Override
   public List<T> next() {
-
-    if (firstIteration) {
-      firstIteration = false;
+    if (isFirstIteration) {
+      isFirstIteration = false;
       return currentPermutation;
     }
 
     int k = data.length - 2;
-
     while (data[k] >= data[k + 1]) {
       k--;
     }
@@ -100,6 +85,7 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
       l--;
     }
     swap(data, k, l);
+
     int newLength = data.length - (k + 1);
     for (int i = 0; i < newLength / 2; i++) {
       swap(data, k + 1 + i, data.length - i - 1);
@@ -107,11 +93,8 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
 
     currentIndex++;
     currentPermutation = new ArrayList<>();
-
     for (int i = 0; i < length; i++) {
-      int index = data[i] - 1;
-      currentPermutation.add(initialOrderedPermutation
-          .get(index));
+      currentPermutation.add(initialOrderedPermutation.get(data[i] - 1));
     }
 
     return currentPermutation;
@@ -129,10 +112,10 @@ class DuplicatedPermutationIterator<T> implements Iterator<List<T>> {
   }
 
   private boolean isFinished() {
-    int k = data.length - 2;
-    while (data[k] >= data[k + 1]) {
-      k--;
-      if (k < 0) {
+    int index = data.length - 2;
+    while (data[index] >= data[index + 1]) {
+      index--;
+      if (index < 0) {
         return true;
       }
     }

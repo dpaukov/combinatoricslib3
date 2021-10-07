@@ -21,19 +21,15 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   private final SimpleSubSetGenerator<T> generator;
   private final int length;
 
-  private final List<T> currentSubSet;
+  private final List<T> currentSubSet = new ArrayList<>();
   private long currentIndex;
 
-  /**
-   * internal bit vector, representing the subset
-   */
+  /** Internal bit vector, representing the subset. */
   private final int[] bitVector;
-
 
   SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
     this.generator = generator;
     this.length = generator.originalVector.size();
-    this.currentSubSet = new ArrayList<>();
     this.bitVector = new int[length + 2];
     this.currentIndex = 0;
   }
@@ -55,12 +51,11 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
    */
   @Override
   public List<T> next() {
-    currentIndex++;
-    currentSubSet.clear();
+    this.currentIndex++;
+    this.currentSubSet.clear();
     for (int index = 1; index <= length; index++) {
       if (bitVector[index] == 1) {
-        T value = this.generator.originalVector.get(index - 1);
-        currentSubSet.add(value);
+        currentSubSet.add(this.generator.originalVector.get(index - 1));
       }
     }
     int i = 1;

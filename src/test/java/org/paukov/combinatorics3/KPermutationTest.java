@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2021 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2021 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -24,10 +23,6 @@ public final class KPermutationTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k2-permutations of (1, 2, 3):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 2);
     assertThat(permutations.get(1)).containsExactly(2, 1);
     assertThat(permutations.get(2)).containsExactly(1, 3);
@@ -45,17 +40,13 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("k1-permutations of (1):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsOnly(1);
   }
 
   @Test
   public void test_k_0_of_0_permutation() {
     List<List<Integer>> permutations =
-        Generator.permutation(new Integer[]{})
+        Generator.<Integer>permutation()
             .k(0)
             .stream()
             .collect(toList());
@@ -72,10 +63,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("k2-permutations of (a, a, b):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a");
     assertThat(permutations.get(1)).containsExactly("a", "b");
     assertThat(permutations.get(2)).containsExactly("b", "a");
@@ -90,10 +77,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k2-permutations of (a, a, b) ignore duplicates:");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a");
     assertThat(permutations.get(1)).containsExactly("a", "a");
     assertThat(permutations.get(2)).containsExactly("a", "b");
@@ -111,10 +94,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(2);
-
-    System.out.println("k1-permutations of (a, a, b):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a");
     assertThat(permutations.get(1)).containsExactly("b");
   }
@@ -128,10 +107,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("k1-permutations of (a, a, b) ignore duplicates:");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a");
     assertThat(permutations.get(1)).containsExactly("a");
     assertThat(permutations.get(2)).containsExactly("b");
@@ -146,10 +121,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("k2-permutations of (a, a, a):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a");
   }
 
@@ -162,10 +133,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k2-permutations of (a, a, a) ignore duplicates:");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a");
     assertThat(permutations.get(1)).containsExactly("a", "a");
     assertThat(permutations.get(2)).containsExactly("a", "a");
@@ -184,10 +151,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k3-permutations of (a, b, c):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "b", "c");
     assertThat(permutations.get(1)).containsExactly("a", "c", "b");
     assertThat(permutations.get(2)).containsExactly("c", "a", "b");
@@ -205,10 +168,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k2-permutations of (a, b, c):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "b");
     assertThat(permutations.get(1)).containsExactly("b", "a");
     assertThat(permutations.get(2)).containsExactly("a", "c");
@@ -226,10 +185,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("k3-permutations of (a, b, c):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a");
     assertThat(permutations.get(1)).containsExactly("b");
     assertThat(permutations.get(2)).containsExactly("c");
@@ -269,10 +224,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("k2-permutations of (x, x^2, x+1):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("x", "x^2");
     assertThat(permutations.get(1)).containsExactly("x^2", "x");
     assertThat(permutations.get(2)).containsExactly("x", "x+1");
@@ -290,10 +241,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(12);
-
-    System.out.println("k3-permutations of (1, 2, 2, 3):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 2, 2);
     assertThat(permutations.get(1)).containsExactly(2, 1, 2);
     assertThat(permutations.get(2)).containsExactly(2, 2, 1);
@@ -317,10 +264,6 @@ public final class KPermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(24);
-
-    System.out.println("k3-permutations of (1, 2, 2, 3):");
-    permutations.forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 2, 2);
     assertThat(permutations.get(1)).containsExactly(1, 2, 2);
     assertThat(permutations.get(2)).containsExactly(2, 1, 2);

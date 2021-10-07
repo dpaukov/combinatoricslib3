@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -23,10 +22,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(9);
-
-    System.out.println("Simple permutations with repetitions of (1, 2, 3):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 1);
     assertThat(permutations.get(1)).containsExactly(2, 1);
     assertThat(permutations.get(2)).containsExactly(3, 1);
@@ -36,7 +31,6 @@ public final class PermutationsWithRepetitionsTest {
     assertThat(permutations.get(6)).containsExactly(1, 3);
     assertThat(permutations.get(7)).containsExactly(2, 3);
     assertThat(permutations.get(8)).containsExactly(3, 3);
-
   }
 
   @Test
@@ -47,14 +41,9 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("One permutations with repetitions of (1, 2, 3):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1);
     assertThat(permutations.get(1)).containsExactly(2);
     assertThat(permutations.get(2)).containsExactly(3);
-
   }
 
 
@@ -66,12 +55,7 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("Zero permutations with repetitions of (1, 2, 3):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).isEmpty();
-
   }
 
   @Test
@@ -82,10 +66,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("One permutations with repetitions of ('a'):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a");
   }
 
@@ -98,10 +78,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("Two permutations with repetitions of ('a'):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a");
   }
 
@@ -113,10 +89,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("Zero permutations with repetitions of ('a'):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).isEmpty();
   }
 
@@ -130,10 +102,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(24);
-
-    System.out
-        .println("Three permutations with repetitions of ('a', 'b', 'c', 'd') without duplicates:");
-    permutations.stream().forEach(System.out::println);
   }
 
 
@@ -145,10 +113,6 @@ public final class PermutationsWithRepetitionsTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(8);
-
-    System.out.println("Three tuples of (0, 1):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(0, 0, 0);
     assertThat(permutations.get(1)).containsExactly(1, 0, 0);
     assertThat(permutations.get(2)).containsExactly(0, 1, 0);
@@ -167,7 +131,6 @@ public final class PermutationsWithRepetitionsTest {
 
     assertThat(permutations).isNotNull();
     assertThat(permutations.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
@@ -183,5 +146,4 @@ public final class PermutationsWithRepetitionsTest {
     assertThat(permutations.next()).containsExactly(1, 1);
     assertThat(permutations.toString()).isEqualTo("PermutationWithRepetitionIterator=[#1, [1, 1]]");
   }
-
 }

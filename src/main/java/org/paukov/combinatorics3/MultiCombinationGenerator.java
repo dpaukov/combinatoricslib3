@@ -13,16 +13,14 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * This generator generates multi-combinations (with repetitions) from specified
- * core set by specified length. Core set and length are specified in the
- * constructor of generator
+ * This generator generates multi-combinations (with repetitions) from specified core set by
+ * specified length. Core set and length are specified in the constructor of generator
  * <p>
- * A k-multicombination or k-combination with repetition of a finite set S is
- * given by a sequence of k not necessarily distinct elements of S, where order
- * is not taken into account.
+ * A k-multicombination or k-combination with repetition of a finite set S is given by a sequence of
+ * k not necessarily distinct elements of S, where order is not taken into account.
  * <p>
- * As an example. Suppose there are 2 types of fruits (apple and orange) at a
- * grocery store, and you want to buy 3 pieces of fruit. You could select
+ * As an example. Suppose there are 2 types of fruits (apple and orange) at a grocery store, and you
+ * want to buy 3 pieces of fruit. You could select
  * <ul>
  * <li>(apple, apple, apple)
  * <li>(apple, apple, orange)
@@ -65,8 +63,7 @@ class MultiCombinationGenerator<T> implements IGenerator<List<T>> {
   final List<T> originalVector;
   final int combinationLength;
 
-  MultiCombinationGenerator(Collection<T> originalVector,
-      int combinationsLength) {
+  MultiCombinationGenerator(Collection<T> originalVector, int combinationsLength) {
     this.originalVector = new ArrayList<>(originalVector);
     this.combinationLength = Math.max(combinationsLength, 0);
   }

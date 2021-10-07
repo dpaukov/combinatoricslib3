@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -49,7 +48,6 @@ public final class SimpleCombinationTest {
     assertThat(combinations.get(0)).containsExactly(0, 1);
     assertThat(combinations.get(1)).containsExactly(0, 2);
     assertThat(combinations.get(2)).containsExactly(1, 2);
-
   }
 
   @Test

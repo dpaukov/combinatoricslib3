@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -26,10 +25,6 @@ public final class SimpleSubSetTest {
             .collect(toList());
 
     assertThat(subset).hasSize(8);
-
-    System.out.println("Simple subset:");
-    subset.stream().forEach(System.out::println);
-
     assertThat(subset.get(0)).isEmpty();
     assertThat(subset.get(1)).containsOnly("red");
     assertThat(subset.get(2)).containsOnly("black");
@@ -43,16 +38,12 @@ public final class SimpleSubSetTest {
   @Test
   public void test_empty_sub_set() {
     List<List<String>> subset =
-        Generator.subset(new String[0])
+        Generator.<String>subset()
             .simple()
             .stream()
             .collect(toList());
 
     assertThat(subset).hasSize(1);
-
-    System.out.println("Empty subset:");
-    subset.stream().forEach(System.out::println);
-
     assertThat(subset.get(0)).isEmpty();
   }
 
@@ -66,10 +57,6 @@ public final class SimpleSubSetTest {
             .collect(toList());
 
     assertThat(subset).hasSize(32);
-
-    System.out.println("Simple subset with duplicates:");
-    subset.stream().forEach(System.out::println);
-
     assertThat(subset.get(0)).isEmpty();
     assertThat(subset.get(1)).containsOnly("A");
     assertThat(subset.get(2)).containsOnly("A");
@@ -115,10 +102,6 @@ public final class SimpleSubSetTest {
             .collect(toList());
 
     assertThat(subset).hasSize(18);
-
-    System.out.println("Simple distinct subset with duplicates:");
-    subset.stream().forEach(System.out::println);
-
     assertThat(subset.get(0)).isEmpty();
     assertThat(subset.get(1)).containsOnly("A");
     assertThat(subset.get(2)).containsExactly("A", "A");
@@ -148,7 +131,6 @@ public final class SimpleSubSetTest {
 
     assertThat(subset).isNotNull();
     assertThat(subset.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, subset::remove);
   }
