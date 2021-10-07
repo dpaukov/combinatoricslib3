@@ -7,7 +7,10 @@ package org.paukov.combinatorics3;
 import java.util.Collection;
 import java.util.List;
 
-
+/**
+ * Generator for iterating over the combinations.
+ * @param <T> Type of the elements of the combinations
+ */
 public class CombinationGenerator<T> {
 
   final Collection<T> originalVector;
