@@ -17,17 +17,12 @@ public final class CartesianProductTest {
 
   @Test
   public void test_cartesian_product_number() {
-
     List<List<Integer>> cartesianProduct =
         cartesianProduct(asList(1, 2, 3), asList(4, 5, 6))
             .stream()
             .collect(toList());
 
     assertThat(cartesianProduct).hasSize(9);
-
-    System.out.println("List cartesian product (number) - (1, 2, 3), (4, 5, 6)");
-    cartesianProduct.stream().forEach(System.out::println);
-
     assertThat(cartesianProduct.get(0)).containsSequence(1, 4);
     assertThat(cartesianProduct.get(1)).containsSequence(1, 5);
     assertThat(cartesianProduct.get(2)).containsSequence(1, 6);
@@ -41,7 +36,6 @@ public final class CartesianProductTest {
 
   @Test
   public void test_cartesian_product_string() {
-
     List<List<String>> cartesianProduct = cartesianProduct(
         asList("banana", "apple"),
         asList("melon", "orange", "lemon"),
@@ -50,12 +44,6 @@ public final class CartesianProductTest {
         .collect(Collectors.<List<String>>toList());
 
     assertThat(cartesianProduct).hasSize(12);
-
-    System.out.print("List cartesian product (string) - ");
-    System.out.println(
-        "(\"banana\", \"apple\"), (\"melon\", \"orange\", \"lemon\"), (\"peach\", \"blueberry\")");
-    cartesianProduct.stream().forEach(System.out::println);
-
     assertThat(cartesianProduct.get(0)).containsSequence("banana", "melon", "peach");
     assertThat(cartesianProduct.get(1)).containsSequence("banana", "melon", "blueberry");
     assertThat(cartesianProduct.get(2)).containsSequence("banana", "orange", "peach");
@@ -97,8 +85,7 @@ public final class CartesianProductTest {
 
     assertThat(cartesianProduct).isNotNull();
     assertThat(cartesianProduct.hasNext()).isTrue();
-
-    // this method should throw a UnsupportedOperationException
+    // This method should throw a UnsupportedOperationException.
     assertThrows(UnsupportedOperationException.class, cartesianProduct::remove);
   }
 
@@ -110,8 +97,7 @@ public final class CartesianProductTest {
     assertThat(cartesianProduct).isNotNull();
     assertThat(cartesianProduct.hasNext()).isTrue();
     assertThat(cartesianProduct.next()).containsExactly(1, 4);
-
-    // No more cartesian product
+    // No more cartesian product.
     assertThrows(RuntimeException.class, cartesianProduct::next);
   }
 }
