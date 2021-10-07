@@ -25,10 +25,6 @@ public final class SimpleCombinationTest {
             .collect(toList());
 
     assertThat(combinations).hasSize(10);
-
-    System.out.println("Simple combinations 3 of 5 colors:");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsSequence("red", "black", "white");
     assertThat(combinations.get(1)).containsSequence("red", "black", "green");
     assertThat(combinations.get(2)).containsSequence("red", "black", "blue");
@@ -50,10 +46,6 @@ public final class SimpleCombinationTest {
         .collect(toList());
 
     assertThat(combinations).hasSize(3);
-
-    System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly(0, 1);
     assertThat(combinations.get(1)).containsExactly(0, 2);
     assertThat(combinations.get(2)).containsExactly(1, 2);
@@ -69,10 +61,6 @@ public final class SimpleCombinationTest {
         .collect(toList());
 
     assertThat(combinations).hasSize(1);
-
-    System.out.println("Simple combinations 0 of 5 colors:");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).isEmpty();
   }
 
@@ -85,14 +73,9 @@ public final class SimpleCombinationTest {
             .collect(toList());
 
     assertThat(combinations).hasSize(3);
-
-    System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly(0, 1);
     assertThat(combinations.get(1)).containsExactly(0, 2);
     assertThat(combinations.get(2)).containsExactly(1, 2);
-
   }
 
   @Test
@@ -104,14 +87,9 @@ public final class SimpleCombinationTest {
             .collect(toList());
 
     assertThat(combinations).hasSize(3);
-
-    System.out.println("Simple combinations 2 of the integers (0, 1, 2):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly(0, 1);
     assertThat(combinations.get(1)).containsExactly(0, 2);
     assertThat(combinations.get(2)).containsExactly(1, 2);
-
   }
 
 
@@ -124,7 +102,6 @@ public final class SimpleCombinationTest {
 
     assertThat(combinations).isNotNull();
     assertThat(combinations.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, combinations::remove);
   }

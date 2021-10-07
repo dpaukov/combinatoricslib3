@@ -1,6 +1,5 @@
 /**
- * Combinatorics Library 3
- * Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
+ * Combinatorics Library 3 Copyright 2009-2016 Dmytro Paukov d.paukov@gmail.com
  */
 package org.paukov.combinatorics3;
 
@@ -17,17 +16,12 @@ public final class MultiCombinationTest {
 
   @Test
   public void test_multi_3_combination_of_3_symbols() {
-
     List<List<String>> combinations = Generator.combination("A", "B", "C")
         .multi(3)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(10);
-
-    System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly("A", "A", "A");
     assertThat(combinations.get(1)).containsExactly("A", "A", "B");
     assertThat(combinations.get(2)).containsExactly("A", "A", "C");
@@ -38,42 +32,30 @@ public final class MultiCombinationTest {
     assertThat(combinations.get(7)).containsExactly("B", "B", "C");
     assertThat(combinations.get(8)).containsExactly("B", "C", "C");
     assertThat(combinations.get(9)).containsExactly("C", "C", "C");
-
   }
 
   @Test
   public void test_multi_3_combination_of_2_symbols() {
-
     List<List<String>> combinations = Generator.combination("A", "B")
         .multi(3)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(4);
-
-    System.out.println("Multi combinations 3 of 2 symbols (A,B):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly("A", "A", "A");
     assertThat(combinations.get(1)).containsExactly("A", "A", "B");
     assertThat(combinations.get(2)).containsExactly("A", "B", "B");
     assertThat(combinations.get(3)).containsExactly("B", "B", "B");
-
   }
 
   @Test
   public void test_multi_3_combination_of_3_symbols_from_list() {
-
     List<List<String>> combinations = Generator.combination(asList("A", "B", "C"))
         .multi(3)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(10);
-
-    System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly("A", "A", "A");
     assertThat(combinations.get(1)).containsExactly("A", "A", "B");
     assertThat(combinations.get(2)).containsExactly("A", "A", "C");
@@ -84,23 +66,17 @@ public final class MultiCombinationTest {
     assertThat(combinations.get(7)).containsExactly("B", "B", "C");
     assertThat(combinations.get(8)).containsExactly("B", "C", "C");
     assertThat(combinations.get(9)).containsExactly("C", "C", "C");
-
   }
 
 
   @Test
   public void test_multi_3_combination_of_3_symbols_from_array() {
-
-    List<List<String>> combinations = Generator.combination("A", "B", "C")
+    List<List<String>> combinations = Generator.combination(new String[]{"A", "B", "C"})
         .multi(3)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(10);
-
-    System.out.println("Multi combinations 3 of 3 symbols (A,B,C):");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly("A", "A", "A");
     assertThat(combinations.get(1)).containsExactly("A", "A", "B");
     assertThat(combinations.get(2)).containsExactly("A", "A", "C");
@@ -111,13 +87,11 @@ public final class MultiCombinationTest {
     assertThat(combinations.get(7)).containsExactly("B", "B", "C");
     assertThat(combinations.get(8)).containsExactly("B", "C", "C");
     assertThat(combinations.get(9)).containsExactly("C", "C", "C");
-
   }
 
 
   @Test
   public void test_multi_0_combination_of_5_colors() {
-
     List<List<String>> combinations = Generator
         .combination("red", "black", "white", "green", "blue")
         .multi(0)
@@ -125,64 +99,47 @@ public final class MultiCombinationTest {
         .collect(toList());
 
     assertThat(combinations).hasSize(1);
-
-    System.out.println("Multi combinations 0 of 5 colors:");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).isEmpty();
   }
 
   @Test
   public void test_multi_negative_combination_of_3_colors() {
-
     List<List<String>> combinations = Generator.combination("red", "black", "white")
         .multi(-2)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(1);
-
-    System.out.println("Multi combinations -2 of 3 colors:");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).isEmpty();
   }
 
 
   @Test
   public void test_multi_3_combination_of_1_colors() {
-
     List<List<String>> combinations = Generator.combination("red")
         .multi(3)
         .stream()
         .collect(toList());
 
     assertThat(combinations).hasSize(1);
-
-    System.out.println("Multi combinations 3 of 1 color 'red':");
-    combinations.stream().forEach(System.out::println);
-
     assertThat(combinations.get(0)).containsExactly("red", "red", "red");
   }
 
 
   @Test
   public void test_multi_combination_iterator_remove_operation() {
-
     Iterator<List<Integer>> combinations = Generator.combination(asList(0, 1, 2))
         .multi(2)
         .iterator();
 
     assertThat(combinations).isNotNull();
     assertThat(combinations.hasNext()).isTrue();
-
-    // this method should throw a UnsupportedOperationException
+    // This method should throw a UnsupportedOperationException.
     assertThrows(UnsupportedOperationException.class, combinations::remove);
   }
 
   @Test
   public void test_multi_combination_iterator_toString() {
-
     Iterator<List<Integer>> combinations = Generator.combination(asList(0, 1, 2))
         .multi(2)
         .iterator();
