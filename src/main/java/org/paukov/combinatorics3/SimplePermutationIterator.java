@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 /**
  * Iterator for the permutation generator
  *
@@ -24,72 +23,60 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
   private final int length;
   private long currentIndex;
 
-  private final int[] pZ;
-  private final int[] pP;
-  private final int[] pD;
+  private final int[] array1;
+  private final int[] array2;
+  private final int[] array3;
 
-  private int m;
-  private int w;
-  private int pm;
-  private int dm;
-  private int zpm;
+  private int positionIndex;
 
   SimplePermutationIterator(SimplePermutationGenerator<T> generator) {
     this.generator = generator;
-    length = generator.originalVector.size();
-    currentPermutation = new ArrayList<>(generator.originalVector);
-    pZ = new int[length + 2];
-    pP = new int[length + 2];
-    pD = new int[length + 2];
-
-    currentIndex = 0;
-
-    m = 0;
-    w = 0;
-    pm = 0;
-    dm = 0;
-    zpm = 0;
+    this.length = generator.originalVector.size();
+    this.currentPermutation = new ArrayList<>(generator.originalVector);
+    this.array1 = new int[length + 2];
+    this.array2 = new int[length + 2];
+    this.array3 = new int[length + 2];
+    this.currentIndex = 0;
 
     for (int i = 1; i <= length; i++) {
-      pP[i] = i;
-      pZ[i] = i;
-      pD[i] = -1;
+      this.array2[i] = i;
+      this.array1[i] = i;
+      this.array3[i] = -1;
     }
-    pD[1] = 0;
-    pZ[length + 1] = m = length + 1;
-    pZ[0] = pZ[length + 1];
+    this.array3[1] = 0;
+    this.array1[length + 1] = this.positionIndex = this.length + 1;
+    this.array1[0] = this.array1[this.length + 1];
   }
-
 
   @Override
   public boolean hasNext() {
-    return m != 1;
+    return positionIndex != 1;
   }
 
 
   @Override
   public List<T> next() {
     for (int i = 1; i <= length; i++) {
-      int index = pZ[i] - 1;
+      int index = array1[i] - 1;
       currentPermutation.set(i - 1, generator.originalVector.get(index));
     }
-    m = length;
-    while (pZ[pP[m] + pD[m]] > m) {
-      pD[m] = -pD[m];
-      m--;
+    positionIndex = length;
+    while (array1[array2[positionIndex] + array3[positionIndex]] > positionIndex) {
+      array3[positionIndex] = -array3[positionIndex];
+      positionIndex--;
     }
-    pm = pP[m];
-    dm = pm + pD[m];
-    w = pZ[pm];
-    pZ[pm] = pZ[dm];
-    pZ[dm] = w;
-    zpm = pZ[pm];
-    w = pP[zpm];
-    pP[zpm] = pm;
-    pP[m] = w;
+    int array2value = array2[positionIndex];
+    int array3value = array2value + array3[positionIndex];
+    int array1value = array1[array2value];
+    array1[array2value] = array1[array3value];
+    array1[array3value] = array1value;
+    int tmp = array1[array2value];
+    array1value = array2[tmp];
+    array2[tmp] = array2value;
+    array2[positionIndex] = array1value;
     currentIndex++;
 
-    return new ArrayList<>(currentPermutation);
+    return new ArrayList<>(this.currentPermutation);
   }
 
   @Override
@@ -100,6 +87,6 @@ class SimplePermutationIterator<T> implements Iterator<List<T>> {
 
   @Override
   public String toString() {
-    return "SimplePermutationIterator=[#" + currentIndex + ", " + currentPermutation + "]";
+    return "SimplePermutationIterator=[#" + this.currentIndex + ", " + this.currentPermutation + "]";
   }
 }

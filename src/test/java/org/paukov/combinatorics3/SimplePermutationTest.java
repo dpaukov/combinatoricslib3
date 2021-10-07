@@ -4,7 +4,6 @@
  */
 package org.paukov.combinatorics3;
 
-
 import static java.util.stream.Collectors.toList;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,10 +24,6 @@ public final class SimplePermutationTest {
         .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("Simple permutations of (1, 2, 3):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 2, 3);
     assertThat(permutations.get(1)).containsExactly(1, 3, 2);
     assertThat(permutations.get(2)).containsExactly(3, 1, 2);
@@ -46,10 +41,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("Simple one permutations of (1):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsOnly(1);
   }
 
@@ -73,10 +64,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("Identical permutations of (a, a, b):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a", "b");
     assertThat(permutations.get(1)).containsExactly("a", "b", "a");
     assertThat(permutations.get(2)).containsExactly("b", "a", "a");
@@ -92,10 +79,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(1);
-
-    System.out.println("Identical permutations of (a, a, a):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a", "a");
   }
 
@@ -108,10 +91,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(3);
-
-    System.out.println("Identical permutations of (a, a, b):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a", "b");
     assertThat(permutations.get(1)).containsExactly("a", "b", "a");
     assertThat(permutations.get(2)).containsExactly("b", "a", "a");
@@ -126,10 +105,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("Identical permutations of (a, a, b):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "a", "b");
     assertThat(permutations.get(1)).containsExactly("a", "b", "a");
     assertThat(permutations.get(2)).containsExactly("b", "a", "a");
@@ -148,10 +123,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("Identical permutations of (x, x, x):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("x", "x", "x");
     assertThat(permutations.get(1)).containsExactly("x", "x", "x");
     assertThat(permutations.get(2)).containsExactly("x", "x", "x");
@@ -169,10 +140,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("Identical permutations of (a, b, c):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("a", "b", "c");
     assertThat(permutations.get(1)).containsExactly("a", "c", "b");
     assertThat(permutations.get(2)).containsExactly("c", "a", "b");
@@ -190,10 +157,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(6);
-
-    System.out.println("Identical permutations of (x, x^2, x+1):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly("x", "x^2", "x+1");
     assertThat(permutations.get(1)).containsExactly("x", "x+1", "x^2");
     assertThat(permutations.get(2)).containsExactly("x+1", "x", "x^2");
@@ -211,10 +174,6 @@ public final class SimplePermutationTest {
             .collect(toList());
 
     assertThat(permutations).hasSize(12);
-
-    System.out.println("Identical permutations of (1, 2, 2, 3):");
-    permutations.stream().forEach(System.out::println);
-
     assertThat(permutations.get(0)).containsExactly(1, 2, 2, 3);
     assertThat(permutations.get(1)).containsExactly(1, 2, 3, 2);
     assertThat(permutations.get(2)).containsExactly(1, 3, 2, 2);
@@ -238,7 +197,6 @@ public final class SimplePermutationTest {
 
     assertThat(permutations).isNotNull();
     assertThat(permutations.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
@@ -265,7 +223,6 @@ public final class SimplePermutationTest {
 
     assertThat(permutations).isNotNull();
     assertThat(permutations.hasNext()).isTrue();
-
     // this method should throw a UnsupportedOperationException
     assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
@@ -284,5 +241,4 @@ public final class SimplePermutationTest {
     assertThat(permutations.next()).containsExactly(2, 1, 2);
     assertThat(permutations.toString()).isEqualTo("DuplicatedPermutationIterator=[#2, [2, 1, 2]]");
   }
-
 }
