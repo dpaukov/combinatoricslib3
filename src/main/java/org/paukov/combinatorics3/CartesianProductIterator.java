@@ -18,58 +18,56 @@ import java.util.List;
  */
 class CartesianProductIterator<T> implements Iterator<List<T>> {
 
-  private final int vectorSize;
+  private final CartesianProductGenerator<T> generator;
   private final int[] indices;
-  private final List<List<T>> vector;
-  private int nextIndex;
+
   private List<T> current;
-
+  private int nextIndex;
   private int index = 0;
-
   private boolean hasEmptyList = false;
 
   CartesianProductIterator(CartesianProductGenerator<T> generator) {
-    vector = generator.originalVector;
-    vectorSize = generator.originalVector.size();
+    this.generator = generator;
 
-    // start from the last index
-    nextIndex = vectorSize - 1;
+    // Start from the last index.
+    int vectorSize = this.generator.originalVector.size();
+    this.nextIndex = vectorSize - 1;
 
-    // for tracking the indices of the product
-    indices = new int[this.vectorSize];
+    // For tracking the indices of the product.
+    this.indices = new int[vectorSize];
 
-    // for the tracking the lengths of the lists
+    // For tracking the lengths of the lists.
     for (int i = 0; i < vectorSize; i++) {
-      hasEmptyList = hasEmptyList || vector.get(i).size() == 0;
+      this.hasEmptyList = this.hasEmptyList || this.generator.originalVector.get(i).size() == 0;
     }
   }
 
   /**
-   * Returns true if all cartesian products were iterated, otherwise false
+   * Returns true if all cartesian products were iterated, otherwise false.
    */
   @Override
   public boolean hasNext() {
-    return !hasEmptyList && nextIndex >= 0;
+    return !this.hasEmptyList && this.nextIndex >= 0;
   }
 
   /**
-   * Moves to the next Cartesian product
+   * Moves to the next Cartesian product.
    */
   @Override
   public List<T> next() {
-    if (index == 0) {
+    if (this.index == 0) {
       return generateCartesianProduct();
     }
 
-    if (nextIndex < 0) {
+    if (this.nextIndex < 0) {
       throw new RuntimeException("No more cartesian product.");
     }
 
-    // Move to the next element
-    indices[nextIndex]++;
+    // Move to the next element.
+    this.indices[this.nextIndex]++;
 
-    for (int i = nextIndex + 1; i < vectorSize; i++) {
-      indices[i] = 0;
+    for (int i = this.nextIndex + 1; i < this.generator.originalVector.size(); i++) {
+      this.indices[i] = 0;
     }
 
     return generateCartesianProduct();
@@ -82,29 +80,30 @@ class CartesianProductIterator<T> implements Iterator<List<T>> {
 
   @Override
   public String toString() {
-    return "CartesianProductIterator=[#" + index + ", " + current + "]";
+    return "CartesianProductIterator=[#" + this.index + ", " + this.current + "]";
   }
 
   private List<T> generateCartesianProduct() {
-    current = new ArrayList<>();
-    for (int i = 0; i < vectorSize; i++) {
-      current.add(vector.get(i).get(indices[i]));
+    this.current = new ArrayList<>();
+    for (int i = 0; i < this.generator.originalVector.size(); i++) {
+      this.current.add(this.generator.originalVector.get(i).get(indices[i]));
     }
 
     // After generating the current, check if has still next cartesian product,
     // this will be used by #hasNext function
     checkIfHasNextCartesianProduct();
-    index++;
+    this.index++;
 
-    return current;
+    return this.current;
   }
 
   private void checkIfHasNextCartesianProduct() {
-    // Check if has still cartesian product by finding an array that has more elements left
-    nextIndex = vectorSize - 1;
-    while (nextIndex >= 0 &&
-        indices[nextIndex] + 1 >= vector.get(nextIndex).size()) {
-      nextIndex--;
+    // Check if it still has a cartesian product by finding an array that has more elements left.
+    this.nextIndex = this.generator.originalVector.size() - 1;
+    while (this.nextIndex >= 0 &&
+        this.indices[this.nextIndex] + 1 >= this.generator.originalVector.get(this.nextIndex)
+            .size()) {
+      this.nextIndex--;
     }
   }
 }
