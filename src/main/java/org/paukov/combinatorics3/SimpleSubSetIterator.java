@@ -5,6 +5,7 @@
 package org.paukov.combinatorics3;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,12 +26,12 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   private long currentIndex;
 
   /** Internal bit vector, representing the subset. */
-  private final int[] bitVector;
+  private final BitSet bitVector;
 
   SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
     this.generator = generator;
     this.length = generator.originalVector.size();
-    this.bitVector = new int[length + 2];
+    this.bitVector = new BitSet(length + 2);
     this.currentIndex = 0;
   }
 
@@ -41,7 +42,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
    */
   @Override
   public boolean hasNext() {
-    return bitVector[length + 1] != 1;
+    return !bitVector.get(length + 1);
   }
 
   /**
@@ -54,16 +55,16 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
     this.currentIndex++;
     this.currentSubSet.clear();
     for (int index = 1; index <= length; index++) {
-      if (bitVector[index] == 1) {
+      if (bitVector.get(index)) {
         currentSubSet.add(this.generator.originalVector.get(index - 1));
       }
     }
     int i = 1;
-    while (bitVector[i] == 1) {
-      bitVector[i] = 0;
+    while (bitVector.get(i)) {
+      bitVector.clear(i);
       i++;
     }
-    bitVector[i] = 1;
+    bitVector.set(i);
 
     return new ArrayList<>(currentSubSet);
   }
