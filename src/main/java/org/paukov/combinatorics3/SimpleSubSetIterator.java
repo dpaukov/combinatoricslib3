@@ -22,7 +22,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   private final SimpleSubSetGenerator<T> generator;
   private final int length;
 
-  private final List<T> currentSubSet = new ArrayList<>();
+  private final List<T> currentSubSet;
   private long currentIndex;
 
   /** Internal bit vector, representing the subset. */
@@ -31,6 +31,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   SimpleSubSetIterator(final SimpleSubSetGenerator<T> generator) {
     this.generator = generator;
     this.length = generator.originalVector.size();
+    this.currentSubSet = new ArrayList<>(length);
     this.bitVector = new BitSet(length + 2);
     this.currentIndex = 0;
   }
@@ -53,12 +54,25 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   @Override
   public List<T> next() {
     this.currentIndex++;
-    this.currentSubSet.clear();
-    for (int index = 1; index <= length; index++) {
-      if (bitVector.get(index)) {
-        currentSubSet.add(this.generator.originalVector.get(index - 1));
+    List<T> originalVector = this.generator.originalVector;
+    BitSet bitVector = this.bitVector;
+    int subSetSize = currentSubSet.size();
+    int j = 0;
+
+    for (int i = bitVector.nextSetBit(1); i >= 0; i = bitVector.nextSetBit(i + 1)) {
+      T e = originalVector.get(i - 1);
+      if (j < subSetSize) {
+        currentSubSet.set(j++, e);
+      } else {
+        currentSubSet.add(e);
       }
     }
+
+    // Do we have leftovers?
+    if (j < subSetSize) {
+      currentSubSet.subList(j, subSetSize).clear();
+    }
+
     int i = 1;
     while (bitVector.get(i)) {
       bitVector.clear(i);
