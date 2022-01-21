@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -82,6 +83,16 @@ public final class PermutationsWithRepetitionsTest {
   }
 
   @Test
+  public void test_zero_permutation_of_empty_with_repetition() {
+    List<List<Object>> permutations = Generator.permutation(Collections.emptyList())
+        .withRepetitions(0)
+        .stream()
+        .collect(toList());
+
+    assertThat(permutations).isEmpty();
+  }
+
+  @Test
   public void test_zero_permutation_of_one_with_repetition() {
     List<List<String>> permutations = Generator.permutation("a")
         .withRepetitions(0)
@@ -91,7 +102,6 @@ public final class PermutationsWithRepetitionsTest {
     assertThat(permutations).hasSize(1);
     assertThat(permutations.get(0)).isEmpty();
   }
-
 
   @Test
   public void test_filter_permutation_of_with_repetition() {

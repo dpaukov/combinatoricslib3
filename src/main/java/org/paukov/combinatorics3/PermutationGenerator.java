@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.paukov.combinatorics3.EmptyGenerator.emptyGenerator;
+
 public class PermutationGenerator<T> {
 
   final Collection<T> originalVector;
@@ -44,7 +46,9 @@ public class PermutationGenerator<T> {
   }
 
   public IGenerator<List<T>> withRepetitions(int permutationLength) {
-    return new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
+    return originalVector.isEmpty()
+        ? emptyGenerator()
+        : new PermutationWithRepetitionGenerator<>(originalVector, permutationLength);
   }
 
   public enum TreatDuplicatesAs {
