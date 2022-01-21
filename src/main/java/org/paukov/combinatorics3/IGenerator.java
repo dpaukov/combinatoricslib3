@@ -4,7 +4,9 @@
  */
 package org.paukov.combinatorics3;
 
+import java.util.Spliterators;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * This interface is implemented by all generic generators in the library
@@ -15,5 +17,7 @@ import java.util.stream.Stream;
  */
 public interface IGenerator<T> extends Iterable<T> {
 
-  Stream<T> stream();
+  default Stream<T> stream() {
+    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
+  }
 }

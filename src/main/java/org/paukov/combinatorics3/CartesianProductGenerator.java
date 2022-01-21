@@ -57,9 +57,4 @@ class CartesianProductGenerator<T> implements IGenerator<List<T>> {
   public Iterator<List<T>> iterator() {
     return new CartesianProductIterator<>(this);
   }
-
-  @Override
-  public Stream<List<T>> stream() {
-    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-  }
 }
