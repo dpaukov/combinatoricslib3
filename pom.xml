@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dpaukov</groupId>
   <artifactId>combinatoricslib3</artifactId>
-  <version>3.4.0-SNAPSHOT</version>
+  <version>3.3.3-SNAPSHOT</version>
   <name>combinatoricslib3</name>
   <description>Combinatorial objects stream generators for Java 8.</description>
   <licenses>
