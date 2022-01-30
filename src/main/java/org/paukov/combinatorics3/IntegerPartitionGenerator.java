@@ -22,9 +22,4 @@ class IntegerPartitionGenerator implements IGenerator<List<Integer>> {
   public Iterator<List<Integer>> iterator() {
     return new IntegerPartitionIterator(this);
   }
-
-  @Override
-  public Stream<List<Integer>> stream() {
-    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-  }
 }

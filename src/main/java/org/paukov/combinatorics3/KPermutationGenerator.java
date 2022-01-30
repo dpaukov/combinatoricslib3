@@ -92,10 +92,4 @@ class KPermutationGenerator<T> implements IGenerator<List<T>> {
             .simple(PermutationGenerator.TreatDuplicatesAs.IDENTICAL).stream())
         .iterator();
   }
-
-  @Override
-  public Stream<List<T>> stream() {
-    return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), 0), false);
-  }
 }
-
