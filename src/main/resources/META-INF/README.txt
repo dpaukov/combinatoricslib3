@@ -2,6 +2,10 @@
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
 
+CombinatoricsLib 3.4.0 (2022)
+
+
+-----------------------------------------------------------------
 CombinatoricsLib 3.3.3 (Feb 2022)
 - Fixed IndexOutOfBoundsException when generating permutation for empty list
   https://github.com/dpaukov/combinatoricslib3/issues/19
