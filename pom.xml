@@ -9,9 +9,9 @@
   <description>Combinatorial objects stream generators for Java 8.</description>
   <licenses>
     <license>
-      <name>LGPL v3.0</name>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
-      <url>http://www.gnu.org/licenses/lgpl.html</url>
     </license>
   </licenses>
 
