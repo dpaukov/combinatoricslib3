@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator for the cartesian product generator
+ * Iterator for the cartesian product generator.
  *
- * @param <T> Type of the elements in the cartesian product
+ * @param <T> Type of the elements in the cartesian product.
  * @author Julius Iglesia
  * @version 3.0
  * @see CartesianProductGenerator

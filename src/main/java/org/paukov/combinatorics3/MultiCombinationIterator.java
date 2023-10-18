@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Multi-combinations iterator for enumerating combinations with repetitions
+ * Multi-combinations iterator for enumerating combinations with repetitions.
  *
- * @param <T> Type of the elements of the combinations
+ * @param <T> Type of the elements in the combinations.
  * @author Dmytro Paukov
  * @version 3.0
  * @see MultiCombinationGenerator

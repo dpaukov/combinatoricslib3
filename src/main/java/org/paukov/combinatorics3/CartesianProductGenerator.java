@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
  * This generator generates Cartesian product from specified multiple lists. Set of lists is
@@ -44,14 +41,14 @@ class CartesianProductGenerator<T> implements IGenerator<List<T>> {
   /**
    * Constructor
    *
-   * @param vector Vector which is used for generating the Cartesian product
+   * @param vector Vector which is used for generating the Cartesian product.
    */
   CartesianProductGenerator(Collection<List<T>> vector) {
     this.originalVector = new ArrayList<>(vector);
   }
 
   /**
-   * Creates an iterator of the cartesian product
+   * Creates an iterator of the cartesian product.
    */
   @Override
   public Iterator<List<T>> iterator() {

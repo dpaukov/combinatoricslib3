@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Generator for iterating over the combinations.
- * @param <T> Type of the elements of the combinations
+ * @param <T> Type of the elements in the combinations.
  */
 public class CombinationGenerator<T> {
 

@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * This interface is implemented by all generic generators in the library
+ * This interface is implemented by all generic generators in the library.
  *
  * @param <T> The type of the elements
  * @author Dmytro Paukov

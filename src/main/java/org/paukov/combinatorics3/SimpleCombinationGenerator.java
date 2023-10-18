@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
  * This generator generates simple combinations from specified core set by
@@ -47,7 +44,7 @@ import java.util.stream.StreamSupport;
  * </blockquote>
  * <p>
  *
- * @param <T> Type of elements in the combination
+ * @param <T> Type of elements in the combination.
  * @author Dmytro Paukov
  * @version 3.0
  * @see SimpleCombinationIterator

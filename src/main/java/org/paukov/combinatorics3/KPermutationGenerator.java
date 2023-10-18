@@ -7,12 +7,9 @@ package org.paukov.combinatorics3;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
- * This generator generates k-permutations of the specified initial vector
+ * This generator generates k-permutations of the specified initial vector.
  * <p>
  * A k-permutation is an ordering of a subset in the context of all possible orderings. For example,
  * the set containing 2 digits of 123, has six permutations: 12, 21, 13, 31, 23 and 32.
@@ -50,7 +47,7 @@ import java.util.stream.StreamSupport;
  * </blockquote>
  * <p>
  *
- * @param <T> Type of the elements in the permutations
+ * @param <T> Type of the elements in the permutations.
  * @author Charlie Feng
  * @version 3.3.2
  */

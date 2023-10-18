@@ -4,16 +4,12 @@
  */
 package org.paukov.combinatorics3;
 
-
 import static org.paukov.combinatorics3.PermutationGenerator.hasDuplicates;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
  * This generator generates all possible permutations of the specified initial

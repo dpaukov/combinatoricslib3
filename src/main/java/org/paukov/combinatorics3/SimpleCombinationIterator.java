@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator for the simple combination generator
+ * Iterator for the simple combination generator.
  *
- * @param <T> Type of the elements in the combinations
+ * @param <T> Type of the elements in the combinations.
  * @author Dmytro Paukov
  * @version 3.0
  * @see SimpleCombinationGenerator

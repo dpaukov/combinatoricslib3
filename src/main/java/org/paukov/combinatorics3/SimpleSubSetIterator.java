@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator over the all subsets
+ * Iterator over the all subsets.
  *
- * @param <T> Type of the elements of the subsets
+ * @param <T> Type of the elements in the subsets.
  * @author Dmytro Paukov
  * @version 3.1.0
  * @see SubSetGenerator
