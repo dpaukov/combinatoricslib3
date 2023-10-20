@@ -125,6 +125,17 @@ public final class MultiCombinationTest {
     assertThat(combinations.get(0)).containsExactly("red", "red", "red");
   }
 
+  @Test
+  public void test_multi_3_combination_empty() {
+    List<List<Object>> combinations = Generator.combination()
+        .multi(3)
+        .stream()
+        .collect(toList());
+
+    assertThat(combinations).hasSize(1);
+    assertThat(combinations.get(0)).isEmpty();
+  }
+
 
   @Test
   public void test_multi_combination_iterator_remove_operation() {

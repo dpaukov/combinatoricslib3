@@ -52,6 +52,11 @@ class MultiCombinationIterator<T> implements Iterator<List<T>> {
   public List<T> next() {
     this.currentIndex++;
 
+    if (this.bitVector.length == 0) {
+      this.isEnd = true;
+      return new ArrayList<>(this.currentCombination);
+    }
+
     int size = this.generator.originalVector.size();
     for (int i = 0; i < this.generator.combinationLength; i++) {
       int index = bitVector[i];
@@ -61,29 +66,25 @@ class MultiCombinationIterator<T> implements Iterator<List<T>> {
     }
 
     int combinationLength = this.generator.combinationLength-1;
-    if (this.bitVector.length > 0) {
-      bitVector[combinationLength]++;
-      if (bitVector[combinationLength] > size - 1) {
-        int index = -1;
-        for (int i = 1; i <= bitVector.length; i++) {
-          if (combinationLength - i >= 0) {
-            if (bitVector[combinationLength - i] < size - 1) {
-              index = combinationLength - i;
-              break;
-            }
+    bitVector[combinationLength]++;
+    if (bitVector[combinationLength] > size - 1) {
+      int index = -1;
+      for (int i = 1; i <= bitVector.length; i++) {
+        if (combinationLength - i >= 0) {
+          if (bitVector[combinationLength - i] < size - 1) {
+            index = combinationLength - i;
+            break;
           }
-        }
-        if (index != -1) {
-          this.bitVector[index]++;
-          for (int j = 1; j < this.bitVector.length - index; j++) {
-            this.bitVector[index + j] = this.bitVector[index];
-          }
-        } else {
-          this.isEnd = true;
         }
       }
-    } else {
-      this.isEnd = true;
+      if (index != -1) {
+        this.bitVector[index]++;
+        for (int j = 1; j < this.bitVector.length - index; j++) {
+          this.bitVector[index + j] = this.bitVector[index];
+        }
+      } else {
+        this.isEnd = true;
+      }
     }
 
     // return a copy of the current combination

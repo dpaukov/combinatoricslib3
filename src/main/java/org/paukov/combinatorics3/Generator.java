@@ -5,23 +5,28 @@
 package org.paukov.combinatorics3;
 
 
-import java.util.Arrays;
+import static java.util.Arrays.asList;
+
 import java.util.Collection;
 import java.util.List;
 
-
+/**
+ * The main class that contains the methods to create specific supported generators.
+ */
 public class Generator {
 
+  @SafeVarargs
   public static <T> CombinationGenerator<T> combination(T... args) {
-    return new CombinationGenerator<>(Arrays.asList(args));
+    return new CombinationGenerator<>(asList(args));
   }
 
   public static <T> CombinationGenerator<T> combination(Collection<T> collection) {
     return new CombinationGenerator<>(collection);
   }
 
+  @SafeVarargs
   public static <T> PermutationGenerator<T> permutation(T... args) {
-    return new PermutationGenerator<>(Arrays.asList(args));
+    return new PermutationGenerator<>(asList(args));
   }
 
   public static <T> PermutationGenerator<T> permutation(Collection<T> collection) {
@@ -32,8 +37,9 @@ public class Generator {
     return new SubSetGenerator<>(collection);
   }
 
+  @SafeVarargs
   public static <T> SubSetGenerator<T> subset(T... args) {
-    return new SubSetGenerator<>(Arrays.asList(args));
+    return new SubSetGenerator<>(asList(args));
   }
 
   public static IGenerator<List<Integer>> partition(Integer value) {
@@ -42,7 +48,7 @@ public class Generator {
 
   @SafeVarargs
   public static <T> IGenerator<List<T>> cartesianProduct(List<T>... args) {
-    return cartesianProduct(Arrays.asList(args));
+    return cartesianProduct(asList(args));
   }
 
   public static <T> IGenerator<List<T>> cartesianProduct(Collection<List<T>> collection) {

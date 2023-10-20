@@ -37,7 +37,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   }
 
   /**
-   * Returns true if iteration is done, otherwise false
+   * Returns true if iteration is done, otherwise false.
    *
    * @see Iterator#hasNext()
    */
@@ -47,7 +47,7 @@ class SimpleSubSetIterator<T> implements Iterator<List<T>> {
   }
 
   /**
-   * Returns the next subset if it is available
+   * Returns the next subset if it is available.
    *
    * @see Iterator#next()
    */
