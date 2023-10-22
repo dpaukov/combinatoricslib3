@@ -7,6 +7,10 @@ package org.paukov.combinatorics3;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * A generator for iterating over the subsets.
+ * @param <T> Type of the elements in the sebsets.
+ */
 public class SubSetGenerator<T> {
 
   final Collection<T> originalVector;

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Generator for iterating over the combinations.
+ * A generator for iterating over the combinations.
  * @param <T> Type of the elements in the combinations.
  */
 public class CombinationGenerator<T> {

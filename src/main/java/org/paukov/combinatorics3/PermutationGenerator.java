@@ -11,6 +11,10 @@ import java.util.Set;
 
 import static org.paukov.combinatorics3.EmptyGenerator.emptyGenerator;
 
+/**
+ * A generator for iterating over the permutations.
+ * @param <T> Type of the elements in the permutations.
+ */
 public class PermutationGenerator<T> {
 
   final Collection<T> originalVector;
