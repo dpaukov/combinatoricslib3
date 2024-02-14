@@ -1,7 +1,9 @@
 
              CombinatoricsLib 3 - Release notes
                    by Dmytro Paukov
+CombinatoricsLib 3.4.1 (2024)
 
+-----------------------------------------------------------------
 CombinatoricsLib 3.4.0 (Feb 2024)
 - Migrated to Apache License Version 2.0
   https://github.com/dpaukov/combinatoricslib3/issues/23
