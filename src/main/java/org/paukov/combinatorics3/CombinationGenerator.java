@@ -21,6 +21,8 @@ public class CombinationGenerator<T> {
 
   /**
    * Creates a generator to produce combinations of the given length of elements.
+   * @param length The length of the generated combinations.
+   * @return The requested generator.
    */
   public IGenerator<List<T>> simple(int length) {
     return new SimpleCombinationGenerator<>(originalVector, length);
@@ -28,6 +30,8 @@ public class CombinationGenerator<T> {
 
   /**
    * Creates a generator to produce combinations with repetitions of the given length of elements.
+   * @param length The length of the generated combinations.
+   * @return The requested generator.
    */
   public IGenerator<List<T>> multi(int length) {
     return new MultiCombinationGenerator<>(originalVector, length);
