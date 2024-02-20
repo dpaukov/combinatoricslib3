@@ -10,7 +10,7 @@
   \____/\___/|_| |_| |_|_.__/|_|_| |_|\__,_|\__\___/|_|  |_|\___|___/\____/_|_.__/  |____/ 
 ```
 
-This is a new implementation of the combinatorics library for Java. The previous versions of the library can be found [here](https://github.com/dpaukov/combinatoricslib)  
+A combinatorics library for Java.  
 
 ## 3.4.0 - the latest stable release version
 The latest release of the library is [v3.4.0](https://github.com/dpaukov/combinatoricslib3/releases/tag/v3.4.0).
