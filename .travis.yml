@@ -1,8 +1,0 @@
-language: java
-
-dist: trusty
-
-jdk:
-  - openjdk11
-
-script: mvn clean test jacoco:report coveralls:report

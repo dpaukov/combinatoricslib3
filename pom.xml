@@ -23,8 +23,8 @@
   </scm>
 
   <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.com/github/dpaukov/combinatoricslib3</url>
+    <system>GitHub Actions</system>
+    <url>https://github.com/dpaukov/combinatoricslib3/actions</url>
   </ciManagement>
 
   <issueManagement>
