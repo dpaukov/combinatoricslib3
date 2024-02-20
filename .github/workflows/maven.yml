@@ -27,5 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Test with jacoco and coveralls
+      run: mvn -B clean test jacoco:report coveralls:report --file pom.xml
     - name: Build with Maven
       run: mvn -B package --file pom.xml
