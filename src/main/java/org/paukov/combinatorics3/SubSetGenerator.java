@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * A generator for iterating over the subsets.
- * @param <T> Type of the elements in the sebsets.
+ * @param <T> Type of the elements in the subsets.
  */
 public class SubSetGenerator<T> {
 
