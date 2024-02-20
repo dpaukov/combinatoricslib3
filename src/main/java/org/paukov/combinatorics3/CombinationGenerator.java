@@ -19,10 +19,16 @@ public class CombinationGenerator<T> {
     this.originalVector = originalVector;
   }
 
+  /**
+   * Creates a generator to produce combinations of the given length of elements.
+   */
   public IGenerator<List<T>> simple(int length) {
     return new SimpleCombinationGenerator<>(originalVector, length);
   }
 
+  /**
+   * Creates a generator to produce combinations with repetitions of the given length of elements.
+   */
   public IGenerator<List<T>> multi(int length) {
     return new MultiCombinationGenerator<>(originalVector, length);
   }
