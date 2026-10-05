@@ -5,8 +5,11 @@
 package org.paukov.combinatorics3;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This generator generates k-permutations of the specified initial vector.
@@ -74,9 +77,18 @@ class KPermutationGenerator<T> implements IGenerator<List<T>> {
   @Override
   public Iterator<List<T>> iterator() {
     if (hasDuplicates) {
+      Map<T, Integer> order = new HashMap<>();
+      for (T value : originalVector) {
+        order.putIfAbsent(value, order.size());
+      }
+
       return Generator.combination(originalVector)
           .simple(length)
           .stream()
+          .map(combination -> {
+            combination.sort(Comparator.comparingInt(order::get));
+            return combination;
+          })
           .distinct()
           .flatMap(combination -> Generator.permutation(combination).simple().stream())
           .iterator();

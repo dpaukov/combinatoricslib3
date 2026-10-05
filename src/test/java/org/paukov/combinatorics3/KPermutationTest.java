@@ -301,4 +301,21 @@ public final class KPermutationTest {
     assertThat(permutations.hasNext()).isTrue();
     assertThrows(UnsupportedOperationException.class, permutations::remove);
   }
+
+  @Test
+  public void test_k_permutation_with_separated_duplicates() {
+    List<List<String>> permutations = Generator.permutation("a", "b", "a")
+        .k(2, TreatDuplicatesAs.IDENTICAL).stream().collect(toList());
+    assertThat(permutations).containsExactly(asList("a", "b"), asList("b", "a"), asList("a", "a"));
+  }
+
+  @Test
+  public void test_k_permutation_with_multiple_separated_duplicates() {
+    List<List<Integer>> permutations = Generator.permutation(1, 2, 1, 2)
+        .k(3, TreatDuplicatesAs.IDENTICAL).stream().collect(toList());
+    assertThat(permutations).hasSize(6).doesNotHaveDuplicates();
+    assertThat(permutations).containsExactlyInAnyOrder(asList(1, 1, 2), asList(1, 2, 1),
+        asList(2, 1, 1), asList(1, 2, 2), asList(2, 1, 2), asList(2, 2, 1));
+  }
+
 }
